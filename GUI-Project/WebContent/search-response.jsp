@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>These are your search results....</h1>
+	<br></br>
 	<a href="Website.html">Return to homepage.</a>	<!-- Return link to updated homepage  -->
 </body>
 </html>
