@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * @author Erwin Herrera
  * Servlet implementation class StudentServlet
  */
 @WebServlet("/SignInServlet")
