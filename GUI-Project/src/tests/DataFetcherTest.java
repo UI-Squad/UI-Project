@@ -13,6 +13,11 @@ public class DataFetcherTest {
 		resultSet = null;
 	}
 
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
 	public String showInventory() throws SQLException {
 		resultSet = fetcher.fetchAllInventory();
 		String result = "";
