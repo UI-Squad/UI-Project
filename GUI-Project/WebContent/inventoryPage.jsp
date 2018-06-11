@@ -86,7 +86,6 @@ div.c {
 	background-color: #ddd;
 	color: black;
 }
-
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -110,7 +109,7 @@ div.c {
 							<th><span class="Price">Item</span></th>
 						</tr>
 					</thead>
-					<%-- <tbody>
+					<tbody>
 						<%
 							DataFetcherTest fetchTest = new DataFetcherTest();
 							String result = fetchTest.showInventory();
@@ -122,10 +121,10 @@ div.c {
 
 						<%
 						%>
-					</tbody> --%>
+					</tbody>
 				</table>
 			</div>
 		</div>
 	</center>
 </body>
-</html> 
+</html>

@@ -22,7 +22,7 @@ public class DataFetcherTest {
 		resultSet = fetcher.fetchAllInventory();
 		String result = "";
 		while(resultSet.next()) {			
-			result = resultSet.getString("itemId") + " "
+			result += resultSet.getString("itemId") + " "
 							+ resultSet.getString("name") + " "
 							+ resultSet.getString("description") + " "
 							+ resultSet.getDouble("price") + " " 
