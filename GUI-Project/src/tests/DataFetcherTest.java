@@ -4,22 +4,25 @@ import java.sql.SQLException;
 import com.controller.DataFetcher;
 
 public class DataFetcherTest {
+	
+	private ResultSet resultSet;
+	private DataFetcher fetcher;
+	
+	public DataFetcherTest() {
+		fetcher = new DataFetcher();
+		resultSet = null;
+	}
 
-	public static void printInventory(ResultSet resultSet) throws SQLException {
+	public String showInventory() throws SQLException {
+		resultSet = fetcher.fetchAllInventory();
+		String result = "";
 		while(resultSet.next()) {			
-			System.out.println(resultSet.getString("itemId") + " "
+			result = resultSet.getString("itemId") + " "
 							+ resultSet.getString("name") + " "
 							+ resultSet.getString("description") + " "
 							+ resultSet.getDouble("price") + " " 
-							+ resultSet.getInt("qty"));
+							+ resultSet.getInt("qty") + "\n";
 		}
-	}
-	
-	public static void main(String[] args) throws SQLException{
-		DataFetcher fetcher = new DataFetcher();
-		ResultSet resultSet = null;
-		
-		resultSet = fetcher.fetchAllInventory();
-		printInventory(resultSet);
+		return result;
 	}
 }

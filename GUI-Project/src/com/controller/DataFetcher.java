@@ -20,7 +20,7 @@ public class DataFetcher {
 			// This will load the MySQL driver, each DBMS has its own driver
 			Class.forName("com.mysql.jdbc.Driver");
 			this.connect = DriverManager
-					.getConnection("jdbc:mysql://uidbinstance.cut52ysezncx.us-west-2.rds.amazonaws.com/uidb", 
+					.getConnection("jdbc:mysql://uidbinstance.cut52ysezncx.us-west-2.rds.amazonaws.com/storedb", 
 									USER, PASS);
 		} catch (Exception e) {
 			// TODO: Needs to redirect to error page
