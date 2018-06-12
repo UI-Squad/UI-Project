@@ -94,7 +94,7 @@ div.c {
 <body>
 	<center>
 		<h1>
-			<i> S T O R E &ensp; I N V E N T O R Y</i>
+			<i> C A R T &ensp; I T E M S</i>
 		</h1>
 	</center>
 	<hr width=500>
@@ -112,7 +112,7 @@ div.c {
 					<tbody>
 						<%
 							DataFetcherTest fetchTest = new DataFetcherTest();
-							String result = fetchTest.showInventory();
+							String result = fetchTest.showCart("car001");
 						%>
 
 						<tr>
