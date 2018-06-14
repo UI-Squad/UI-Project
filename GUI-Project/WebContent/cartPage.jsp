@@ -125,6 +125,7 @@ div.c {
 				</table>
 			</div>
 		</div>
+			<a href="Website.html">Return to homepage.</a>	<!-- Return link to updated homepage  -->
 	</center>
 </body>
 </html>

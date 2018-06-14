@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Erwin Herrera
- * Servlet implementation class StudentServlet
+ * Servlet implementation class SignInServlet
  */
 @WebServlet("/SignInServlet")
 public class SignInServlet extends HttpServlet {

@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <meta name="author" content="Erwin Herrera">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Website Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
@@ -15,6 +16,14 @@ body {
 	font-family: Arial;
 	padding: 10px;
 	background: #f1f1f1;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+	float: left;
+	width: 33.33%;
+	padding: 10px;
+	height: 300px; /* Should be removed. Only for demonstration */
 }
 
 /* Header/Blog Title */
@@ -109,7 +118,7 @@ body {
 	padding: 6px;
 	border: none;
 	margin-top: 8px;
-	font-size: 17px;
+	font-size: 16px;
 }
 
 .topnav .search-container button {
@@ -118,42 +127,13 @@ body {
 	margin-top: 8px;
 	margin-right: 16px;
 	background: #ddd;
-	font-size: 17px;
+	font-size: 18px;
 	border: none;
 	cursor: pointer;
 }
 
 .topnav .search-container button:hover {
 	background: #ccc;
-}
-
-/* Create two unequal columns that floats next to each other */
-/* Left column */
-.leftcolumn {
-	float: left;
-	width: 75%;
-}
-
-/* Right column */
-.rightcolumn {
-	float: right;
-	width: 25%;
-	background-color: #f1f1f1;
-	padding-left: 20px;
-}
-
-/* Fake image */
-.fakeimg {
-	background-color: #aaa;
-	width: 100%;
-	padding: 20px;
-}
-
-/* Add a card effect for articles */
-.card {
-	background-color: white;
-	padding: 20px;
-	margin-top: 20px;
 }
 
 /* Clear floats after the columns */
@@ -212,7 +192,6 @@ navigation links stack on top of each other instead of next to each other */
 	}
 </script>
 
-
 </head>
 <body>
 
@@ -253,37 +232,18 @@ navigation links stack on top of each other instead of next to each other */
 
 
 	<div class="row">
-		<div class="leftcolumn">
-			<div class="card">
-				<h2>Featured</h2>
-				<h5>Title description</h5>
-				<div class="fakeimg" style="height: 300px;">Image</div>
-				<p>Some text..</p>
-				<p>Sunt in culpa qui officia deserunt mollit anim id est laborum
-					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-					labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-					nostrud exercitation ullamco.</p>
-			</div>
+		<div class="column" style="background-color: #aaa;">
+			<h2>Electronics</h2>
+			<p>Some text..</p>
 		</div>
-
-		<div class="rightcolumn">
-			<div class="card">
-				<h3>Last Ordered Items</h3>
-				<div class="fakeimg">
-					<p>Image</p>
-				</div>
-				<div class="fakeimg">
-					<p>Image</p>
-				</div>
-				<div class="fakeimg">
-					<p>Image</p>
-				</div>
-			</div>
+		<div class="column" style="background-color: #bbb;">
+			<h2>Clothing</h2>
+			<p>Some text..</p>
 		</div>
-	</div>
-
-	<div class="footer">
-		<h2>Footer</h2>
+		<div class="column" style="background-color: #ccc;">
+			<h2>Books</h2>
+			<p>Some text..</p>
+		</div>
 	</div>
 
 </body>
