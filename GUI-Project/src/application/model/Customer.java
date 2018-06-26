@@ -25,6 +25,9 @@ public class Customer {
   }
 
   //todo: Add customer getters and setters
+  public void setName(String name){
+    this.name = name;
+  }
 
   //Do we want to ask for customer data? Name, address, email?
 }
