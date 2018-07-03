@@ -202,7 +202,7 @@ navigation links stack on top of each other instead of next to each other */
 
 	<!-- Navigation bar on the top of the menu  -->
 	<div class="topnav">
-		<a href="Website.html" class="active">Home</a>
+		<a href="Website.html">Home</a>
 
 		<!-- Drop down sub menu for categories in navigation bar  -->
 		<div class="dropdown">

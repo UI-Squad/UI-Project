@@ -1,27 +1,26 @@
 package application.model;
 
 /**
- *
  * @author Erwin Herrera
+ * @author Jerome Daly
  *
  * This class will be responsible for
  * keeping the information of the customer.
  *
- * (i.e. Name, password info, etc)
  */
 
 public class Customer {
   //customer name
-  String name, address;
-  int phoneNum;
+  private String name, address;
+  private int phoneNum;
 
-  Cart cart = new Cart;
+  private Cart cart = new Cart();
 
   //constructor
-  public void customer(String name, address, int phoneNum){
-    this.name = name;
-    this.address = address;
-    this.phoneNum = phoneNum;
+  public void customer(String cusName, String cusAddress, int cusPhoneNum){
+    name = cusName;
+    address = cusAddress;
+    phoneNum = cusPhoneNum;
   }
 
   //todo: Add customer getters and setters
