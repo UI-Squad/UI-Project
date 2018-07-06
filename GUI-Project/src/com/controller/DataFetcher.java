@@ -8,20 +8,19 @@ import java.sql.SQLException;
 
 public class DataFetcher {
 	
-	private PreparedStatement preparedStatement = null;
-	private ResultSet resultSet = null;
-	private Connection connect = null;
-	
 	private static final String USER = "uiuser";
 	private static final String PASS = "uipassword1";
-	
+	protected PreparedStatement preparedStatement = null;
+	protected ResultSet resultSet = null;
+	protected Connection connect = null;
+
 	public DataFetcher() {
 		try {
 			// This will load the MySQL driver, each DBMS has its own driver
 			Class.forName("com.mysql.jdbc.Driver");
 			this.connect = DriverManager.getConnection("jdbc:mysql://45.17.26.63/ui_database?serverTimezone=UTC", USER, PASS);
 			
-/*			this.connect = DriverManager
+			/*	this.connect = DriverManager
 					.getConnection("jdbc:mysql://uidbinstance.cut52ysezncx.us-west-2.rds.amazonaws.com/storedb", 
 									USER, PASS);*/
 		} catch (Exception e) {
@@ -41,6 +40,23 @@ public class DataFetcher {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return resultSet;
+	}
+	
+	/**
+	 * Returns resultSet from Inventory table specified by dept.
+	 * @param dept A string literal specifying the department
+	 * @return resultSet results of the SQL query
+	 */
+	public ResultSet fetchInventoryByDept(String dept) {
+		try {
+			preparedStatement = connect.prepareStatement("select i.* from Inventory i where i.dept = ?");
+			preparedStatement.setString(1, dept);
+			resultSet = preparedStatement.executeQuery();
+		}catch (SQLException e){
+			e.printStackTrace();
+		}
+		
 		return resultSet;
 	}
 	
