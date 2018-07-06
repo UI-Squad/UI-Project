@@ -30,7 +30,7 @@ public class Cart{
 	}
 
 	//return the size of the cartArray
-	public void getSize(){
+	public double getSize(){
 		return cartArray.size();
 	}
 
