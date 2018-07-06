@@ -234,35 +234,35 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="column" style="background-color: #aaa;">
 			<h2>Electronics</h2>
 			<a href="#">
-			<center><img src="electronics.jpeg" style="width: 90%" alt=""></center>
+			<center><img src="electronics.jpeg" style="width: 70%" alt=""></center>
 			</a>
 			<p>Some text..</p>
 		</div>
 		<div class="column" style="background-color: #bbb;">
 			<h2>Clothing</h2>
 			<a href="#">
-			<center><img src="clothing.jpeg" style="width: 90%" alt=""></center>
+			<center><img src="clothing.jpeg" style="width: 70%" alt=""></center>
 			</a>
 			<p>Some text..</p>
 		</div>
 		<div class="column" style="background-color: #ccc;">
 			<h2>Books</h2>
 			<a href="#">
-			<center><img src="books.jpeg" style="width: 90%" alt=""></center>
+			<center><img src="books.jpeg" style="width: 70%" alt=""></center>
 			</a>
 			<p>Some text..</p>
 		</div>
 		<div class="column" style="background-color: #ddd;">
 			<h2>Automotive</h2>
 			<a href="#">
-			<center><img src="automotive.jpeg" style="width: 90%" alt=""></center>
+			<center><img src="automotive.jpeg" style="width: 70%" alt=""></center>
 			</a>
 			<p>Some text..</p>
 		</div>
 		<div class="column" style="background-color: #eee;">
 			<h2>Home</h2>
 			<a href="#">
-			<center><img src="home.jpeg" style="width: 90%" alt="" onclick="Website.html"></center>
+			<center><img src="home.jpeg" style="width: 70%" alt="" onclick="Website.html"></center>
 			</a>
 			<p>Some text..</p>
 		</div>

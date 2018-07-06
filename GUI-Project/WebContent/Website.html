@@ -255,11 +255,11 @@ img {
 
 /* Caption text */
 .text {
-	color: #f2f2f2;
-	font-size: 15px;
-	padding: 8px 12px;
+	color: #000000;
+	font-size: 17px;
+	padding: 8px 14px;
 	position: absolute;
-	bottom: 8px;
+	bottom: 1px;
 	width: 100%;
 	text-align: center;
 }
@@ -326,10 +326,100 @@ to {
 }
 </style>
 
-
-
-<!-- Script for managing slideshow controls  -->
+<!-- Script that validates there is input in the search bar  -->
 <script type="text/javascript">
+	function validateForm() {
+		var x = document.forms["searchBar"]["value"].value;
+		if (x == "") {
+			/* Do nothing if search bar is empty  */
+			return false;
+		}
+		return true;
+	}
+</script>
+
+
+</head>
+<body>
+
+	<div class="header">
+		<h1>The Nile Shopping Service</h1>
+	</div>
+
+	<!-- Navigation bar on the top of the menu  -->
+	<div class="topnav">
+		<a href="Website.html" class="active">Home</a>
+
+		<!-- Drop down sub menu for categories in navigation bar  -->
+		<div class="dropdown">
+			<button class="dropbtn">
+				Categories <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="#">Electronics</a> <a href="#">Clothing</a> <a href="#">Books</a>
+				<a href="#">Automotive</a> <a href="#">Home</a> <a
+					href="viewAllPage.jsp">View All</a>
+			</div>
+		</div>
+
+		<a href="cartPage.jsp">Cart</a> <a href="sign-in-form.jsp"
+			style="float: right">Sign In</a>
+
+		<!-- Search Bar -->
+		<div class="search-container">
+			<form name="searchBar" action="search-response.jsp"
+				onsubmit="return validateForm()" method="post">
+				<input type="text" name="value" placeholder="Search">
+				<button type="submit">
+					<i class="fa fa-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- Featured Items Slideshow  -->
+	<div class="row">
+		<div class="leftcolumn">
+			<div class="card">
+				<h2>Featured</h2>
+				<!-- <div class="fakeimg" style="height: 300px;">Image</div>-->
+
+				<div class="slideshow-container" style="height: 300px">
+					<div class="mySlides fade">
+						<div class="numbertext">1 / 3</div>
+						<img src="bookSlide.jpeg" style="width: 100%" alt="">
+						<div class="text">Buy 1 Get 1 Free on Select Books!</div>
+					</div>
+
+					<div class="mySlides fade">
+						<div class="numbertext">2 / 3</div>
+						<img src="clothesSlide.jpeg" style="width: 100%" alt="">
+						<div class="text">25% Off Select Styles</div>
+					</div>
+
+					<div class="mySlides fade">
+						<div class="numbertext">3 / 3</div>
+						<img src="electronicsSlide.jpeg" style="width: 100%" alt="">
+						<div class="text">Grab the latest gear!</div>
+					</div>
+
+					<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a
+						class="next" onclick="plusSlides(1)">&#10095;</a>
+				</div>
+				<br>
+				<div style="text-align: center">
+					<span class="dot" onclick="currentSlide(1)"></span> <span
+						class="dot" onclick="currentSlide(2)"></span> <span class="dot"
+						onclick="currentSlide(3)"></span>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<!-- Script for managing slideshow controls  -->
+		<script type="text/javascript">
 	var slideIndex = 1;
 	showSlides(slideIndex);
 
@@ -362,94 +452,6 @@ to {
 	}
 </script>
 
-
-<!-- Script that validates there is input in the search bar  -->
-<script type="text/javascript">
-	function validateForm() {
-		var x = document.forms["searchBar"]["value"].value;
-		if (x == "") {
-			/* Do nothing if search bar is empty  */
-			return false;
-		}
-		return true;
-	}
-</script>
-
-
-</head>
-<body>
-
-	<div class="header">
-		<h1>The Nile Shopping Service</h1>
-	</div>
-
-	<!-- Navigation bar on the top of the menu  -->
-	<div class="topnav">
-		<a href="Website.html" class="active">Home</a>
-
-		<!-- Drop down sub menu for categories in navigation bar  -->
-		<div class="dropdown">
-			<button class="dropbtn">
-				Categories <i class="fa fa-caret-down"></i>
-			</button>
-			<div class="dropdown-content">
-				<a href="#">Electronics</a> <a href="#">Clothing</a> <a href="#">Books</a>
-				<a href="#">Automotive</a> <a href="#">Home</a> <a href="viewAllPage.jsp">View All</a>
-			</div>
-		</div>
-
-		<a href="cartPage.jsp">Cart</a> <a href="sign-in-form.jsp"
-			style="float: right">Sign In</a>
-
-		<!-- Search Bar -->
-		<div class="search-container">
-			<form name="searchBar" action="search-response.jsp"
-				onsubmit="return validateForm()" method="post">
-				<input type="text" name="value" placeholder="Search">
-				<button type="submit">
-					<i class="fa fa-search"></i>
-				</button>
-			</form>
-		</div>
-	</div>
-
-	<!-- Featured Items Slideshow  -->
-	<div class="row">
-		<div class="leftcolumn">
-			<div class="card">
-				<h2>Featured</h2>
-				<!-- <div class="fakeimg" style="height: 300px;">Image</div>-->
-
-				<div class="slideshow-container" style="height: 300px">
-					<div class="mySlides fade">
-						<div class="numbertext">1 / 3</div>
-						<img src="img_nature_wide.jpg" style="width: 100%" alt="">
-						<div class="text">Caption Text</div>
-					</div>
-
-					<div class="mySlides fade">
-						<div class="numbertext">2 / 3</div>
-						<img src="img_snow_wide.jpg" style="width: 100%" alt="">
-						<div class="text">Caption Two</div>
-					</div>
-
-					<div class="mySlides fade">
-						<div class="numbertext">3 / 3</div>
-						<img src="img_mountains_wide.jpg" style="width: 100%" alt="">
-						<div class="text">Caption Three</div>
-					</div>
-
-					<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a
-						class="next" onclick="plusSlides(1)">&#10095;</a>
-				</div>
-				<br>
-				<div style="text-align: center">
-					<span class="dot" onclick="currentSlide(1)"></span> <span
-						class="dot" onclick="currentSlide(2)"></span> <span class="dot"
-						onclick="currentSlide(3)"></span>
-				</div>
-			</div>
-		</div>
 
 
 
