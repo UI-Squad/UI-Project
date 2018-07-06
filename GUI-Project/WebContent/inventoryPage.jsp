@@ -141,6 +141,42 @@ body {
 	clear: both;
 }
 
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+	float: left;
+	width: 20%;
+	background-color: #f1f1f1;
+	padding-right: 20px;
+}
+
+/* Right column */
+.rightcolumn {
+	float: right;
+	width: 80%;
+}
+
+/* Fake image */
+.fakeimg {
+	background-color: #aaa;
+	width: 100%;
+	padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+	background-color: white;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
 /* Footer */
 .footer {
 	padding: 20px;
@@ -177,6 +213,29 @@ navigation links stack on top of each other instead of next to each other */
 	}
 }
 </style>
+
+<!-- Grid-Row styling for products -->
+<style type="text/css">
+.grid-container {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-gap: 10px;
+	background-color: #000000;
+	padding: 10px;
+}
+
+.grid-container>div {
+	background-color: rgba(255, 255, 255, 0.8);
+	text-align: center;
+	padding: 20px 0;
+	font-size: 30px;
+}
+
+.item1 {
+	grid-row: 1/span 2;
+}
+</style>
+
 
 <!-- Script that validates there is input in the search bar  -->
 <script type="text/javascript">
@@ -228,43 +287,38 @@ navigation links stack on top of each other instead of next to each other */
 		</div>
 	</div>
 
-
+	<!-- Inventory page below nav bar -->
 	<div class="row">
-		<div class="column" align="center" style="background-color: #ggg;">
-			<center>
-				<h1>
-					<i> S T O R E &ensp; I N V E N T O R Y</i>
-				</h1>
-			</center>
-			<hr width="500">
-			<br> <br>
-			<center>
-				<div id="table-wrapper">
-					<div id="table-scroll">
-						<table>
-							<thead>
-								<tr>
-									<th><span class="Price">Items</span></th>
-								</tr>
-							</thead>
-							<tbody>
-								<%
-									DataFetcherTest fetchTest = new DataFetcherTest();
-									String result = fetchTest.showInventory();
-								%>
+		<div class="rightcolumn">
+			<div class="card">
+				<h2>Inventory</h2>
+				<%
+					DataFetcherTest fetchTest = new DataFetcherTest();
+					String result = fetchTest.showInventory();
+				%>
 
-								<tr>
-									<td><%=result%></td>
-								</tr>
+				<tr>
+					<td><%=result%></td>
+				</tr>
 
-								<%
-									
-								%>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</center>
+				<%
+					
+				%>
+			</div>
+		</div>
+
+
+
+		<!-- Options -->
+		<div class="leftcolumn">
+			<div class="card">
+				<h3>Filter/Sort</h3>
+					<p>Option</p>
+					<p></p>
+					<p>Option</p>
+					<p></p>
+					<p>Option</p>
+			</div>
 		</div>
 	</div>
 
