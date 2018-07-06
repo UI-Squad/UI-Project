@@ -23,8 +23,8 @@ body {
 	float: left;
 	width: 33.33%;
 	padding: 10px;
-	height: 300px; /* Should be removed. Only for demonstration */
-}
+ 	height: 425px; /* Should be removed. Only for demonstration */
+ }
 
 /* Header/Blog Title */
 .header {
@@ -268,7 +268,8 @@ navigation links stack on top of each other instead of next to each other */
 		</div>
 		<div class="column" align="center" style="background-color: #ggg;">
 			<h2>More Coming Soon!</h2>
-			<p>Thank you for shopping with the Nile. We appreciate your business!</p>
+			<p>Thank you for shopping with the Nile. 
+			We appreciate your business!</p>
 		</div>
 	</div>
 
