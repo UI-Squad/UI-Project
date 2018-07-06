@@ -27,7 +27,23 @@ public class Customer {
   //todo: Add customer getters and setters
   public void setName(String name){
     this.name = name;
-    //test
+  }
+  public String getName(){
+    return name;
+  }
+
+  public void setAddress(String addr){
+    this.address = addr;
+  }
+  public String getAddress(){
+    return address;
+  }
+
+  public void setPhone(int phone){
+    this.phoneNum = phone;
+  }
+  public int getPhoneNum(){
+    return phoneNum;
   }
 
   //Do we want to ask for customer data? Name, address, email?
