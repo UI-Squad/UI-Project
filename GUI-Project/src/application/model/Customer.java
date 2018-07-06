@@ -11,8 +11,8 @@ package application.model;
 
 public class Customer {
   //customer name
-  private String name, address;
-  private int phoneNum;
+  private String cusName, cusAddress;
+  private int cusPhoneNum;
 
   private Cart cart = new Cart();
 
@@ -23,27 +23,25 @@ public class Customer {
     phoneNum = cusPhoneNum;
   }
 
-  //todo: Add customer getters and setters
+  //Getters and setters for customer information
   public void setName(String name){
-    this.name = name;
+    this.cusName = name;
   }
   public String getName(){
-    return name;
+    return cusName;
   }
 
   public void setAddress(String addr){
-    this.address = addr;
+    this.cusAddress = addr;
   }
   public String getAddress(){
-    return address;
+    return cusAddress;
   }
 
   public void setPhone(int phone){
-    this.phoneNum = phone;
+    this.cusPhoneNum = phone;
   }
   public int getPhoneNum(){
-    return phoneNum;
+    return cusPhoneNum;
   }
-
-  //Do we want to ask for customer data? Name, address, email?
 }
