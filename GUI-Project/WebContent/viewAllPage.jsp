@@ -23,7 +23,7 @@ body {
 	float: left;
 	width: 33.33%;
 	padding: 10px;
-	height: 300px; /* Should be removed. Only for demonstration */
+	height: 425px; /* Should be removed. Only for demonstration */
 }
 
 /* Header/Blog Title */
@@ -196,13 +196,12 @@ navigation links stack on top of each other instead of next to each other */
 <body>
 
 	<div class="header">
-		<h1>Website</h1>
-		<p>Resize the browser window to see the effect.</p>
+		<img src="./Images/siteLogo.jpeg" style="height: 300px;" alt="">
 	</div>
 
 	<!-- Navigation bar on the top of the menu  -->
 	<div class="topnav">
-		<a href="Website.html" class="active">Home</a>
+		<a href="Website.html">Home</a>
 
 		<!-- Drop down sub menu for categories in navigation bar  -->
 		<div class="dropdown">
@@ -211,12 +210,13 @@ navigation links stack on top of each other instead of next to each other */
 			</button>
 			<div class="dropdown-content">
 				<a href="#">Electronics</a> <a href="#">Clothing</a> <a href="#">Books</a>
-				<a href="viewAllPage.jsp">View All</a>
+				<a href="#">Automotive</a> <a href="#">Home</a> <a
+					href="viewAllPage.jsp">View All</a>
 			</div>
 		</div>
 
-		<a href="cartPage.jsp">Cart</a> <a href="sign-in-form.jsp"
-			style="float: right">Sign In</a>
+		<a href="cartPage.jsp">Cart</a> <a href="inventoryPage.jsp">Inventory</a>
+		<a href="sign-in-form.jsp" style="float: right">Sign In</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">
@@ -234,15 +234,54 @@ navigation links stack on top of each other instead of next to each other */
 	<div class="row">
 		<div class="column" style="background-color: #aaa;">
 			<h2>Electronics</h2>
+			<a href="#">
+				<center>
+					<img src="./Images/electronics.jpeg" style="width: 70%" alt="">
+				</center>
+			</a>
 			<p>Some text..</p>
 		</div>
 		<div class="column" style="background-color: #bbb;">
 			<h2>Clothing</h2>
+			<a href="#">
+				<center>
+					<img src="./Images/clothing.jpeg" style="width: 70%" alt="">
+				</center>
+			</a>
 			<p>Some text..</p>
 		</div>
 		<div class="column" style="background-color: #ccc;">
 			<h2>Books</h2>
+			<a href="#">
+				<center>
+					<img src="./Images/books.jpeg" style="width: 70%" alt="">
+				</center>
+			</a>
 			<p>Some text..</p>
+		</div>
+		<div class="column" style="background-color: #ddd;">
+			<h2>Automotive</h2>
+			<a href="#">
+				<center>
+					<img src="./Images/automotive.jpeg" style="width: 70%" alt="">
+				</center>
+			</a>
+			<p>Some text..</p>
+		</div>
+		<div class="column" style="background-color: #eee;">
+			<h2>Home</h2>
+			<a href="#">
+				<center>
+					<img src="./Images/home.jpeg" style="width: 70%" alt=""
+						onclick="Website.html">
+				</center>
+			</a>
+			<p>Some text..</p>
+		</div>
+		<div class="column" align="center" style="background-color: #ggg;">
+			<h2>More Coming Soon!</h2>
+			<p>Thank you for shopping with the Nile. We appreciate your
+				business!</p>
 		</div>
 	</div>
 

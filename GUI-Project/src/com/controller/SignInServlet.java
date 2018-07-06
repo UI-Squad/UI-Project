@@ -43,7 +43,7 @@ public class SignInServlet extends HttpServlet {
 		out.println("<html><body>");
 		
 		out.println("The customer is confirmed: "
-					+ request.getParameter("userName"));		
+					+ request.getParameter("email"));		
 		out.println("</br></br>");
 		out.println("<a href=\"Website.html\">Return to homepage.</a>");
 		out.println("</body></html>");
