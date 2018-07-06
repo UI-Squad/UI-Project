@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="tests.DataFetcherTest"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -144,10 +145,13 @@ body {
 /* Create two unequal columns that floats next to each other */
 /* Left column */
 .leftcolumn {
+	position: -webkit-sticky;
+	position: sticky;
 	float: left;
 	width: 20%;
 	background-color: #f1f1f1;
 	padding-right: 20px;
+	top: 20px;
 }
 
 /* Right column */
@@ -219,16 +223,16 @@ navigation links stack on top of each other instead of next to each other */
 .grid-container {
 	display: grid;
 	grid-template-columns: auto auto auto auto;
-	grid-gap: 10px;
+	grid-gap: 10x;
 	background-color: #000000;
-	padding: 10px;
+	padding: 0px; /*Outline  */
 }
 
 .grid-container>div {
 	background-color: rgba(255, 255, 255, 0.8);
 	text-align: center;
 	padding: 20px 0;
-	font-size: 30px;
+	font-size: 17px;
 }
 
 .item1 {
@@ -272,7 +276,7 @@ navigation links stack on top of each other instead of next to each other */
 			</div>
 		</div>
 
-		<a href="cartPage.jsp">Cart</a> <a href="inventoryPage.jsp">Inventory</a>
+		<a href="cartPage.jsp">Cart</a> <a href="inventoryPage.jsp" class="active">Inventory</a>
 		<a href="sign-in-form.jsp" style="float: right">Sign In</a>
 
 		<!-- Search Bar -->
@@ -290,37 +294,183 @@ navigation links stack on top of each other instead of next to each other */
 	<!-- Inventory page below nav bar -->
 	<div class="row">
 		<div class="rightcolumn">
+
+			<%
+				DataFetcherTest fetchTest = new DataFetcherTest();
+
+				ArrayList<String> itemNames = new ArrayList<String>();
+				itemNames = fetchTest.showItemName();
+				ArrayList<Double> priceList = new ArrayList<Double>();
+				priceList = fetchTest.showPrice();
+				ArrayList<String> descriptionList = new ArrayList<String>();
+				descriptionList = fetchTest.showProductDescriptions();
+			%>
 			<div class="card">
+
 				<h2>Inventory</h2>
-				<%
-					DataFetcherTest fetchTest = new DataFetcherTest();
-					String result = fetchTest.showInventory();
-				%>
+				<div class="grid-container">
+					<div class="item1">Item picture</div>
+					<div class="item2"><%=itemNames.get(0)%></div>
+					<div class="item3"></div>
+					<!--Item name continuted if necessary  -->
+					<div class="item4"><%=descriptionList.get(0)%></div>
+					<div class="item5"><%=priceList.get(0)%></div>
+					<div class="item6"></div>
+					<!-- left intentionally blank for spacing  -->
+					<div class="item7"></div>
+				</div>
 
-				<tr>
-					<td><%=result%></td>
-				</tr>
+				<hr>
 
-				<%
-					
-				%>
+				<div class="grid-container">
+					<div class="item1">Item picture</div>
+					<div class="item2"><%=itemNames.get(1)%></div>
+					<div class="item3"></div>
+					<!--Item name continuted if necessary  -->
+					<div class="item4"><%=descriptionList.get(1)%></div>
+					<div class="item5"><%=priceList.get(1)%></div>
+					<div class="item6"></div>
+					<!-- left intentionally blank for spacing  -->
+					<div class="item7"></div>
+				</div>
+
+				<hr>
+
+				<div class="grid-container">
+					<div class="item1">Item picture</div>
+					<div class="item2"><%=itemNames.get(2)%></div>
+					<div class="item3"></div>
+					<!--Item name continuted if necessary  -->
+					<div class="item4"><%=descriptionList.get(2)%></div>
+					<div class="item5"><%=priceList.get(2)%></div>
+					<div class="item6"></div>
+					<!-- left intentionally blank for spacing  -->
+					<div class="item7"></div>
+				</div>
+
+				<hr>
+
+				<div class="grid-container">
+					<div class="item1">Item picture</div>
+					<div class="item2"><%=itemNames.get(3)%></div>
+					<div class="item3"></div>
+					<!--Item name continuted if necessary  -->
+					<div class="item4"><%=descriptionList.get(3)%></div>
+					<div class="item5"><%=priceList.get(3)%></div>
+					<div class="item6"></div>
+					<!-- left intentionally blank for spacing  -->
+					<div class="item7"></div>
+
+				</div>
+
+				<hr>
+
+				<div class="grid-container">
+					<div class="item1">Item picture</div>
+					<div class="item2"><%=itemNames.get(4)%></div>
+					<div class="item3"></div>
+					<!--Item name continuted if necessary  -->
+					<div class="item4"><%=descriptionList.get(4)%></div>
+					<div class="item5"><%=priceList.get(4)%></div>
+					<div class="item6"></div>
+					<!-- left intentionally blank for spacing  -->
+					<div class="item7"></div>
+
+				</div>
+
+
+				<hr>
+
+				<div class="grid-container">
+					<div class="item1">Item picture</div>
+					<div class="item2"><%=itemNames.get(5)%></div>
+					<div class="item3"></div>
+					<!--Item name continuted if necessary  -->
+					<div class="item4"><%=descriptionList.get(5)%></div>
+					<div class="item5"><%=priceList.get(5)%></div>
+					<div class="item6"></div>
+					<!-- left intentionally blank for spacing  -->
+					<div class="item7"></div>
+
+				</div>
+
+				<hr>
+
+				<div class="grid-container">
+					<div class="item1">Item picture</div>
+					<div class="item2"><%=itemNames.get(6)%></div>
+					<div class="item3"></div>
+					<!--Item name continuted if necessary  -->
+					<div class="item4"><%=descriptionList.get(6)%></div>
+					<div class="item5"><%=priceList.get(6)%></div>
+					<div class="item6"></div>
+					<!-- left intentionally blank for spacing  -->
+					<div class="item7"></div>
+
+				</div>
+
+				<hr>
+
+				<div class="grid-container">
+					<div class="item1">Item picture</div>
+					<div class="item2"><%=itemNames.get(7)%></div>
+					<div class="item3"></div>
+					<!--Item name continuted if necessary  -->
+					<div class="item4"><%=descriptionList.get(7)%></div>
+					<div class="item5"><%=priceList.get(7)%></div>
+					<div class="item6"></div>
+					<!-- left intentionally blank for spacing  -->
+					<div class="item7"></div>
+
+				</div>
+
+				<hr>
+
+				<div class="grid-container">
+					<div class="item1">Item picture</div>
+					<div class="item2"><%=itemNames.get(8)%></div>
+					<div class="item3"></div>
+					<!--Item name continuted if necessary  -->
+					<div class="item4"><%=descriptionList.get(8)%></div>
+					<div class="item5"><%=priceList.get(8)%></div>
+					<div class="item6"></div>
+					<!-- left intentionally blank for spacing  -->
+					<div class="item7"></div>
+
+				</div>
+
+				<hr>
+
+				<div class="grid-container">
+					<div class="item1">Item picture</div>
+					<div class="item2"><%=itemNames.get(9)%></div>
+					<div class="item3"></div>
+					<!--Item name continuted if necessary  -->
+					<div class="item4"><%=descriptionList.get(9)%></div>
+					<div class="item5"><%=priceList.get(9)%></div>
+					<div class="item6"></div>
+					<!-- left intentionally blank for spacing  -->
+					<div class="item7"></div>
+
+				</div>
+
 			</div>
+			<!-- end divider for card  -->
+
 		</div>
-
-
+		<!-- End row divider  -->
 
 		<!-- Options -->
 		<div class="leftcolumn">
 			<div class="card">
 				<h3>Filter/Sort</h3>
-					<p>Option</p>
-					<p></p>
-					<p>Option</p>
-					<p></p>
-					<p>Option</p>
+				<p>Option</p>
+				<p></p>
+				<p>Option</p>
+				<p></p>
+				<p>Option</p>
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

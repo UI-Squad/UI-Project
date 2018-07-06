@@ -1,8 +1,16 @@
 package tests;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import com.controller.DataFetcher;
 
+/**
+ * 
+ * @author Shane Bogard
+ * @author Erwin Herrera
+ *
+ */
 public class DataFetcherTest {
 	
 	private ResultSet resultSet;
@@ -14,25 +22,77 @@ public class DataFetcherTest {
 	}
 
 	/**
-	 * 
+	 * This method returns all elements in the mySQL table.
 	 * @return
 	 * @throws SQLException
 	 */
-	public String showInventory() throws SQLException {
-		resultSet = fetcher.fetchAllInventory();
-		String result = "";
-		while(resultSet.next()) {			
-			result += resultSet.getString("itemId") + " "
-							+ resultSet.getString("name") + " "
-							+ resultSet.getString("description") + " "
-							+ resultSet.getDouble("price") + " " 
-							+ resultSet.getInt("inStock") + "<br>";
-		}
-		return result;
-	}
+//	public String showInventory() throws SQLException {
+//		resultSet = fetcher.fetchAllInventory();
+//		String result = "";
+//		while(resultSet.next()) {			
+//			result += resultSet.getString("itemId") + " "
+//							+ resultSet.getString("name") + " "
+//							+ resultSet.getString("description") + " "
+//							+ resultSet.getDouble("price") + " " 
+//							+ resultSet.getInt("inStock") + "<br>";
+//		}
+//		return result;
+//	}
 	
 	/**
 	 * 
+	 * This method returns the names of items
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<String> showItemName() throws SQLException {
+		ArrayList<String> itemNameList = new ArrayList<String>();
+		resultSet = fetcher.fetchAllInventory();
+		String itemName = "";
+		while(resultSet.next()) {
+			itemName = resultSet.getString("name");
+			itemNameList.add(itemName);
+		}		
+		return itemNameList;
+	}
+	
+	
+	/**
+	 * This method returns the prices of items
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<Double> showPrice() throws SQLException {
+		ArrayList<Double> priceList = new ArrayList<Double>();
+		resultSet = fetcher.fetchAllInventory();
+		double price = 0.0;
+		while(resultSet.next()) {
+			price = resultSet.getDouble("price");
+			priceList.add(price);
+		}
+		return priceList;
+	}
+	
+	
+	/**
+	 * This method returns the descriptions of items
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<String> showProductDescriptions() throws SQLException {
+		ArrayList<String> descriptionList = new ArrayList<String>();
+		resultSet = fetcher.fetchAllInventory();
+		String itemName = "";
+		while(resultSet.next()) {
+			itemName = resultSet.getString("description");
+			descriptionList.add(itemName);
+		}		
+		return descriptionList;
+	}
+	
+	
+	/**
+	 * This returns all items in cart of a customer.
 	 * @return
 	 * @throws SQLException
 	 */
