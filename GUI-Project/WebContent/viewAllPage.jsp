@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>Nile Shopping Service: All Categories</title>
 <meta name="author" content="Erwin Herrera">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -209,9 +210,12 @@ navigation links stack on top of each other instead of next to each other */
 				Categories <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="#">Electronics</a> <a href="#">Clothing</a> <a href="#">Books</a>
-				<a href="#">Automotive</a> <a href="#">Home</a> <a
-					href="viewAllPage.jsp">View All</a>
+				<a href="electronicsPage.jsp">Electronics</a> 
+				<a href="clothingPage.jsp">Clothing</a> 
+				<a href="booksPage.jsp">Books</a>
+				<a href="automotivePage.jsp">Automotive</a> 
+				<a href="homePage.jsp">Home</a> 
+				<a href="viewAllPage.jsp" class="active">View All</a>
 			</div>
 		</div>
 
@@ -234,49 +238,49 @@ navigation links stack on top of each other instead of next to each other */
 	<div class="row">
 		<div class="column" style="background-color: #aaa;">
 			<h2>Electronics</h2>
-			<a href="#">
+			<a href="electronicsPage.jsp">
 				<center>
 					<img src="./Images/electronics.jpeg" style="width: 70%" alt="">
 				</center>
 			</a>
-			<p>Some text..</p>
+			<p>The latest and greatest in tech for affordable prices!</p>
 		</div>
 		<div class="column" style="background-color: #bbb;">
 			<h2>Clothing</h2>
-			<a href="#">
+			<a href="clothingPage.jsp">
 				<center>
 					<img src="./Images/clothing.jpeg" style="width: 70%" alt="">
 				</center>
 			</a>
-			<p>Some text..</p>
+			<p>Fashion trends that are always in style.</p>
 		</div>
 		<div class="column" style="background-color: #ccc;">
 			<h2>Books</h2>
-			<a href="#">
+			<a href="booksPage.jsp">
 				<center>
 					<img src="./Images/books.jpeg" style="width: 70%" alt="">
 				</center>
 			</a>
-			<p>Some text..</p>
+			<p>Find bestsellers and classics here.</p>
 		</div>
 		<div class="column" style="background-color: #ddd;">
 			<h2>Automotive</h2>
-			<a href="#">
+			<a href="autoPage.jsp">
 				<center>
 					<img src="./Images/automotive.jpeg" style="width: 70%" alt="">
 				</center>
 			</a>
-			<p>Some text..</p>
+			<p>From car parts to accessories here!</p>
 		</div>
 		<div class="column" style="background-color: #eee;">
 			<h2>Home</h2>
-			<a href="#">
+			<a href="homePage.jsp">
 				<center>
 					<img src="./Images/home.jpeg" style="width: 70%" alt=""
 						onclick="Website.html">
 				</center>
 			</a>
-			<p>Some text..</p>
+			<p>New and vibrant finds for any home.</p>
 		</div>
 		<div class="column" align="center" style="background-color: #ggg;">
 			<h2>More Coming Soon!</h2>
@@ -285,5 +289,10 @@ navigation links stack on top of each other instead of next to each other */
 		</div>
 	</div>
 
+	<div class="footer">
+		<h2>
+			<a href="contactUsPage.jsp"><font color="000000">Contact Us</font></a>
+		</h2>
+	</div>
 </body>
 </html>

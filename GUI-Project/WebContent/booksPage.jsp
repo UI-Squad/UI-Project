@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Nile Shopping Service: Inventory</title>
+<title>Nile Shopping Service: Books</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
@@ -273,14 +273,14 @@ navigation links stack on top of each other instead of next to each other */
 			<div class="dropdown-content">
 				<a href="electronicsPage.jsp">Electronics</a> 
 				<a href="clothingPage.jsp">Clothing</a> 
-				<a href="booksPage.jsp">Books</a>
+				<a href="booksPage.jsp" class = "active">Books</a>
 				<a href="autoPage.jsp">Automotive</a> 
 				<a href="homePage.jsp">Home</a> 
 				<a href="viewAllPage.jsp">View All</a>
 			</div>
 		</div>
 
-		<a href="cartPage.jsp">Cart</a> <a href="inventoryPage.jsp" class="active">Inventory</a>
+		<a href="cartPage.jsp">Cart</a> <a href="inventoryPage.jsp">Inventory</a>
 		<a href="sign-in-form.jsp" style="float: right">Sign In</a>
 
 		<!-- Search Bar -->
@@ -300,19 +300,20 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="rightcolumn">
 
 			<%
+				String dept = "books";
 				ItemHandler itemHandler = new ItemHandler();
-				ArrayList<Item> items = itemHandler.getAllItems();
+				ArrayList<Item> items = itemHandler.getItemsByDept(dept);
 				itemHandler.closeConnection();
 
 			%>
 			<div class="card">
 
-				<h2>Inventory</h2>
+				<h2>Books</h2>
 				
 				<!-- JSP Scriplet that generates   -->
 				<%
 				
-				for(int i = 0; i < 10; i++){
+				for(int i = 0; i < 2; i++){
 					out.println("<div class=\"grid-container\"><div class=\"item1\">Item picture</div>");
 					out.println("<div class=\"item2\">");
  					out.println(items.get(i).getItemName());
@@ -346,7 +347,6 @@ navigation links stack on top of each other instead of next to each other */
 			</div>
 		</div>
 	</div>
-	
 	
 		<div class="footer">
 		<h2>
