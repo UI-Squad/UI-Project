@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="tests.DataFetcherTest"%>
+	pageEncoding="UTF-8" import="com.controller.ItemHandler" import="application.model.Item"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -296,14 +296,16 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="rightcolumn">
 
 			<%
-				DataFetcherTest fetchTest = new DataFetcherTest();
+				ItemHandler itemHandler = new ItemHandler();
+				ArrayList<Item> items = itemHandler.getAllItems();
+				itemHandler.closeConnection();
 
-				ArrayList<String> itemNames = new ArrayList<String>();
+				/**ArrayList<String> itemNames = new ArrayList<String>();
 				itemNames = fetchTest.showItemName();
 				ArrayList<Double> priceList = new ArrayList<Double>();
 				priceList = fetchTest.showPrice();
 				ArrayList<String> descriptionList = new ArrayList<String>();
-				descriptionList = fetchTest.showProductDescriptions();
+				descriptionList = fetchTest.showProductDescriptions();*/
 			%>
 			<div class="card">
 
@@ -314,13 +316,13 @@ navigation links stack on top of each other instead of next to each other */
 				for(int i = 0; i < 10; i++){
 					out.println("<div class=\"grid-container\"><div class=\"item1\">Item picture</div>");
 					out.println("<div class=\"item2\">");
- 					out.println(itemNames.get(i));
+ 					out.println(items.get(i).getItemName());
  					out.println("</div><div class=\"item3\"></div>");
 					out.println("<div class=\"item4\">");
- 					out.println(descriptionList.get(i));
+ 					out.println(items.get(i).getDescription());
  					out.println("</div>");
 					out.println("<div class=\"item5\">");
- 					out.println(priceList.get(0));
+ 					out.println(items.get(i).getPrice());
  					out.println("</div><div class=\"item6\"></div>");		
 					out.println("<div class=\"item7\"></div></div><hr>");
 				}

@@ -1,5 +1,10 @@
 package com.controller;
 
+
+/**
+ * @author Shane Bogard
+ */
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,11 +15,23 @@ public class DataFetcher {
 	
 	private static final String USER = "uiuser";
 	private static final String PASS = "uipassword1";
-	protected PreparedStatement preparedStatement = null;
-	protected ResultSet resultSet = null;
-	protected Connection connect = null;
+	private PreparedStatement preparedStatement;
+	private ResultSet resultSet;
+	private Connection connect;
 
+	/**
+	 * Constructs a new DataFetcher object.
+	 */
 	public DataFetcher() {
+		preparedStatement = null;
+		resultSet = null;
+		connect = null;
+	}
+	
+	/**
+	 * Opens connection to mySQL database.
+	 */
+	public void connect() {
 		try {
 			// This will load the MySQL driver, each DBMS has its own driver
 			Class.forName("com.mysql.jdbc.Driver");
@@ -24,7 +41,6 @@ public class DataFetcher {
 					.getConnection("jdbc:mysql://uidbinstance.cut52ysezncx.us-west-2.rds.amazonaws.com/storedb", 
 									USER, PASS);*/
 		} catch (Exception e) {
-			// TODO: Needs to redirect to error page
 			e.printStackTrace();
 		}
 	}
@@ -77,5 +93,32 @@ public class DataFetcher {
 			e.printStackTrace();
 		}
 		return resultSet;
+	}
+	
+	/**
+	 * Returns a boolean value indicating if this Data Fetcher is still
+	 * connected to the database.
+	 * @return Boolean value
+	 * @throws SQLException
+	 */
+	public boolean isConnected() {
+		return (connect != null);
+	}
+	
+	/**
+	 * Closes the preparedStatment, resultSet and connect.
+	 */
+	public void close() {
+		try {
+			if(preparedStatement != null)
+				preparedStatement.close();
+			if(resultSet != null)
+				resultSet.close();
+			if(connect != null)
+				connect.close();
+		}
+		catch (Exception e) {
+			
+		}
 	}
 }
