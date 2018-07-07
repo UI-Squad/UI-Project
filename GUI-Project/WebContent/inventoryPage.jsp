@@ -308,151 +308,24 @@ navigation links stack on top of each other instead of next to each other */
 			<div class="card">
 
 				<h2>Inventory</h2>
-				<div class="grid-container">
-					<div class="item1">Item picture</div>
-					<div class="item2"><%=itemNames.get(0)%></div>
-					<div class="item3"></div>
-					<!--Item name continuted if necessary  -->
-					<div class="item4"><%=descriptionList.get(0)%></div>
-					<div class="item5"><%=priceList.get(0)%></div>
-					<div class="item6"></div>
-					<!-- left intentionally blank for spacing  -->
-					<div class="item7"></div>
-				</div>
-
-				<hr>
-
-				<div class="grid-container">
-					<div class="item1">Item picture</div>
-					<div class="item2"><%=itemNames.get(1)%></div>
-					<div class="item3"></div>
-					<!--Item name continuted if necessary  -->
-					<div class="item4"><%=descriptionList.get(1)%></div>
-					<div class="item5"><%=priceList.get(1)%></div>
-					<div class="item6"></div>
-					<!-- left intentionally blank for spacing  -->
-					<div class="item7"></div>
-				</div>
-
-				<hr>
-
-				<div class="grid-container">
-					<div class="item1">Item picture</div>
-					<div class="item2"><%=itemNames.get(2)%></div>
-					<div class="item3"></div>
-					<!--Item name continuted if necessary  -->
-					<div class="item4"><%=descriptionList.get(2)%></div>
-					<div class="item5"><%=priceList.get(2)%></div>
-					<div class="item6"></div>
-					<!-- left intentionally blank for spacing  -->
-					<div class="item7"></div>
-				</div>
-
-				<hr>
-
-				<div class="grid-container">
-					<div class="item1">Item picture</div>
-					<div class="item2"><%=itemNames.get(3)%></div>
-					<div class="item3"></div>
-					<!--Item name continuted if necessary  -->
-					<div class="item4"><%=descriptionList.get(3)%></div>
-					<div class="item5"><%=priceList.get(3)%></div>
-					<div class="item6"></div>
-					<!-- left intentionally blank for spacing  -->
-					<div class="item7"></div>
-
-				</div>
-
-				<hr>
-
-				<div class="grid-container">
-					<div class="item1">Item picture</div>
-					<div class="item2"><%=itemNames.get(4)%></div>
-					<div class="item3"></div>
-					<!--Item name continuted if necessary  -->
-					<div class="item4"><%=descriptionList.get(4)%></div>
-					<div class="item5"><%=priceList.get(4)%></div>
-					<div class="item6"></div>
-					<!-- left intentionally blank for spacing  -->
-					<div class="item7"></div>
-
-				</div>
-
-
-				<hr>
-
-				<div class="grid-container">
-					<div class="item1">Item picture</div>
-					<div class="item2"><%=itemNames.get(5)%></div>
-					<div class="item3"></div>
-					<!--Item name continuted if necessary  -->
-					<div class="item4"><%=descriptionList.get(5)%></div>
-					<div class="item5"><%=priceList.get(5)%></div>
-					<div class="item6"></div>
-					<!-- left intentionally blank for spacing  -->
-					<div class="item7"></div>
-
-				</div>
-
-				<hr>
-
-				<div class="grid-container">
-					<div class="item1">Item picture</div>
-					<div class="item2"><%=itemNames.get(6)%></div>
-					<div class="item3"></div>
-					<!--Item name continuted if necessary  -->
-					<div class="item4"><%=descriptionList.get(6)%></div>
-					<div class="item5"><%=priceList.get(6)%></div>
-					<div class="item6"></div>
-					<!-- left intentionally blank for spacing  -->
-					<div class="item7"></div>
-
-				</div>
-
-				<hr>
-
-				<div class="grid-container">
-					<div class="item1">Item picture</div>
-					<div class="item2"><%=itemNames.get(7)%></div>
-					<div class="item3"></div>
-					<!--Item name continuted if necessary  -->
-					<div class="item4"><%=descriptionList.get(7)%></div>
-					<div class="item5"><%=priceList.get(7)%></div>
-					<div class="item6"></div>
-					<!-- left intentionally blank for spacing  -->
-					<div class="item7"></div>
-
-				</div>
-
-				<hr>
-
-				<div class="grid-container">
-					<div class="item1">Item picture</div>
-					<div class="item2"><%=itemNames.get(8)%></div>
-					<div class="item3"></div>
-					<!--Item name continuted if necessary  -->
-					<div class="item4"><%=descriptionList.get(8)%></div>
-					<div class="item5"><%=priceList.get(8)%></div>
-					<div class="item6"></div>
-					<!-- left intentionally blank for spacing  -->
-					<div class="item7"></div>
-
-				</div>
-
-				<hr>
-
-				<div class="grid-container">
-					<div class="item1">Item picture</div>
-					<div class="item2"><%=itemNames.get(9)%></div>
-					<div class="item3"></div>
-					<!--Item name continuted if necessary  -->
-					<div class="item4"><%=descriptionList.get(9)%></div>
-					<div class="item5"><%=priceList.get(9)%></div>
-					<div class="item6"></div>
-					<!-- left intentionally blank for spacing  -->
-					<div class="item7"></div>
-
-				</div>
+				
+				<!-- JSP Scriplet that generates   -->
+				<%
+				for(int i = 0; i < 10; i++){
+					out.println("<div class=\"grid-container\"><div class=\"item1\">Item picture</div>");
+					out.println("<div class=\"item2\">");
+ 					out.println(itemNames.get(i));
+ 					out.println("</div><div class=\"item3\"></div>");
+					out.println("<div class=\"item4\">");
+ 					out.println(descriptionList.get(i));
+ 					out.println("</div>");
+					out.println("<div class=\"item5\">");
+ 					out.println(priceList.get(0));
+ 					out.println("</div><div class=\"item6\"></div>");		
+					out.println("<div class=\"item7\"></div></div><hr>");
+				}
+				
+				%>
 
 			</div>
 			<!-- end divider for card  -->

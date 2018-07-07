@@ -85,13 +85,13 @@ span.psw {
         
     <button type="submit">Login</button>
     <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+     <a>Forgot</a> <a href="#">password?</a>
+     </label>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-    <a class="cancelbtn" href="Website.html">Cancel</a>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+    <a href="Website.html"><button type="button" class="cancelbtn">Cancel</button></a>
+    <span class="psw"><a href="registerPage.jsp">Sign Up</a></span>
   </div>
 </form>
 

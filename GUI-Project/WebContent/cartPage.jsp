@@ -264,8 +264,7 @@ navigation links stack on top of each other instead of next to each other */
 						</table>
 					</div>
 				</div>
-				<a href="Website.html">Return to homepage.</a>
-				<!-- Return link to updated homepage  -->
+
 			</center>
 		</div>
 	</div>
