@@ -200,6 +200,17 @@ public class Item {
 	}
 	
 	/**
+	 * Compares this item with another object for equivalence.
+	 * @param obj Object
+	 * @return boolean value representing if this item is equal to another item
+	 */
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Item)) return false;
+		Item other = (Item) obj;
+		return this.itemId.equalsIgnoreCase(other.itemId);
+	}
+	
+	/**
 	 * Returns a string literal representation of this item object
 	 * containing each attribute separated by colons.
 	 */

@@ -96,6 +96,26 @@ public class DataFetcher {
 	}
 	
 	/**
+	 * Returns a ResultSet of items from the Inventory table and their matching quantities 
+	 * in the Carts table by a specified cartId and joining the tables by itemId.
+	 * @param cartId String literal specifying the cart Id
+	 * @return ResultSet resulting SQL query
+	 */
+	public ResultSet fetchCartItems(String cartId) {
+		try {
+			preparedStatement = connect.prepareStatement("select i.itemId, i.name, i.description"
+									+ ", i.dept, i.price, c.quantity from Inventory i, Carts c"
+									+ " where c.cartId = ? and i.itemId = c.itemId");
+			preparedStatement.setString(1, cartId);
+			resultSet = preparedStatement.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultSet;
+	}
+	
+	/**
 	 * Returns a boolean value indicating if this Data Fetcher is still
 	 * connected to the database.
 	 * @return Boolean value

@@ -7,7 +7,6 @@ package tests;
 
 import com.controller.ItemHandler;
 import application.model.Item;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 

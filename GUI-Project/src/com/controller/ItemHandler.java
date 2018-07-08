@@ -1,23 +1,15 @@
 package com.controller;
 
 /**
- * 
  * @author Shane Bogard
  *
  */
 
 import java.util.ArrayList;
 import application.model.Item;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ItemHandler {
-	/** Retrieves data from server **/
-	private DataFetcher fetcher;
-	
-	/** Results of mySQL queries **/
-	private ResultSet results;
-	
+public class ItemHandler extends DataHandler {	
 	/** An ArrayList of items */
 	private ArrayList<Item> itemList;
 	
@@ -25,10 +17,8 @@ public class ItemHandler {
 	 * Constructs a new ItemHandler object.
 	 */
 	public ItemHandler() {
-		fetcher = new DataFetcher();
-		results = null;
+		super();
 		itemList = new ArrayList<Item>();
-		fetcher.connect();
 	}
 	
 	/**
@@ -38,8 +28,7 @@ public class ItemHandler {
 	 * @throws SQLException
 	 */
 	public ArrayList<Item> getAllItems() throws SQLException{
-		if(!fetcher.isConnected())
-			fetcher.connect();
+		connect();
 		results = fetcher.fetchAllInventory();
 		parseResults();
 		return itemList;
@@ -52,8 +41,7 @@ public class ItemHandler {
 	 * @throws SQLException 
 	 */
 	public ArrayList<Item> getItemsByDept(String dept) throws SQLException{
-		if(!fetcher.isConnected())
-			fetcher.connect();
+		connect();
 		results = fetcher.fetchInventoryByDept(dept);
 		parseResults();
 		return itemList;
@@ -63,7 +51,7 @@ public class ItemHandler {
 	 * Parses the current resultSet into an ArrayList of item objects
 	 * @throws SQLException
 	 */
-	private void parseResults() throws SQLException {
+	protected void parseResults() throws SQLException {
 		itemList.clear();
 		while(results.next()) {
 			itemList.add(new Item(results.getString("itemId"), results.getString("name"), 
@@ -71,12 +59,4 @@ public class ItemHandler {
 						results.getInt("inStock")));
 		}
 	}
-
-	/**
-	 * Closes all the ItemHandler's connections to the database.
-	 */
-	public void closeConnection() {
-		fetcher.close();
-	}
-	
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="tests.DataFetcherTest"%>
+	pageEncoding="UTF-8" import="com.controller.CartHandler" import="application.model.Cart"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -249,12 +249,30 @@ navigation links stack on top of each other instead of next to each other */
 							</thead>
 							<tbody>
 								<%
-									DataFetcherTest fetchTest = new DataFetcherTest();
-									String result = fetchTest.showCart("car001");
+									CartHandler cartHandler = new CartHandler();
+									Cart cart = cartHandler.getCart("car001");
+									//DataFetcherTest fetchTest = new DataFetcherTest();
+									//String result = fetchTest.showCart("car001");
 								%>
 
 								<tr>
-									<td><%=result%></td>
+									<td>
+									<%
+										for(int i = 0; i < cart.getSize(); i++){
+										out.println("<div class=\"grid-container\"><div class=\"item1\">Item picture</div>");
+										out.println("<div class=\"item2\">");
+ 										out.println(cart.getCartItems().get(i).getItemName());
+ 										out.println("</div><div class=\"item3\"></div>");
+										out.println("<div class=\"item4\">");
+ 										out.println(cart.getCartItems().get(i).getDescription());
+ 										out.println("</div>");
+										out.println("<div class=\"item5\">");
+ 										out.println(cart.getCartItems().get(i).getPrice());
+ 										out.println("</div><div class=\"item6\"></div>");		
+										out.println("<div class=\"item7\"></div></div><hr>");
+										}
+									%>
+									</td>
 								</tr>
 
 								<%

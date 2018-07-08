@@ -4,40 +4,99 @@ import java.util.ArrayList;
 /**
  * @author Jerome Daly
  * @author Erwin Herrera
+ * @author Shane Bogard
  *
  * This java file will contain information pertaining
  * to the shopping cart of the customer.
  */
 public class Cart{
 
-  //create an ArrayList for the cart
-	private ArrayList<Item> cartArray = new ArrayList<Item>();
+	/** An ArrayList of item objects */
+	private ArrayList<Item> cart;
+	
 	private double cartTotal = 0;
+	
+	/** 
+	 * Constructs a new cart object consisting of a specified
+	 * ArrayList of item objects.	 
+	 * @param cart ArrayList of item objects
+	 */
+	public Cart(ArrayList<Item> cart) {
+		this.cart = cart;
+	}
+	
+	/**
+	 * Constructs an empty Cart Object (no items in the cart).
+	 */
+	public Cart() {
+		this(new ArrayList<Item>());
+	}
+		
+	/**
+	 * Changes the items in this cart. 
+	 * @param cart ArrayList of items
+	 */
+	public void setCartItems(ArrayList<Item> cart) {
+		this.cart = cart;
+	}
+	
+	/**
+	 * Returns a copy of the items contained in this cart. 
+	 * @return ArrayList of item objects
+	 */
+	public ArrayList<Item> getCartItems(){
+		return new ArrayList<Item>(cart);
+	}
+	
+	/**
+	 * Adds an item to this cart.
+	 * @param item An item object to add to this cart
+	 */
+	public void addToCart(Item item){
+		this.cart.add(item);
+	}
 
-  //add an item to the cart array
-  public void addToCart(Item item){
-    this.cartArray.add(item);
-  }
-
-	//clear the shopping cart
+	/**
+	 * removes all items from the shopping cart
+	 */
 	public void clearCart(){
-		this.cartArray.clear();
+		this.cart.clear();
 	}
 
-	//remove a specific item from the cart
+	/**
+	 * Removes an item from the cart.
+	 * @param item A specified item object to be removed from the cart
+	 */
 	public void removeItem(Item item){
-		this.cartArray.remove(item);
+		this.cart.remove(item);
 	}
 
-	//return the size of the cartArray
+	/**
+	 * Returns the size of this cart.
+	 * @return Double value representing the size of this cart
+	 */
 	public double getSize(){
-		return cartArray.size();
+		return cart.size();
+	}
+	
+	/**
+	 * Returns the total value of a specified item in the Cart.
+	 * @param item Item object
+	 * @return double value representing the total item value
+	 */
+	public double getItemTotal(Item item) {
+		double itemTotal = 0;
+		itemTotal = cart.get(cart.indexOf(item)).getPrice() * 
+					cart.get(cart.indexOf(item)).getQuantity();
+		return itemTotal;
 	}
 
-	//add the total of all the items values based on their quantity
+	/**
+	 * Adds the total of the items prices based on their quantity.
+	 */
 	public void setCartTotal(){
 		double total = 0;
-		for(Item item : cartArray){
+		for(Item item : cart){
 			total += (item.getPrice() * item.getQuantity());
 		}
 		this.cartTotal = total;
@@ -48,5 +107,15 @@ public class Cart{
 	public double getCartTotal(){
 		setCartTotal();
 		return cartTotal;
+	}
+	
+	/**
+	 * Returns a String literal representation of this cart object.
+	 */
+	public String toString() {
+		String result = "";
+		for(Item item : cart)
+			result += item.toString() + "\n";
+		return result;
 	}
 }
