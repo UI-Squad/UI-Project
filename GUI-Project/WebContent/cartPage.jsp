@@ -258,6 +258,7 @@ navigation links stack on top of each other instead of next to each other */
 								<tr>
 									<td>
 									<%
+
 										for(int i = 0; i < cart.getSize(); i++){
 										out.println("<div class=\"grid-container\"><div class=\"item1\">Item picture</div>");
 										out.println("<div class=\"item2\">");
@@ -267,9 +268,12 @@ navigation links stack on top of each other instead of next to each other */
  										out.println(cart.getCartItems().get(i).getDescription());
  										out.println("</div>");
 										out.println("<div class=\"item5\">");
- 										out.println(cart.getCartItems().get(i).getPrice());
- 										out.println("</div><div class=\"item6\"></div>");		
-										out.println("<div class=\"item7\"></div></div><hr>");
+ 										out.println(cart.getCartItems().get(i).getQuantity());
+ 										out.println("</div>");
+										out.println("<div class=\"item6\">");
+ 										out.println(cart.getItemTotal(cart.getCartItems().get(i)));
+ 										out.println("</div><div class=\"item7\"></div>");		
+										out.println("<div class=\"item8\"></div></div><hr>");
 										}
 									%>
 									</td>
