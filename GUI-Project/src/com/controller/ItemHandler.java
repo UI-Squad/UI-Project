@@ -21,6 +21,13 @@ public class ItemHandler extends DataHandler {
 		itemList = new ArrayList<Item>();
 	}
 	
+	public Item getItem(String itemId) throws SQLException{
+		connect();
+		results = fetcher.fetchItem(itemId);
+		parseResults();
+		return itemList.get(0);
+	}
+	
 	/**
 	 * Returns all of the items contained in the Nile database
 	 * in the form of an ArrayList of item objects.

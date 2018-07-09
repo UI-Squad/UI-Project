@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import application.model.Item;
+
 public class DataFetcher {
 	
 	private static final String USER = "uiuser";
@@ -43,6 +45,23 @@ public class DataFetcher {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Returns a row from the Inventory table specified by itemId.
+	 * @param itemId String literal specifying the itemId
+	 * @return ResultSet results of the SQL query
+	 */
+	public ResultSet fetchItem(String itemId) {
+		try {
+			preparedStatement = connect.prepareStatement("select i.* from Inventory i"
+								+ " where i.itemId = ?");
+			preparedStatement.setString(1, itemId);
+			resultSet = preparedStatement.executeQuery();
+		} catch (SQLException e) {
+			
+		}
+		return resultSet;
 	}
 		
 	/**

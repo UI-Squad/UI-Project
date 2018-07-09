@@ -44,6 +44,12 @@ public class ItemHandlerTest {
 		System.out.println("+++HOME+++");
 		items = itemHandler.getItemsByDept("home");
 		printItemList(items);
+		System.out.println("+++GET aut001+++");
+		Item item = itemHandler.getItem("aut001");
+		System.out.println(item.toString());
+		System.out.println("+++GET bk001+++");
+		item = itemHandler.getItem("bk001");
+		System.out.println(item.toString());
 		
 		itemHandler.closeConnection();
 	}
