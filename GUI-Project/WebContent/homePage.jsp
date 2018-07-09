@@ -313,7 +313,7 @@ navigation links stack on top of each other instead of next to each other */
 				<!-- JSP Scriplet that generates   -->
 				<%
 				
-				for(int i = 0; i < 2; i++){
+				for(int i = 0; i < items.size(); i++){
 					out.println("<div class=\"grid-container\"><div class=\"item1\">Item picture</div>");
 					out.println("<div class=\"item2\">");
  					out.println(items.get(i).getItemName());
