@@ -172,7 +172,7 @@ public class DataFetcher {
 		String myHash = hashPassword(password); // Hash password
 		
 		try {
-			preparedStatement = connect.prepareStatement("SELECT * FROM Customers WHERE Email = ? and Password = ?) ");
+			preparedStatement = connect.prepareStatement("SELECT * FROM Customers WHERE Email = ? and Password = ?");
 			preparedStatement.setString(1, email);
 			preparedStatement.setString(2, myHash);
 			resultSet = preparedStatement.executeQuery();
