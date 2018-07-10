@@ -1,8 +1,12 @@
 package com.controller;
 
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * @author Shane Bogard
+ * @author Manuel Ben Bravo
  */
 
 import java.sql.Connection;
@@ -10,6 +14,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.xml.bind.DatatypeConverter;
 
 import application.model.Item;
 
@@ -160,4 +166,58 @@ public class DataFetcher {
 			
 		}
 	}
+	
+	public ResultSet fetchCustomer(String email, String password) {
+		
+		String myHash = hashPassword(password); // Hash password
+		
+		try {
+			preparedStatement = connect.prepareStatement("SELECT * FROM Customers WHERE Email = ? and Password = ?) ");
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, myHash);
+			resultSet = preparedStatement.executeQuery();
+				
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultSet;
+	}
+	
+	
+	public ResultSet addCustomer(String Email, String Password) {
+		String myHash = hashPassword(Password); // Hash Password
+		
+		try {
+			preparedStatement = connect.prepareStatement("INSERT INTO 'Customers' (Email, Password) VALUES (?, ?)");
+			preparedStatement.setString(1, Email);
+			preparedStatement.setString(2, myHash);
+			resultSet = preparedStatement.executeQuery();
+				
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultSet;
+		
+	}
+	/**
+	 * Hash Password Method 
+	 * @param password
+	 * @return String for Password
+	 */
+	
+	public String hashPassword(String password) {
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+	    md.update(password.getBytes());
+	    byte[] digest = md.digest();
+	    String myHash = DatatypeConverter.printHexBinary(digest).toLowerCase();	
+	    return myHash;
+	}
+	
 }

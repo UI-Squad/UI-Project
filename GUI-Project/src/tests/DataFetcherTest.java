@@ -107,5 +107,24 @@ public class DataFetcherTest {
 							+ resultSet.getDouble("price") + "<br>"; 
 		}
 		return result;
+	
 	}
+/*	
+ * 
+ * 
+ * public void fetchCustomer() {
+		String email = "johnSmith@gmail.com";
+		String password = "P@ssw0rd";
+		
+		resultSet = fetcher.fetchCustomer(email, password);
+		while(resultSet.next()) {
+			
+		}
+	
+	}
+	*/
+	
+	
 }
+
+	
