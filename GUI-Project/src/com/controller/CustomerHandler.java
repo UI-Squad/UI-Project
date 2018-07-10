@@ -33,11 +33,11 @@ public class CustomerHandler extends DataHandler {
 	@Override
 	protected void parseResults() throws SQLException {
 		// TODO Auto-generated method stub
-		
+		while(results.next()) {
 			cust.setEmail(results.getString("email"));
 			cust.setName(results.getString("FirstName"), results.getString("LastName"));
 			cust.setCusID(results.getString("CustomerID"));
-		
+		}
 	}
 	
 	
