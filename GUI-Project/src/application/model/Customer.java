@@ -3,31 +3,23 @@ package application.model;
 /**
  * @author Erwin Herrera
  * @author Jerome Daly
- * @author Manuel Ben Bravo 
+ * @author Manuel Ben Bravo
  *
  * This class will be responsible for
  * keeping the information of the customer.
  *
  */
 public class Customer {
-<<<<<<< HEAD
-
-  private String cusName, cusAddress;
-  private int cusPhoneNum;
-
-  private Cart cart = new Cart();
-=======
 	
   private String Fname, Lname;
   private String Email;
   private String CusID;
->>>>>>> d170fcd02e52cc73461cdce3e70764b4da7a1096
 
   /**
    * Constructor
    * @param Fname, Lname 	Customer name
-   * @param Email			Customer email address 
-   * 
+   * @param Email			Customer email address
+   *
    */
   public void customer(String Firstname, String Lastname, String Email){
     this.Fname = Firstname ;
@@ -78,17 +70,8 @@ public class Customer {
 	  return this.CusID;
   }
 
-<<<<<<< HEAD
-  /**
-   * Getter for customer phone number
-   * @return Returns the customer phone number
-   */
-  public int getPhoneNum(){
-    return cusPhoneNum;
-=======
   public void setCusID(String cusID) {
 	  this.CusID = cusID;
->>>>>>> d170fcd02e52cc73461cdce3e70764b4da7a1096
   }
-  
+
 }
