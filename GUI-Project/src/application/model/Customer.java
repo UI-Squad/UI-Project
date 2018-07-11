@@ -3,31 +3,13 @@ package application.model;
 /**
  * @author Erwin Herrera
  * @author Jerome Daly
- * @author Manuel Ben Bravo
+ * @author Manuel Ben Bravo 
  *
  * This class will be responsible for
  * keeping the information of the customer.
  *
  */
 public class Customer {
-<<<<<<< HEAD
-	
-  private String Fname, Lname;
-  private String Email;
-  private String CusID;
-
-  /**
-   * Constructor
-   * @param Fname, Lname 	Customer name
-   * @param Email			Customer email address
-   *
-   */
-  public void customer(String Firstname, String Lastname, String Email){
-    this.Fname = Firstname ;
-    this.Lname = Lastname;
-    this.Email = Email;
-  }
-=======
 
 	private String cusName, cusAddress;
 	private int cusPhoneNum;
@@ -37,7 +19,6 @@ public class Customer {
 	private String Fname, Lname;
 	private String Email;
 	private String CusID;
->>>>>>> a17bb01bdecb589a9093b142a3232f17a2324682
 
 	/**
 	 * Constructor
@@ -107,11 +88,4 @@ public class Customer {
 
 	}
 
-<<<<<<< HEAD
-  public void setCusID(String cusID) {
-	  this.CusID = cusID;
-  }
-
-=======
->>>>>>> a17bb01bdecb589a9093b142a3232f17a2324682
 }
