@@ -10,85 +10,82 @@ package application.model;
  *
  */
 public class Customer {
-<<<<<<< HEAD
 
-  private String cusName, cusAddress;
-  private int cusPhoneNum;
+	private String cusName, cusAddress;
+	private int cusPhoneNum;
 
-  private Cart cart = new Cart();
-=======
-	
-  private String Fname, Lname;
-  private String Email;
-  private String CusID;
->>>>>>> d170fcd02e52cc73461cdce3e70764b4da7a1096
+	private Cart cart = new Cart();
 
-  /**
-   * Constructor
-   * @param Fname, Lname 	Customer name
-   * @param Email			Customer email address 
-   * 
-   */
-  public void customer(String Firstname, String Lastname, String Email){
-    this.Fname = Firstname ;
-    this.Lname = Lastname;
-    this.Email = Email;
-  }
+	private String Fname, Lname;
+	private String Email;
+	private String CusID;
 
-  //Getters and setters for customer information
+	/**
+	 * Constructor
+	 * @param Fname, Lname 	Customer name
+	 * @param Email			Customer email address 
+	 * 
+	 */
+	public void customer(String Firstname, String Lastname, String Email){
+		this.Fname = Firstname ;
+		this.Lname = Lastname;
+		this.Email = Email;
+	}
 
-  /**
-   * Setter for customer name
-   * @param name
-   */
-  public void setName(String FirstName, String LastName){
-    this.Fname = FirstName;
-    this.Lname = LastName;
-  }
+	//Getters and setters for customer information
 
-  /**
-   * Getter for customer name
-   * @return Returns customer name
-   */
-  public String getName(){
-    return this.Fname + " " + this.Lname;
-  }
+	/**
+	 * Setter for customer name
+	 * @param name
+	 */
+	public void setName(String FirstName, String LastName){
+		this.Fname = FirstName;
+		this.Lname = LastName;
+	}
 
-  /**
-   * Setter for customer Email
-   * @param Email
-   */
-  public void setEmail(String email){
-    this.Email =email;
-  }
+	/**
+	 * Getter for customer name
+	 * @return Returns customer name
+	 */
+	public String getName(){
+		return this.Fname + " " + this.Lname;
+	}
 
-  /**
-   * Getter for customer email
-   * @return Returns the email of the customer
-   */
-  public String getEmail(){
-    return this.Email;
-  }
+	/**
+	 * Setter for customer Email
+	 * @param Email
+	 */
+	public void setEmail(String email){
+		this.Email =email;
+	}
 
-  /**
-   * Getter for Customer ID, Same as cart ID!
-   * @return cusID
-   */
-  public String getCusID() {
-	  return this.CusID;
-  }
+	/**
+	 * Getter for customer email
+	 * @return Returns the email of the customer
+	 */
+	public String getEmail(){
+		return this.Email;
+	}
 
-<<<<<<< HEAD
-  /**
-   * Getter for customer phone number
-   * @return Returns the customer phone number
-   */
-  public int getPhoneNum(){
-    return cusPhoneNum;
-=======
-  public void setCusID(String cusID) {
-	  this.CusID = cusID;
->>>>>>> d170fcd02e52cc73461cdce3e70764b4da7a1096
-  }
-  
+	/**
+	 * Getter for Customer ID, Same as cart ID!
+	 * @return cusID
+	 */
+	public String getCusID() {
+		return this.CusID;
+	}
+
+	/**
+	 * Getter for customer phone number
+	 * @return Returns the customer phone number
+	 */
+	public int getPhoneNum(){
+		return cusPhoneNum;
+		
+	}
+	public void setCusID(String cusID) {
+		this.CusID = cusID;
+
+	}
+
 }
