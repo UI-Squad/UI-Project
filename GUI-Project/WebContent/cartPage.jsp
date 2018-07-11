@@ -255,14 +255,18 @@ navigation links stack on top of each other instead of next to each other */
 		<a href="Website.html">Home</a>
 
 		<!-- Drop down sub menu for categories in navigation bar  -->
+		<!-- Drop down sub menu for categories in navigation bar  -->
 		<div class="dropdown">
 			<button class="dropbtn">
 				Categories <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="#">Electronics</a> <a href="#">Clothing</a> <a href="#">Books</a>
-				<a href="#">Automotive</a> <a href="#">Home</a> <a
-					href="viewAllPage.jsp">View All</a>
+				<a href="electronicsPage.jsp">Electronics</a> 
+				<a href="clothingPage.jsp">Clothing</a> 
+				<a href="booksPage.jsp">Books</a>
+				<a href="autoPage.jsp">Automotive</a> 
+				<a href="homePage.jsp">Home</a> 
+				<a href="viewAllPage.jsp">View All</a>
 			</div>
 		</div>
 
