@@ -9,7 +9,7 @@ package application.model;
  *
  */
 public class Customer {
-	
+
   private String cusName, cusAddress;
   private int cusPhoneNum;
 
@@ -28,7 +28,7 @@ public class Customer {
   }
 
   //Getters and setters for customer information
-  
+
   /**
    * Setter for customer name
    * @param name
@@ -36,7 +36,7 @@ public class Customer {
   public void setName(String name){
     this.cusName = name;
   }
-  
+
   /**
    * Getter for customer name
    * @return Returns customer name
@@ -52,7 +52,7 @@ public class Customer {
   public void setAddress(String addr){
     this.cusAddress = addr;
   }
-  
+
   /**
    * Getter for customer address
    * @return Returns the address of the customer
@@ -68,7 +68,7 @@ public class Customer {
   public void setPhone(int phone){
     this.cusPhoneNum = phone;
   }
-  
+
   /**
    * Getter for customer phone number
    * @return Returns the customer phone number
