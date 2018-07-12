@@ -30,12 +30,12 @@ public class CustomerHandler extends DataHandler {
 	public Customer addCust(String FirstName, String LastName, String Email, String Password) throws SQLException{
 		connect();
 		results = fetcher.addCustomer(FirstName, LastName, Email,Password);
-		parseResults();
+		//parseResults();
 		return cust;
 		
 	}
 	/**
-	 * Parse results from DataFetcher for GetCust
+	 * Parse results from DataFetcher for getCust
 	 */
 	@Override
 	protected void parseResults() throws SQLException {
@@ -48,15 +48,15 @@ public class CustomerHandler extends DataHandler {
 	}
 	
 
-	 /* 
-	 * protected void parseResultsAdd() throws SQLException{
-	 * 
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 */
+ /* 
+ * protected void parseResultsAdd() throws SQLException{
+ * 
+ * 
+ * }
+ * 
+ * 
+ * 
+ */
 		
 	
 }

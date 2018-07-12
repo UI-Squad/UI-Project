@@ -33,7 +33,20 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//doPost(request, response);
+	
+	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//doGet(request, response);
+		String password1 = request.getParameter("psw");
+		String repassword = request.getParameter("psw-repeat");
+		if(!password1.equals(repassword)) {//passwords do not match 
+			//return to registerpage.jsp 
+		}
 		// Step 1: set content type
 		response.setContentType("text/html");
 		
@@ -66,14 +79,6 @@ public class RegisterServlet extends HttpServlet {
 		out.println("</br></br>");
 		out.println("<a href=\"Website.html\">Return to homepage.</a>");
 		out.println("</body></html>");
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
