@@ -2,6 +2,7 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import application.model.Customer;
+
 /**
  * @author Erwin Herrera
+ * @author Manuel Ben Bravo
  * Servlet implementation class RegisterServlet
  */
 @WebServlet("/RegisterServlet")
@@ -39,8 +43,26 @@ public class RegisterServlet extends HttpServlet {
 		// Step 3: generate the HTML content
 		out.println("<html><body>");
 		
-		out.println("The customer is confirmed: "
-					+ request.getParameter("email"));		
+		
+		
+		CustomerHandler Cushandle = new CustomerHandler();
+		Customer Cust = null;
+		
+		try {
+			Cust = Cushandle.addCust(request.getParameter("FirstName"), request.getParameter("LastName"),request.getParameter("email"),request.getParameter("psw"));
+			out.println("</br></br>");
+			
+			//sign in user to browser, Create cookiee? Return to jsp file or create cookie here
+			
+
+		} catch (SQLException e) {
+			out.println("The customer could not be created");
+			e.printStackTrace();
+		}
+		
+				
+		//out.println("The customer is confirmed: "
+			//		+ request.getParameter("email"));		
 		out.println("</br></br>");
 		out.println("<a href=\"Website.html\">Return to homepage.</a>");
 		out.println("</body></html>");

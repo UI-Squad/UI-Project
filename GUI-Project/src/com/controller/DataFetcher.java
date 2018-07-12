@@ -185,13 +185,15 @@ public class DataFetcher {
 	}
 	
 	
-	public ResultSet addCustomer(String Email, String Password) {
+	public ResultSet addCustomer(String FirstName, String LastName, String Email, String Password) {
 		String myHash = hashPassword(Password); // Hash Password
 		
 		try {
-			preparedStatement = connect.prepareStatement("INSERT INTO 'Customers' (Email, Password) VALUES (?, ?)");
+			preparedStatement = connect.prepareStatement("INSERT INTO 'Customers' (Email, Password, FirstName, LastName) VALUES (?, ?, ?, ?)");
 			preparedStatement.setString(1, Email);
 			preparedStatement.setString(2, myHash);
+			preparedStatement.setString(3, FirstName);
+			preparedStatement.setString(4, LastName);
 			resultSet = preparedStatement.executeQuery();
 				
 			
