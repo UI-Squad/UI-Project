@@ -74,7 +74,7 @@ span.psw {
 
 <h2>Login Form</h2>
 
-<form action="SignInServlet" method="GET">
+<form action="SignInServlet" method="POST">
 
   <div class="container">
     <label for="uname"><b>Email</b></label>
