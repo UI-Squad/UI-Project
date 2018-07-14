@@ -281,7 +281,7 @@ navigation links stack on top of each other instead of next to each other */
 		</div>
 
 		<a href="cartPage.jsp">Cart</a> <a href="inventoryPage.jsp">Inventory</a>
-		<a href="sign-in-form.jsp" style="float: right">Sign In</a>
+		<a href="loginPage.jsp" style="float: right">Sign In</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">

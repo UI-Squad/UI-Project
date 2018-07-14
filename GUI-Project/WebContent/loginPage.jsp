@@ -72,7 +72,7 @@ span.psw {
 </head>
 <body>
 
-<h2>Login Form</h2>
+<h2>Sign In</h2>
 
 <form action="SignInServlet" method="POST">
 
