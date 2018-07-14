@@ -13,13 +13,21 @@ public abstract class DataHandler {
 	/** Results of mySQL queries **/
 	protected ResultSet results;
 	
+	public DataHandler(DataFetcher fetcher) {
+		this.fetcher = fetcher;
+		results = null;
+		connect();
+	}
+	
 	/**
 	 * Constructs a new DataHandler superclass.
 	 */
 	public DataHandler() {
-		fetcher = new DataFetcher();
-		results = null;
-		fetcher.connect();
+		this(new DataFetcher());
+	}
+	
+	protected DataFetcher getFetcher() {
+		return fetcher;
 	}
 	
 	/** Parses the results of the database query into model logic */
@@ -33,6 +41,7 @@ public abstract class DataHandler {
 	
 	/** Closes all DataFetcher connections to the database */
 	public void closeConnection() {
-		fetcher.close();
+		if(fetcher.isConnected())
+			fetcher.close();
 	}
 }

@@ -3,6 +3,7 @@ package com.controller;
  * @author Shane Bogard
  */
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import application.model.Cart;
@@ -16,12 +17,17 @@ public class CartHandler extends DataHandler {
 	/** An ArrayList of items */
 	private ArrayList<Item> itemList;
 	
+	public CartHandler(DataFetcher fetcher) {
+		super(fetcher);
+		cart = new Cart();
+		itemList = new ArrayList<Item>();
+	}
+	
 	/**
 	 * Constructs a new CartHandler object.
 	 */
 	public CartHandler() {
-		cart = new Cart();
-		itemList = new ArrayList<Item>();
+		this(new DataFetcher());
 	}
 	
 	/**
@@ -43,6 +49,7 @@ public class CartHandler extends DataHandler {
 	 */
 	protected void parseResults() throws SQLException {
 		itemList.clear();
+		cart = new Cart();
 		while(results.next()) {
 			itemList.add(new Item(results.getString("itemId"), results.getString("name"), 
 						results.getString("description"), results.getString("dept"), results.getDouble("price"),

@@ -1,23 +1,17 @@
 package com.controller;
-
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 /**
  * @author Shane Bogard
  * @author Manuel Ben Bravo
  */
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.xml.bind.DatatypeConverter;
-
-import application.model.Item;
 
 public class DataFetcher {
 	
@@ -27,13 +21,17 @@ public class DataFetcher {
 	private ResultSet resultSet;
 	private Connection connect;
 
+	public DataFetcher(PreparedStatement preparedStatement, ResultSet resultSet, Connection connect) {
+		this.preparedStatement = preparedStatement;
+		this.resultSet = resultSet;
+		this.connect = connect;
+	}
+	
 	/**
 	 * Constructs a new DataFetcher object.
 	 */
 	public DataFetcher() {
-		preparedStatement = null;
-		resultSet = null;
-		connect = null;
+		this(null, null, null);
 	}
 	
 	/**
@@ -139,34 +137,7 @@ public class DataFetcher {
 		
 		return resultSet;
 	}
-	
-	/**
-	 * Returns a boolean value indicating if this Data Fetcher is still
-	 * connected to the database.
-	 * @return Boolean value
-	 * @throws SQLException
-	 */
-	public boolean isConnected() {
-		return (connect != null);
-	}
-	
-	/**
-	 * Closes the preparedStatment, resultSet and connect.
-	 */
-	public void close() {
-		try {
-			if(preparedStatement != null)
-				preparedStatement.close();
-			if(resultSet != null)
-				resultSet.close();
-			if(connect != null)
-				connect.close();
-		}
-		catch (Exception e) {
-			
-		}
-	}
-	
+		
 	public ResultSet fetchCustomer(String email, String password) {
 		
 		String myHash = hashPassword(password); // Hash password
@@ -203,12 +174,29 @@ public class DataFetcher {
 		return resultSet;
 		
 	}
+	
+	/**
+	 * Returns the results of performing a mySQL query on the order table by a specified orderId.
+	 * @param orderId String literal specifying the order id
+	 * @return ResultSet results of a mySQL query
+	 */
+	public ResultSet fetchOrder(String orderId){
+		try {
+			preparedStatement = connect.prepareStatement("select o.* from Orders o where o.orderId = ?");
+			preparedStatement.setString(1, orderId);
+			resultSet = preparedStatement.executeQuery();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return resultSet;
+	}
+	
+	
 	/**
 	 * Hash Password Method 
 	 * @param password
 	 * @return String for Password
 	 */
-	
 	public String hashPassword(String password) {
 		MessageDigest md = null;
 		try {
@@ -220,6 +208,33 @@ public class DataFetcher {
 	    byte[] digest = md.digest();
 	    String myHash = DatatypeConverter.printHexBinary(digest).toLowerCase();	
 	    return myHash;
+	}
+	
+	/**
+	 * Returns a boolean value indicating if this Data Fetcher is still
+	 * connected to the database.
+	 * @return Boolean value
+	 * @throws SQLException
+	 */
+	public boolean isConnected() {
+		return (connect != null);
+	}
+	
+	/**
+	 * Closes the preparedStatment, resultSet and connect.
+	 */
+	public void close() {
+		try {
+			if(preparedStatement != null)
+				preparedStatement.close();
+			if(resultSet != null)
+				resultSet.close();
+			if(connect != null)
+				connect.close();
+		}
+		catch (Exception e) {
+			
+		}
 	}
 	
 }

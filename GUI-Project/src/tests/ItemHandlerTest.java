@@ -50,7 +50,6 @@ public class ItemHandlerTest {
 		System.out.println("+++GET bk001+++");
 		item = itemHandler.getItem("bk001");
 		System.out.println(item.toString());
-		
 		itemHandler.closeConnection();
 	}
 
