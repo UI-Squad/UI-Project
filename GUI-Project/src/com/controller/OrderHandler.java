@@ -50,9 +50,7 @@ public class OrderHandler extends DataHandler{
 		cart = new Cart();
 		while(results.next()) {
 			String orderId = results.getString("orderId");
-			//CartHandler ch = new CartHandler(getFetcher());
 			cart = new CartHandler(getFetcher()).getCart(results.getString("cartId"));
-			//System.out.println(cart.toString());
 			Calendar orderDt = Calendar.getInstance();
 			orderDt.setTime(results.getDate("orderDt"));
 			Calendar shipDt = Calendar.getInstance();

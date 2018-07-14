@@ -63,11 +63,53 @@ public class DataFetcher {
 			preparedStatement.setString(1, itemId);
 			resultSet = preparedStatement.executeQuery();
 		} catch (SQLException e) {
-			
+			e.printStackTrace();
 		}
 		return resultSet;
 	}
-		
+	
+	/**
+	 * Changes the attributes of a specified Inventory item with the exception of it's unique ID. 
+	 * @param itemId String literal specifying the item to update
+	 * @param name String literal specifying the new name of the item
+	 * @param description String literal specifying the new item's description
+	 * @param dept String literal specifying the item's new department
+	 * @param price String literal specifying the item's new price
+	 * @param inStock String literal specifying the new in stock quantity of the item
+	 */
+	public void updateInventoryItem(String itemId, String name, String description, String dept,
+							double price, int inStock) {
+		try {
+			preparedStatement = connect.prepareStatement("UPDATE Inventory SET name = ?, description = ?"
+					+ ", dept = ?, price = ?, inStock = ? WHERE itemId = ?");
+			preparedStatement.setString(1, name);
+			preparedStatement.setString(2, description);
+			preparedStatement.setString(3, dept);
+			preparedStatement.setDouble(4, price);
+			preparedStatement.setInt(5, inStock);
+			preparedStatement.setString(6, itemId);
+			preparedStatement.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Changes a specified item's inStock field in the Inventory table. 
+	 * @param itemId String literal specifying the itemId
+	 * @param quantity Integer value specifying the new quantity in stock
+	 */
+	public void updateInventoryStock(String itemId, int quantity) {
+		try {
+			preparedStatement = connect.prepareStatement("UPDATE Inventory SET inStock = ?"
+								+ " WHERE itemId = ?");
+			preparedStatement.setInt(1, quantity);
+			preparedStatement.setString(2, itemId);
+			preparedStatement.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}	
 	/**
 	 * Returns all fields from the Inventory table in the UI database.
 	* @return ResultSet the results of the SQL query
