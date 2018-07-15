@@ -13,6 +13,9 @@ public class OrderHandlerTest {
 		OrderHandler handler = new OrderHandler();
 		Order order = handler.getOrder("nio001");
 		System.out.println(order.toString());
+		handler.addOrder("nio002", "car002");
+		order = handler.getOrder("nio002");
+		System.out.println(order.toString());
 		handler.closeConnection();
 	}
 

@@ -3,6 +3,7 @@ package com.controller;
  * @author ShaneBogard
  */
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Calendar;
 import application.model.Cart;
@@ -40,6 +41,55 @@ public class OrderHandler extends DataHandler{
 		results = fetcher.fetchOrder(orderId);
 		parseResults();
 		return order;
+	}
+	
+	/**
+	 * Adds a new order to the order table in the database.
+	 * @param orderId String literal specifying the unique order ID
+	 * @param cartId String literal specifying the cart ID
+	 * @param orderDt Date object specifying the date the order was placed
+	 * @param shipDt Date object specifying the date the order was shipped
+	 * @param trackNm Integer value specifying the tracking number of the order
+	 */
+	public void addOrder(String orderId, String cartId, Date orderDt, Date shipDt, int trackNm) {
+		connect();
+		fetcher.addOrder(orderId, cartId, orderDt, shipDt, trackNm);
+	}
+	
+	/**
+	 * Adds a new order to the order table in the database with a null tracking number
+	 * @param orderId String literal specifying the unique order ID
+	 * @param cartId String literal specifying the cart ID
+	 * @param orderDt Date object specifying the date the order was placed
+	 * @param shipDt Date object specifying the date the order was shipped
+	 */
+	public void addOrder(String orderId, String cartId, Date orderDt, Date shipDt) {
+		connect();
+		fetcher.addOrder(orderId, cartId, orderDt, shipDt);
+	}
+	
+	/**
+	 * Adds a new order to the order table in the database with a null ship date and tracking number
+	 * @param orderId String literal specifying the unique order ID
+	 * @param cartId String literal specifying the cart ID
+	 * @param orderDt Date object specifying the date the order was placed
+	 * @param shipDt Date object specifying the date the order was shipped
+	 */
+	public void addOrder(String orderId, String cartId, Date orderDt) {
+		connect();
+		fetcher.addOrder(orderId, cartId, orderDt);
+	}
+	
+	/**
+	 * Adds a new order to the order table in the database that uses the current date as an order date
+	 * with a null ship date and tracking number
+	 * @param orderId String literal specifying the unique order ID
+	 * @param cartId String literal specifying the cart ID
+	 * @param orderDt Date object specifying the date the order was placed
+	 */
+	public void addOrder(String orderId, String cartId) {
+		connect();
+		fetcher.addOrder(orderId, cartId);
 	}
 	
 	/**

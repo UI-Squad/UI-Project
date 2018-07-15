@@ -7,10 +7,14 @@ package com.controller;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
+import java.util.Calendar;
+
 import javax.xml.bind.DatatypeConverter;
 
 public class DataFetcher {
@@ -231,6 +235,95 @@ public class DataFetcher {
 			e.printStackTrace();
 		}
 		return resultSet;
+	}
+	
+	/**
+	 * Adds a new order to the order table in the database.
+	 * @param orderId String literal specifying the unique order ID
+	 * @param cartId String literal specifying the cart ID
+	 * @param orderDt Date object specifying the date the order was placed
+	 * @param shipDt Date object specifying the date the order was shipped
+	 * @param trackNm Integer value specifying the tracking number of the order
+	 */
+	public void addOrder(String orderId, String cartId, Date orderDt, Date shipDt, int trackNm) {
+		try {
+			
+			preparedStatement = connect.prepareStatement("INSERT into `Orders` values( ?, ?, ?, ?, ?)");
+			preparedStatement.setString(1, orderId);
+			preparedStatement.setString(2, cartId);
+			preparedStatement.setDate(3, orderDt);
+			preparedStatement.setDate(4, shipDt);
+			preparedStatement.setInt(5, trackNm);
+			preparedStatement.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Adds a new order to the order table in the database with a null tracking number
+	 * @param orderId String literal specifying the unique order ID
+	 * @param cartId String literal specifying the cart ID
+	 * @param orderDt Date object specifying the date the order was placed
+	 * @param shipDt Date object specifying the date the order was shipped
+	 */
+	public void addOrder(String orderId, String cartId, Date orderDt, Date shipDt) {
+		try {
+			
+			preparedStatement = connect.prepareStatement("INSERT into `Orders` values( ?, ?, ?, ?, ?)");
+			preparedStatement.setString(1, orderId);
+			preparedStatement.setString(2, cartId);
+			preparedStatement.setDate(3, orderDt);
+			preparedStatement.setDate(4, shipDt);
+			preparedStatement.setNull(5, Types.NULL);
+			preparedStatement.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Adds a new order to the order table in the database with a null ship date and tracking number
+	 * @param orderId String literal specifying the unique order ID
+	 * @param cartId String literal specifying the cart ID
+	 * @param orderDt Date object specifying the date the order was placed
+	 * @param shipDt Date object specifying the date the order was shipped
+	 */
+	public void addOrder(String orderId, String cartId, Date orderDt) {
+		try {
+			
+			preparedStatement = connect.prepareStatement("INSERT into `Orders` values( ?, ?, ?, ?, ?)");
+			preparedStatement.setString(1, orderId);
+			preparedStatement.setString(2, cartId);
+			preparedStatement.setDate(3, orderDt);
+			preparedStatement.setNull(4, Types.NULL);
+			preparedStatement.setNull(5, Types.NULL);
+			preparedStatement.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Adds a new order to the order table in the database that uses the current date as an order date
+	 * with a null ship date and tracking number
+	 * @param orderId String literal specifying the unique order ID
+	 * @param cartId String literal specifying the cart ID
+	 * @param orderDt Date object specifying the date the order was placed
+	 */
+	public void addOrder(String orderId, String cartId) {
+		try {
+			
+			preparedStatement = connect.prepareStatement("INSERT into `Orders` values( ?, ?, ?, ?, ?)");
+			preparedStatement.setString(1, orderId);
+			preparedStatement.setString(2, cartId);
+			preparedStatement.setDate(3, new Date(Calendar.getInstance().getTimeInMillis()));
+			preparedStatement.setNull(4, Types.NULL);
+			preparedStatement.setNull(5, Types.NULL);
+			preparedStatement.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
