@@ -93,6 +93,17 @@ public class OrderHandler extends DataHandler{
 	}
 	
 	/**
+	 * Adds a new order to the order table in the database using a specified Order object.
+	 * @param ord Order object which specified the new order to be added to the Order table
+	 * @param cartId String literal representing the cartId of this order
+	 */
+	public void addOrder(Order ord, String cartId) {
+		connect();
+		fetcher.addOrder(ord.getOrderId(), cartId, new Date(ord.getOrderDate().getTimeInMillis()), 
+								new Date(ord.getShipDate().getTimeInMillis()), ord.getTrackingNumber());
+	}
+	
+	/**
 	 * Parses the results of a given SQL query on the order table.
 	 */
 	protected void parseResults() throws SQLException {

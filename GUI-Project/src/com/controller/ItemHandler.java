@@ -70,6 +70,16 @@ public class ItemHandler extends DataHandler {
 	}
 	
 	/**
+	 * Changes the attributes of a specified Inventory item with the exception of it's unique ID.
+	 * @param item Item object specifying the item's new attributes
+	 */
+	public void updateInventoryItem(Item item) {
+		connect();
+		fetcher.updateInventoryItem(item.getItemId(), item.getItemName(), item.getDescription(), item.getDept(), 
+										item.getPrice(), item.getQuantity());
+	}
+	
+	/**
 	 * Changes a specified item's inStock field in the Inventory table. 
 	 * @param itemId String literal specifying the itemId
 	 * @param quantity Integer value specifying the new quantity in stock
