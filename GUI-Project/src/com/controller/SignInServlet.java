@@ -65,7 +65,7 @@ public class SignInServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			out.println("<html><body>");
 			out.println("</br></br>");
-			out.println("Cust to string = " + Cust.getEmail() + " " + Cust.getName() + " " + Cust.getCusID());
+			out.println("Cust to string = " + Cust.getEmail() + " " + Cust.getName().toString() + " " + Cust.getId());
 			out.println("</body></html>");
 			out.close();
 		}

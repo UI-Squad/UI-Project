@@ -110,6 +110,15 @@ public class Cart{
 	}
 	
 	/**
+	 * 
+	 */
+	public boolean equals(Object o) {
+		if(!(o instanceof Cart)) return false;
+		Cart other = (Cart)o;
+		return cart.equals(other.getCartItems());
+	}
+	
+	/**
 	 * Returns a String literal representation of this cart object.
 	 */
 	public String toString() {

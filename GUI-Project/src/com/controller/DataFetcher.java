@@ -14,8 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Calendar;
-
 import javax.xml.bind.DatatypeConverter;
+
 
 public class DataFetcher {
 	
@@ -165,6 +165,49 @@ public class DataFetcher {
 	}
 	
 	/**
+	 * 
+	 * @param cartId
+	 * @param itemId
+	 * @param quantity
+	 */
+	public void addCartItem(String cartId, String customerId, String itemId, int quantity) {
+		try {
+			preparedStatement = connect.prepareStatement("insert into `Carts` values(?, ?, ?, ?");
+			preparedStatement.setString(1, cartId);
+			preparedStatement.setString(2, customerId);
+			preparedStatement.setString(3,  itemId);
+			preparedStatement.setInt(4, quantity);
+			preparedStatement.executeUpdate();
+		}catch (SQLException e) {
+			
+		}
+	}
+	
+	/**
+	 * 
+	 * @param cartId
+	 * @param itemId
+	 * @param quantity
+	 */
+	public void addCartItem(String cartId, String itemId, int quantity) {
+		try {
+			fetchCart(cartId);
+			resultSet.next();
+			String customerId = resultSet.getString("customerId");
+			if(customerId.equals("0") || customerId.equals(null))
+				customerId = "nul000";
+			preparedStatement = connect.prepareStatement("insert into `Carts` values(?, ?, ?, ?");
+			preparedStatement.setString(1, cartId);
+			preparedStatement.setString(2, customerId);
+			preparedStatement.setString(3,  itemId);
+			preparedStatement.setInt(4, quantity);
+			preparedStatement.executeUpdate();
+		}catch (SQLException e) {
+			
+		}
+	}
+	
+	/**
 	 * Returns a ResultSet of items from the Inventory table and their matching quantities 
 	 * in the Carts table by a specified cartId and joining the tables by itemId.
 	 * @param cartId String literal specifying the cart Id
@@ -185,7 +228,6 @@ public class DataFetcher {
 	}
 		
 	public ResultSet fetchCustomer(String email, String password) {
-		
 		String myHash = hashPassword(password); // Hash password
 		
 		try {
@@ -193,8 +235,6 @@ public class DataFetcher {
 			preparedStatement.setString(1, email);
 			preparedStatement.setString(2, myHash);
 			resultSet = preparedStatement.executeQuery();
-				
-			
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -202,23 +242,53 @@ public class DataFetcher {
 	}
 	
 	
-	public ResultSet addCustomer(String FirstName, String LastName, String Email, String Password) {
+	public void addCustomer(String FirstName, String LastName, String Email, String Password) {
 		String myHash = hashPassword(Password); // Hash Password
 		
 		try {
-			preparedStatement = connect.prepareStatement("INSERT INTO 'Customers' (Email, Password, FirstName, LastName) VALUES (?, ?, ?, ?)");
+			preparedStatement = connect.prepareStatement("INSERT INTO `Customers` VALUES(?, ?, ?, ?)");
 			preparedStatement.setString(1, Email);
 			preparedStatement.setString(2, myHash);
 			preparedStatement.setString(3, FirstName);
 			preparedStatement.setString(4, LastName);
-			resultSet = preparedStatement.executeQuery();
-				
-			
+			preparedStatement.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();
-		}
-		return resultSet;
-		
+		}	
+	}
+	
+	/**
+	 * 
+	 * @param email
+	 * @param password
+	 * @param custId
+	 * @param firstNm
+	 * @param middleNm
+	 * @param lastNm
+	 * @param address
+	 * @param phoneNm
+	 * @param cartId
+	 * @return
+	 */
+	public void addCustomer(String email, String password, String custId, String firstNm, 
+						String middleNm, String lastNm, String address, long phoneNm, String cartId) {
+			String myHash = hashPassword(password); // Hash Password
+			try {
+				preparedStatement = connect.prepareStatement("INSERT INTO `Customers` " 
+														+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				preparedStatement.setString(1, email);
+				preparedStatement.setString(2, myHash);
+				preparedStatement.setString(3, custId);
+				preparedStatement.setString(4, firstNm);
+				preparedStatement.setString(5, middleNm);
+				preparedStatement.setString(6, lastNm);
+				preparedStatement.setString(7, address);
+				preparedStatement.setLong(8, phoneNm);
+				preparedStatement.setString(9, cartId);
+				preparedStatement.executeUpdate();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
 	}
 	
 	/**

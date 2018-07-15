@@ -3,7 +3,6 @@ package com.controller;
  * @author Shane Bogard
  */
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import application.model.Cart;
@@ -41,6 +40,10 @@ public class CartHandler extends DataHandler {
 		results = fetcher.fetchCartItems(cartId);
 		parseResults();
 		return cart;
+	}
+	
+	public void addCartItem() {
+		
 	}
 	
 	/**

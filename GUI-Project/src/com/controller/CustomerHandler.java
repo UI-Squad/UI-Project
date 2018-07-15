@@ -1,26 +1,36 @@
 package com.controller;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import application.model.Customer;
-import application.model.Item;
-
-
 /**
  * 
  * @author Manuel Ben Bravo 
- *
+ * @author Shane Bogard
  */
+
+import java.sql.SQLException;
+import application.model.Address;
+import application.model.Cart;
+import application.model.Customer;
+import application.model.Name;
+
 public class CustomerHandler extends DataHandler {
 
+	/** Customer object */
 	private Customer cust;
 	
-	/*
+	/**
 	 * Creates CustomerHandler Object
 	 */
 	public CustomerHandler() {
-		cust = new Customer();
+		super();
+		cust = null;
 	}
 	
+	/**
+	 * 
+	 * @param Email
+	 * @param Password
+	 * @return
+	 * @throws SQLException
+	 */
 	public Customer getCust(String Email, String Password) throws SQLException {
 		connect();
 		results = fetcher.fetchCustomer(Email,Password);
@@ -28,36 +38,44 @@ public class CustomerHandler extends DataHandler {
 		return cust; 
 	}
 	
+	/**
+	 * 
+	 * @param email
+	 * @param password
+	 * @param custId
+	 * @param firstNm
+	 * @param middleNm
+	 * @param lastNm
+	 * @param address
+	 * @param phoneNum
+	 * @param cartId
+	 */
+	public void addCust(String email, String password, String custId, String firstNm, String middleNm, String lastNm,
+					String address, int phoneNum, String cartId) {
+		connect();
+		fetcher.addCustomer(email, password, custId, firstNm, middleNm, lastNm, address, phoneNum, cartId);
+			
+	}
+	
 	public Customer addCust(String FirstName, String LastName, String Email, String Password) throws SQLException{
 		connect();
-		results = fetcher.addCustomer(FirstName, LastName, Email,Password);
-		//parseResults();
+		fetcher.addCustomer(FirstName, LastName, Email,Password);
 		return cust;
 		
 	}
+	
+	
 	/**
 	 * Parse results from DataFetcher for getCust
 	 */
 	@Override
 	protected void parseResults() throws SQLException {
-		// TODO Auto-generated method stub
+		cust = null;
 		while(results.next()) {
-			cust.setEmail(results.getString("email"));
-			cust.setName(results.getString("FirstName"), results.getString("LastName"));
-			cust.setCusID(results.getString("CustomerID"));
+			cust = new Customer(results.getString("Email"), results.getString("CustomerID"), 
+					new Name(results.getString("FirstName"), results.getString("middleNm"), 
+							results.getString("LastName")), new Address(results.getString("address")),
+							results.getLong("phoneNm"), new CartHandler(getFetcher()).getCart(results.getString("curCart")));
 		}
-	}
-	
-
- /* 
- * protected void parseResultsAdd() throws SQLException{
- * 
- * 
- * }
- * 
- * 
- * 
- */
-		
-	
+	}	
 }
