@@ -45,37 +45,32 @@ public class SignInServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Step 1: set content type
+		// Step 1: set content type for an html page
 		response.setContentType("text/html");
-		
-		// Step 2: get the printwriter
-		PrintWriter out = response.getWriter();
-		
-		// Step 3: generate the HTML content
-		out.println("<html><body>");
+				
 		CustomerHandler Cushandle = new CustomerHandler();
 		Customer Cust = null;
-		
+	
 		try {
 			Cust = Cushandle.getCust(request.getParameter("email"), request.getParameter("password"));
-			out.println("</br></br>");
-		
-			out.println("Account ID = " + Cust.getCusID());
-			
-			//sign in user to browser, Create cookiee? Return to jsp file or create cookie here
-			
-		
 		} catch (SQLException e) {
-			out.println("The customer could not be found");
 			e.printStackTrace();
 		}
+		// No info found redirect to loginPage
+		if(Cust.getEmail() == null) {
+			response.sendRedirect("loginPage.jsp");
+			//out.println("custEmail= to null\n");
+		}else {
+			//print out user creds
+			PrintWriter out = response.getWriter();
+			out.println("<html><body>");
+			out.println("</br></br>");
+			out.println("Cust to string = " + Cust.getEmail() + " " + Cust.getName() + " " + Cust.getCusID());
+			out.println("</body></html>");
+			out.close();
+		}
 		
-		//out.println("The customer is confirmed: "
-			//		+ request.getParameter("email") + " \nPassword: "+ request.getParameter("password"));		
-		out.println("</br></br>");
-		out.println("<a href=\"Website.html\">Return to homepage.</a>");
-		out.println("</body></html>");
-
+		
 	}
 
 }
