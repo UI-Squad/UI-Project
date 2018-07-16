@@ -314,7 +314,11 @@ navigation links stack on top of each other instead of next to each other */
 				<%
 				
 				for(int i = 0; i < items.size(); i++){
-					out.println("<div class=\"grid-container\"><div class=\"item1\">Item picture</div>");
+					out.println("<div class=\"grid-container\"><div class=\"item1\">");
+					out.println("<a href=\"productDetailsPage.jsp\">");
+					out.println("<img src=\"../productImages/"
+					+ items.get(i).getItemName() + ".jpg\" align=\"middle\" style=\"width: 170px\" alt=\"product\"></a>");
+					out.println("</div>");
 					out.println("<div class=\"item2\">");
  					out.println(items.get(i).getItemName());
  					out.println("</div><div class=\"item3\"></div>");

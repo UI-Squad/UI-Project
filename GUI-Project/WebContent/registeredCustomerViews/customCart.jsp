@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="com.controller.CartHandler"
-	import="application.model.Cart"%>
+	import="application.model.Cart" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -305,10 +305,11 @@ navigation links stack on top of each other instead of next to each other */
 								</tr>
 							</thead>
 							<tbody>
-	 							<%
+								<%
 									CartHandler cartHandler = new CartHandler();
-									Cart cart = cartHandler.getCart("null");
-									/* Cart cart = cartHandler.getCart("car001")  */
+									Cart cart = cartHandler.getCart(null);
+									//Cart cart = cartHandler.getCart("car001");
+									
 								%>
 								<!-- shopping cart contents -->
 
@@ -320,7 +321,9 @@ navigation links stack on top of each other instead of next to each other */
 										out.println("<tr class=\"productItem\">");
 
 										//Picture
-										out.println("<td><img src=\"\" class=\"fakeimg\" class=\"thumb\"></td>");
+										out.println("<td><img src=\"../productImages/"
+										+ cart.getCartItems().get(i).getItemName() + ".jpg\" class=\"thumb\" " 
+										+ "style=\"width: 140px\" alt=\"product\"></a></td>");
 
 										// Quantity
 										out.println("<td><input type=\"number\" value=\"" + cart.getCartItems().get(i).getQuantity()
@@ -360,6 +363,7 @@ navigation links stack on top of each other instead of next to each other */
  										for (int i = 0; i < cart.getSize(); i++) {
  										sum += cart.getItemTotal(cart.getCartItems().get(i));
  										}
+ 										sum = Math.round(sum * 100.0) / 100.0;
  										out.println("$" + sum);
  									%>
 									</span></td>

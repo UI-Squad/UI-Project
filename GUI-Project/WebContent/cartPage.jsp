@@ -321,8 +321,10 @@ navigation links stack on top of each other instead of next to each other */
 										out.println("<tr class=\"productItem\">");
 
 										//Picture
-										out.println("<td><img src=\"\" class=\"fakeimg\" class=\"thumb\"></td>");
-
+										out.println("<td><img src=\"./productImages/"
+										+ cart.getCartItems().get(i).getItemName() + ".jpg\" class=\"thumb\" " 
+										+ "style=\"width: 140px\" alt=\"product\"></a></td>");
+										
 										// Quantity
 										out.println("<td><input type=\"number\" value=\"" + cart.getCartItems().get(i).getQuantity()
 												+ "\" min=\"0\" max=\"99\"class=\"qtyinput\"></td>");
@@ -361,6 +363,7 @@ navigation links stack on top of each other instead of next to each other */
  										for (int i = 0; i < cart.getSize(); i++) {
  										sum += cart.getItemTotal(cart.getCartItems().get(i));
  										}
+ 										sum = Math.round(sum * 100.0) / 100.0;
  										out.println("$" + sum);
  									%>
 									</span></td>
