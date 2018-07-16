@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>Shopping Cart</title>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
+<link rel="stylesheet" type="text/css" href="../css/styles.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
@@ -247,32 +247,30 @@ navigation links stack on top of each other instead of next to each other */
 <body onload= "validateCart()">
 
 	<div class="header">
-		<img src="./Images/siteLogo.jpeg" style="height: 300px;" alt="">
+		<img src="../Images/siteLogo.jpeg" style="height: 300px;" alt="">
 	</div>
 
 	<!-- Navigation bar on the top of the menu  -->
 	<div class="topnav">
-		<a href="Website.html">Home</a>
+		<a href="signedInCusWebsite.jsp">Home</a>
 
-		<!-- Drop down sub menu for categories in navigation bar  -->
 		<!-- Drop down sub menu for categories in navigation bar  -->
 		<div class="dropdown">
 			<button class="dropbtn">
 				Categories <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="electronicsPage.jsp">Electronics</a> 
-				<a href="clothingPage.jsp">Clothing</a> 
-				<a href="booksPage.jsp">Books</a>
-				<a href="autoPage.jsp">Automotive</a> 
-				<a href="homePage.jsp">Home</a> 
-				<a href="viewAllPage.jsp">View All</a>
+				<a href="customElectronics.jsp">Electronics</a> 
+				<a href="customClothing.jsp">Clothing</a> 
+				<a href="customBooks.jsp">Books</a>
+				<a href="customAuto.jsp">Automotive</a> 
+				<a href="customHome.jsp">Home</a> 
+				<a href="customViewAll.jsp">View All</a>
 			</div>
 		</div>
 
-		<a href="cartPage.jsp" class="active">Cart</a> <a
-			href="inventoryPage.jsp">Inventory</a> <a href="loginPage.jsp"
-			style="float: right">Sign In</a>
+		<a href="customCart.jsp" class="active">Cart</a> <a href="customInventory.jsp">Inventory</a>
+		<a href="../Website.html" style="float: right" name="signOutLink">Sign Out</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">
@@ -307,9 +305,10 @@ navigation links stack on top of each other instead of next to each other */
 								</tr>
 							</thead>
 							<tbody>
-								<%
+	 							<%
 									CartHandler cartHandler = new CartHandler();
-									Cart cart = cartHandler.getCart("car001");
+									Cart cart = cartHandler.getCart("null");
+									/* Cart cart = cartHandler.getCart("car001")  */
 								%>
 								<!-- shopping cart contents -->
 
@@ -339,7 +338,7 @@ navigation links stack on top of each other instead of next to each other */
 
 										// Remove option 
 										out.println("<td>");
-										out.println("<span class=\"remove\"><img src=\"Images/trash.png\" alt=\"X\"></span>");
+										out.println("<span class=\"remove\"><img src=\"../Images/trash.png\" alt=\"X\"></span>");
 										out.println("</td>");
 										out.println("</tr>");
 									}
@@ -367,14 +366,14 @@ navigation links stack on top of each other instead of next to each other */
 								</tr>
 								<!-- checkout btn -->
 								<tr class="checkoutrow">
-								<td colspan="5" class="checkout"><a href="personalCusInfoPage.jsp">
+								<td colspan="5" class="checkout"><a href="customPersonalInfo.jsp">
 								<button id="submitbtn">Checkout</button></a>
 								</td>								
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					
+
 					<!-- Script for if there are no items to hide checkout button  -->
 					<script type="text/javascript">
 							function validateCart() {
@@ -387,7 +386,7 @@ navigation links stack on top of each other instead of next to each other */
 								}
 							}
 					</script>
-					
+
 				</div>
 				<!-- end divider for shopping cart  -->
 
@@ -401,7 +400,7 @@ navigation links stack on top of each other instead of next to each other */
 
 	<div class="footer">
 		<h2>
-			<a href="contactUsPage.jsp"><font color="000000">Contact
+			<a href="customContact.jsp"><font color="000000">Contact
 					Us</font></a>
 		</h2>
 	</div>

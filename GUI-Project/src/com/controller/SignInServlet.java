@@ -50,6 +50,8 @@ public class SignInServlet extends HttpServlet {
 				
 		CustomerHandler Cushandle = new CustomerHandler();
 		Customer Cust = null;
+		PrintWriter out = response.getWriter();
+
 	
 		try {
 			Cust = Cushandle.getCust(request.getParameter("email"), request.getParameter("password"));
@@ -57,15 +59,18 @@ public class SignInServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		// No info found redirect to loginPage
-		if(Cust.getEmail() == null) {
-			response.sendRedirect("loginPage.jsp");
-			//out.println("custEmail= to null\n");
+		if(Cust == null) {
+			out.println("<script type=\"text/javascript\">");  
+			out.println("alert('Invalid email/password. Please try again.');");  
+			out.println("window.location.replace(\"loginPage.jsp\");");
+			out.println("</script>"); 
+//			response.sendRedirect("loginPage.jsp");
 		}else {
 			//print out user creds
-			PrintWriter out = response.getWriter();
 			out.println("<html><body>");
 			out.println("</br></br>");
-			out.println("Cust to string = " + Cust.getEmail() + " " + Cust.getName().toString() + " " + Cust.getId());
+			out.println("Cust to string = " + Cust.getEmail() + " " + Cust.getName().toString() + " " + Cust.getId() + "<br>");
+			out.println("<a href=\"./registeredCustomerViews/signedInCusWebsite.jsp\">Continue to homepage.</a>");
 			out.println("</body></html>");
 			out.close();
 		}

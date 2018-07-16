@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.controller.CartHandler"
-	import="application.model.Cart"%>
+	pageEncoding="UTF-8" import="com.controller.ItemHandler" import="application.model.Item"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Shopping Cart</title>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
+<title>Nile Shopping Service: Electronics</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
@@ -144,10 +143,22 @@ body {
 	clear: both;
 }
 
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+	position: -webkit-sticky;
+	position: sticky;
+	float: left;
+	width: 20%;
+	background-color: #f1f1f1;
+	padding-right: 20px;
+	top: 20px;
+}
+
 /* Right column */
 .rightcolumn {
 	float: right;
-	width: 100%;
+	width: 80%;
 }
 
 /* Fake image */
@@ -244,35 +255,33 @@ navigation links stack on top of each other instead of next to each other */
 </script>
 
 </head>
-<body onload= "validateCart()">
+<body>
 
 	<div class="header">
-		<img src="./Images/siteLogo.jpeg" style="height: 300px;" alt="">
+		<img src="../Images/siteLogo.jpeg" style="height: 300px;" alt="">
 	</div>
 
 	<!-- Navigation bar on the top of the menu  -->
 	<div class="topnav">
-		<a href="Website.html">Home</a>
+		<a href="signedInCusWebsite.jsp">Home</a>
 
-		<!-- Drop down sub menu for categories in navigation bar  -->
 		<!-- Drop down sub menu for categories in navigation bar  -->
 		<div class="dropdown">
 			<button class="dropbtn">
 				Categories <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="electronicsPage.jsp">Electronics</a> 
-				<a href="clothingPage.jsp">Clothing</a> 
-				<a href="booksPage.jsp">Books</a>
-				<a href="autoPage.jsp">Automotive</a> 
-				<a href="homePage.jsp">Home</a> 
-				<a href="viewAllPage.jsp">View All</a>
+				<a href="customElectronics.jsp" class="active">Electronics</a> 
+				<a href="customClothing.jsp">Clothing</a> 
+				<a href="customBooks.jsp">Books</a>
+				<a href="customAuto.jsp">Automotive</a> 
+				<a href="customHome.jsp">Home</a> 
+				<a href="customViewAll.jsp">View All</a>
 			</div>
 		</div>
 
-		<a href="cartPage.jsp" class="active">Cart</a> <a
-			href="inventoryPage.jsp">Inventory</a> <a href="loginPage.jsp"
-			style="float: right">Sign In</a>
+		<a href="customCart.jsp">Cart</a> <a href="customInventory.jsp">Inventory</a>
+		<a href="../Website.html" style="float: right" name="signOutLink">Sign Out</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">
@@ -286,123 +295,62 @@ navigation links stack on top of each other instead of next to each other */
 		</div>
 	</div>
 
-
 	<!-- Inventory page below nav bar -->
 	<div class="row">
 		<div class="rightcolumn">
+
+			<%
+				String dept = "electronics";
+				ItemHandler itemHandler = new ItemHandler();
+				ArrayList<Item> items = itemHandler.getItemsByDept(dept);
+				itemHandler.closeConnection();
+
+			%>
 			<div class="card">
-				<div id="w">
-					<header id="title">
-					<h1>Shopping Cart</h1>
-					</header>
-					<div id="page">
-						<table id="cart">
-							<thead>
-								<tr>
-									<th class="first"></th>
-									<th class="second">Qty</th>
-									<th class="third">Product</th>
-									<th class="fourth">Total</th>
-									<th class="fifth">&nbsp;</th>
-								</tr>
-							</thead>
-							<tbody>
-								<%
-									CartHandler cartHandler = new CartHandler();
-									Cart cart = cartHandler.getCart("car001");
-								%>
-								<!-- shopping cart contents -->
 
-								<!-- JSP Scriplet that generates the contents -->
-
-								<%
-									for (int i = 0; i < cart.getSize(); i++) {
-
-										out.println("<tr class=\"productItem\">");
-
-										//Picture
-										out.println("<td><img src=\"\" class=\"fakeimg\" class=\"thumb\"></td>");
-
-										// Quantity
-										out.println("<td><input type=\"number\" value=\"" + cart.getCartItems().get(i).getQuantity()
-												+ "\" min=\"0\" max=\"99\"class=\"qtyinput\"></td>");
-
-										//Name
-										out.println("<td>");
-										out.println(cart.getCartItems().get(i).getItemName());
-										out.println("</td>");
-
-										//Total Item Price
-										out.println("<td>");
-										out.println("$" + cart.getItemTotal(cart.getCartItems().get(i)));
-										out.println("</td>");
-
-										// Remove option 
-										out.println("<td>");
-										out.println("<span class=\"remove\"><img src=\"Images/trash.png\" alt=\"X\"></span>");
-										out.println("</td>");
-										out.println("</tr>");
-									}
-								%>
-
-								<!-- tax + subtotal -->
-								<tr class="extracosts">
-									<td class="light">Shipping:</td>
-									<td colspan="2" class="light"></td>
-									<td>Free</td>
-									<td>&nbsp;</td>
-								</tr>
-								<tr class="totalprice">
-									<td class="light">Total:</td>
-									<td colspan="2">&nbsp;</td>
-									<td colspan="2"><span class="thick"> 
-									<%
- 										double sum = 0.0;
- 										for (int i = 0; i < cart.getSize(); i++) {
- 										sum += cart.getItemTotal(cart.getCartItems().get(i));
- 										}
- 										out.println("$" + sum);
- 									%>
-									</span></td>
-								</tr>
-								<!-- checkout btn -->
-								<tr class="checkoutrow">
-								<td colspan="5" class="checkout"><a href="personalCusInfoPage.jsp">
-								<button id="submitbtn">Checkout</button></a>
-								</td>								
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					
-					<!-- Script for if there are no items to hide checkout button  -->
-					<script type="text/javascript">
-							function validateCart() {
-								var table = document.getElementById('cart').getElementsByTagName('tr');
-								var tableRows = table.length;
-								if(tableRows < 5){
-									document.getElementById('submitbtn').style.visibility = 'hidden';
-								} else {
-									document.getElementById('submitbtn').style.visibility = 'visible';
-								}
-							}
-					</script>
-					
-				</div>
-				<!-- end divider for shopping cart  -->
+				<h2>Electronics</h2>
+				
+				<!-- JSP Scriplet that generates   -->
+				<%
+				
+				for(int i = 0; i < items.size(); i++){
+					out.println("<div class=\"grid-container\"><div class=\"item1\">Item picture</div>");
+					out.println("<div class=\"item2\">");
+ 					out.println(items.get(i).getItemName());
+ 					out.println("</div><div class=\"item3\"></div>");
+					out.println("<div class=\"item4\">");
+ 					out.println(items.get(i).getDescription());
+ 					out.println("</div>");
+					out.println("<div class=\"item5\">");
+ 					out.println(items.get(i).getPrice());
+ 					out.println("</div><div class=\"item6\"></div>");		
+					out.println("<div class=\"item7\"></div></div><hr>");
+				}
+				
+				%>
 
 			</div>
 			<!-- end divider for card  -->
 
 		</div>
 		<!-- End row divider  -->
+
+		<!-- Options -->
+		<div class="leftcolumn">
+			<div class="card">
+				<h3>Filter/Sort</h3>
+				<p>Option</p>
+				<p></p>
+				<p>Option</p>
+				<p></p>
+				<p>Option</p>
+			</div>
+		</div>
 	</div>
-
-
-	<div class="footer">
+	
+		<div class="footer">
 		<h2>
-			<a href="contactUsPage.jsp"><font color="000000">Contact
-					Us</font></a>
+			<a href="customContact.jsp"><font color="000000">Contact Us</font></a>
 		</h2>
 	</div>
 </body>
