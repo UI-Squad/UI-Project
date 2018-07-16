@@ -15,7 +15,13 @@ public class CartHandlerTest {
 		CartHandler cartHandler = new CartHandler();
 		Cart cart = cartHandler.getCart("car001");
 		System.out.println(cart.toString());
-		System.out.println(cart.getItemTotal(item));
+		//System.out.println(cart.getItemTotal(item));
+		cartHandler.removeCartItem("car001", "bk001");
+		cart = cartHandler.getCart("car001");
+		System.out.println(cart.toString());
+		cartHandler.addCartItem("car001", "bk001", 1);
+		cart = cartHandler.getCart("car001");
+		System.out.println(cart.toString());
 		cartHandler.closeConnection();
 	}
 

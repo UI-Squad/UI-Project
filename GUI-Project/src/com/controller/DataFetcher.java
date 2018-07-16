@@ -84,8 +84,8 @@ public class DataFetcher {
 	public void updateInventoryItem(String itemId, String name, String description, String dept,
 							double price, int inStock) {
 		try {
-			preparedStatement = connect.prepareStatement("UPDATE Inventory SET name = ?, description = ?"
-					+ ", dept = ?, price = ?, inStock = ? WHERE itemId = ?");
+			preparedStatement = connect.prepareStatement("UPDATE Inventory i SET i.name = ?, i.description = ?"
+					+ ", i.dept = ?, i.price = ?, i.inStock = ? WHERE i.itemId = ?");
 			preparedStatement.setString(1, name);
 			preparedStatement.setString(2, description);
 			preparedStatement.setString(3, dept);
@@ -105,8 +105,8 @@ public class DataFetcher {
 	 */
 	public void updateInventoryStock(String itemId, int quantity) {
 		try {
-			preparedStatement = connect.prepareStatement("UPDATE Inventory SET inStock = ?"
-								+ " WHERE itemId = ?");
+			preparedStatement = connect.prepareStatement("UPDATE Inventory i SET i.inStock = ?"
+								+ " WHERE i.itemId = ?");
 			preparedStatement.setInt(1, quantity);
 			preparedStatement.setString(2, itemId);
 			preparedStatement.executeUpdate();
@@ -114,6 +114,26 @@ public class DataFetcher {
 			e.printStackTrace();
 		}
 	}	
+	
+	/**
+	 * 
+	 * @param itemId
+	 * @return
+	 */
+	public int fetchInventoryItemStock(String itemId) {
+		int stock = 0;
+		try {
+			preparedStatement = connect.prepareStatement("Select i.inStock from Inventory i where i.itemId = ?");
+			preparedStatement.setString(1,  itemId);
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			stock = resultSet.getInt("inStock");
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return stock;
+	}
+	
 	/**
 	 * Returns all fields from the Inventory table in the UI database.
 	* @return ResultSet the results of the SQL query
@@ -172,7 +192,7 @@ public class DataFetcher {
 	 */
 	public void addCartItem(String cartId, String customerId, String itemId, int quantity) {
 		try {
-			preparedStatement = connect.prepareStatement("insert into `Carts` values(?, ?, ?, ?");
+			preparedStatement = connect.prepareStatement("INSERT into `Carts` values(?, ?, ?, ?)");
 			preparedStatement.setString(1, cartId);
 			preparedStatement.setString(2, customerId);
 			preparedStatement.setString(3,  itemId);
@@ -196,17 +216,32 @@ public class DataFetcher {
 			String customerId = resultSet.getString("customerId");
 			if(customerId.equals("0") || customerId.equals(null))
 				customerId = "nul000";
-			preparedStatement = connect.prepareStatement("insert into `Carts` values(?, ?, ?, ?");
+			preparedStatement = connect.prepareStatement("INSERT into `Carts` values(?, ?, ?, ?)");
 			preparedStatement.setString(1, cartId);
 			preparedStatement.setString(2, customerId);
 			preparedStatement.setString(3,  itemId);
 			preparedStatement.setInt(4, quantity);
 			preparedStatement.executeUpdate();
 		}catch (SQLException e) {
-			
+			e.printStackTrace();
 		}
 	}
 	
+	/**
+	 * @param cartId
+	 * @param itemId
+	 */
+	public void removeCartItem(String cartId, String itemId) {
+		try {
+			preparedStatement = connect.prepareStatement("DELETE from Carts WHERE cartId = ? AND itemId = ?");
+			preparedStatement.setString(1,  cartId);
+			preparedStatement.setString(2, itemId);
+			preparedStatement.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+			
 	/**
 	 * Returns a ResultSet of items from the Inventory table and their matching quantities 
 	 * in the Carts table by a specified cartId and joining the tables by itemId.
@@ -224,6 +259,25 @@ public class DataFetcher {
 			e.printStackTrace();
 		}
 		
+		return resultSet;
+	}
+	
+	/**
+	 * 
+	 * @param cartId
+	 * @param itemId
+	 * @return
+	 */
+	public ResultSet fetchCartItem(String cartId, String itemId) {
+		try {
+			preparedStatement = connect.prepareStatement("select c.* from Carts c where c.cartId = ?"
+														+ " and c.itemId = ?");
+			preparedStatement.setString(1, cartId);
+			preparedStatement.setString(2, itemId);
+			resultSet = preparedStatement.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return resultSet;
 	}
 		

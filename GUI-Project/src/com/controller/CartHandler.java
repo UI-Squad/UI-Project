@@ -42,10 +42,64 @@ public class CartHandler extends DataHandler {
 		return cart;
 	}
 	
-	public void addCartItem() {
-		
+	/**
+	 * 
+	 * @param cartId
+	 * @param customerId
+	 * @param itemId
+	 * @param quantity
+	 */
+	public void addCartItem(String cartId, String customerId, String itemId, int quantity) {
+		connect();
+		//retrieve item stock from Inventory
+		int stock = fetcher.fetchInventoryItemStock(itemId);
+		//add item to cart if there is enough available in inventory
+		if(stock >= quantity) {
+			fetcher.addCartItem(cartId, customerId, itemId, quantity);
+			fetcher.updateInventoryStock(itemId, stock - quantity);
+		}
 	}
 	
+	/**
+	 * 
+	 * @param cartId
+	 * @param itemId
+	 * @param quantity
+	 */
+	public void addCartItem(String cartId, String itemId, int quantity) {
+		connect();
+		//retrieve item stock from Inventory
+		int stock = fetcher.fetchInventoryItemStock(itemId);
+		//add item to cart if there is enough available in inventory
+		if(stock >= quantity) {
+			fetcher.addCartItem(cartId, itemId, quantity);
+			fetcher.updateInventoryStock(itemId, stock - quantity);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param cartId
+	 * @param itemId
+	 * @throws SQLException 
+	 */
+	public void removeCartItem(String cartId, String itemId) throws SQLException {
+		int quantity = 0;
+		int newStock = 0;
+		connect();
+		// fetch item from Cart
+		results = fetcher.fetchCartItem(cartId, itemId);
+		results.next();
+		quantity = results.getInt("quantity");
+		//fetch item from Inventory
+		results = fetcher.fetchItem(itemId);
+		results.next();
+		newStock = quantity + results.getInt("inStock");
+		//update Inventory to reflect new inStock quantity
+		fetcher.removeCartItem(cartId, itemId);
+		fetcher.updateInventoryStock(itemId, newStock);	
+	}
+		
 	/**
 	 * Parses the ResultSet into a Cart object.
 	 * @throws SQLException 
