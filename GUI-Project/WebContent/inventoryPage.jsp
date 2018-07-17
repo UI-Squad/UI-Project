@@ -320,7 +320,16 @@ navigation links stack on top of each other instead of next to each other */
 
 					
 					out.println("<div class=\"grid-container\"><div class=\"item1\">");
-					out.println("<a href=\"productDetailServlet\">");
+					
+					//ItemProductForm
+					out.println("<form name=\"itemNameForm"+i+"\" action=\"productDetailServlet\" method=\"POST\">");
+					out.println("<input type=\"hidden\" name=\"itemName\" value=\""+itemName+"\">");
+					out.println("<input type=\"hidden\" name=\"itemDescription\" value=\""+itemDescription+"\">");
+					out.println("<input type=\"hidden\" name=\"itemPrice\" value=\""+itemPrice+"\">");
+					out.println("</form>");
+					
+					//Product Listing Information
+					out.println("<a href=\"#\" onclick=\"document.itemNameForm"+i+".submit()\">");
 					out.println("<img src=\"./productImages/"
 					+ itemName + ".jpg\" align=\"middle\" style=\"width: 170px\" alt=\"product\"></a>");
 					out.println("</div>");
@@ -334,7 +343,6 @@ navigation links stack on top of each other instead of next to each other */
  					out.println(itemPrice);
  					out.println("</div><div class=\"item6\"></div>");		
 					out.println("<div class=\"item7\"></div></div>");	
-					session.setAttribute("itemName", itemName);
 					out.println("<hr>");
 					
 

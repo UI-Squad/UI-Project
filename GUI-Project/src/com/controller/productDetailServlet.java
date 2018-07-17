@@ -38,7 +38,11 @@ public class productDetailServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String itemName = request.getParameter("itemName");
+		String itemDescription = request.getParameter("itemDescription");
+		String itemPrice = request.getParameter("itemPrice");
 		request.setAttribute("itemName", itemName);
+		request.setAttribute("itemDescription", itemDescription);
+		request.setAttribute("itemPrice", itemPrice);
 		request.getRequestDispatcher("productDetailsPage.jsp").forward(request, response);
 	}
 

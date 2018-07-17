@@ -10,6 +10,25 @@
 	
 <link rel="stylesheet" href="./css/defaultStyle.css">
 
+<style type="text/css">
+.addToCartButton {
+	background-color: #333;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.addToCartButton:hover {
+	background-color: #1e90ff; 
+}
+
+}
+</style>
+
 <!-- Script that validates there is input in the search bar  -->
 <script type="text/javascript">
 	function validateForm() {
@@ -73,19 +92,24 @@
 				<div class="first-column">	
 				<br>
 				<br>			
-				<div class="fakeimg"></div>
+				<div><img src="./productImages/
+					${itemName}.jpg" align="right" style="width: 300px" alt="product"></div> 
 				</div>
 
 				<div class="second-column">
 				
 				<br>
-				<h2> Product Name Goes Here:</h2>
-				<p>${itemName}</p>
+				<h2>${itemName}</h2>
 				
 				<hr>
 				<br>
 				<br>
+				<p>${itemDescription}</p>
 				<br>
+				<br>
+				<br>
+				<p>$${itemPrice}</p>
+				
 					
 				<select style="width: 70px;">
 									<option>1</option>
@@ -99,9 +123,18 @@
 									<option>9</option>
 									<option>10</option>
 								</select>
+								
+								
+								
+				<br>
+				<br>
+				<br>
+					
+				<a href="cartPage.jsp"><button type="button" class="addToCartButton">Add To Cart</button></a>
+					
 										
 				</div>
-
+				
 			</div>
 			<!-- end divider for card  -->
 
