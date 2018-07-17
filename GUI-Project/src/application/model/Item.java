@@ -101,8 +101,7 @@ public class Item {
 	}
 	
 	
-	//getters and setters
-	
+	//getters and setters	
 	/**
 	 * Changes this item's Id to a new item Id.
 	 * @param itemId A string literal specifying the new item id

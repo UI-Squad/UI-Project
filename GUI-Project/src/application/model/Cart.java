@@ -102,8 +102,10 @@ public class Cart{
 		this.cartTotal = total;
 	}
 	
-	//return the cartTotal, calls setCartTotal to make sure it
-	//returns the most up to date cartTotal
+	/**return the cartTotal, calls setCartTotal to make sure it
+	 * returns the most up to date cartTotal.
+	 * @return double value representing the total item value
+	 * */
 	public double getCartTotal(){
 		setCartTotal();
 		return cartTotal;
