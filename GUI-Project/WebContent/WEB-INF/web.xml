@@ -10,13 +10,12 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>Main.jsp</welcome-file>
   </welcome-file-list>
- 
-<servlet>
-  <servlet-name>productDetailServlet</servlet-name>
-  <servlet-class>com.controller.productDetailServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-  <servlet-name>productDetailServlet</servlet-name>
-  <url-pattern>/productDetailServlet/*</url-pattern>
-</servlet-mapping>
+  <servlet>
+    <servlet-name>productDetailServlet</servlet-name>
+    <servlet-class>com.controller.productDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>productDetailServlet</servlet-name>
+    <url-pattern>/productDetailServlet/*</url-pattern>
+  </servlet-mapping>
 </web-app>

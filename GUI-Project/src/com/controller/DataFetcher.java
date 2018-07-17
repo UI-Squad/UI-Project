@@ -185,7 +185,7 @@ public class DataFetcher {
 	}
 	
 	/**
-	 * 
+	 * Registered customer
 	 * @param cartId
 	 * @param itemId
 	 * @param quantity
@@ -204,7 +204,7 @@ public class DataFetcher {
 	}
 	
 	/**
-	 * 
+	 * For guest 
 	 * @param cartId
 	 * @param itemId
 	 * @param quantity
