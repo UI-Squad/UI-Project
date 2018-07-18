@@ -314,21 +314,39 @@ navigation links stack on top of each other instead of next to each other */
 				<%
 				
 				for(int i = 0; i < items.size(); i++){
+					
+					String itemName = items.get(i).getItemName();
+					String itemDescription = items.get(i).getDescription();
+					double itemPrice = items.get(i).getPrice();
+
+					
 					out.println("<div class=\"grid-container\"><div class=\"item1\">");
-					out.println("<a href=\"productDetailsPage.jsp\">");
+					
+					//ItemProductForm
+					out.println("<form name=\"itemNameForm"+i+"\" action=\"productDetailServlet\" method=\"POST\">");
+					out.println("<input type=\"hidden\" name=\"itemName\" value=\""+itemName+"\">");
+					out.println("<input type=\"hidden\" name=\"itemDescription\" value=\""+itemDescription+"\">");
+					out.println("<input type=\"hidden\" name=\"itemPrice\" value=\""+itemPrice+"\">");
+					out.println("</form>");
+					
+					//Product Listing Information
+					out.println("<a href=\"#\" onclick=\"document.itemNameForm"+i+".submit()\">");
 					out.println("<img src=\"./productImages/"
-					+ items.get(i).getItemName() + ".jpg\" align=\"middle\" style=\"width: 170px\" alt=\"product\"></a>");
+					+ itemName + ".jpg\" align=\"middle\" style=\"width: 170px\" alt=\"product\"></a>");
 					out.println("</div>");
 					out.println("<div class=\"item2\">");
- 					out.println(items.get(i).getItemName());
- 					out.println("</div><div class=\"item3\"></div>");
+					out.println(itemName);
+  					out.println("</div><div class=\"item3\"></div>");
 					out.println("<div class=\"item4\">");
- 					out.println(items.get(i).getDescription());
+ 					out.println(itemDescription);
  					out.println("</div>");
 					out.println("<div class=\"item5\">");
- 					out.println(items.get(i).getPrice());
+ 					out.println(itemPrice);
  					out.println("</div><div class=\"item6\"></div>");		
-					out.println("<div class=\"item7\"></div></div><hr>");
+					out.println("<div class=\"item7\"></div></div>");	
+					out.println("<hr>");
+					
+
 				}
 				
 				%>
