@@ -5,6 +5,8 @@ package com.controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
+
 import application.model.Cart;
 import application.model.Item;
 
@@ -40,6 +42,19 @@ public class CartHandler extends DataHandler {
 		results = fetcher.fetchCartItems(cartId);
 		parseResults();
 		return cart;
+	}
+	/**
+	 * Generate cart and returns cart for Guest Checkout function
+	 * @return
+	 * @throws SQLException
+	 */
+	
+	public Cart generateCart() throws SQLException {
+		String car = "car";
+		Random rand = new Random();
+		int random = rand.nextInt(999);
+		car += Integer.toString(random);
+		return (getCart(car));
 	}
 	
 	/**
