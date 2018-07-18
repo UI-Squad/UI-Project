@@ -72,8 +72,8 @@
 
 		<!-- Search Bar -->
 		<div class="search-container">
-			<form name="searchBar" action="search-response.jsp"
-				onsubmit="return validateForm()" method="post">
+			<form name="searchBar" action="searchResponseServlet"
+				onsubmit="return validateForm()" method="POST">
 				<input type="text" name="value" placeholder="Search">
 				<button type="submit">
 					<i class="fa fa-search"></i>

@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Nile Shopping Service: Clothing</title>
+<title>Nile Shopping Service: Search Results</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
@@ -263,7 +263,7 @@ navigation links stack on top of each other instead of next to each other */
 
 	<!-- Navigation bar on the top of the menu  -->
 	<div class="topnav">
-		<a href="Website.html">Home</a>
+		<a href="./registeredCustomerViews/signedInCusWebsite.jsp">Home</a>
 
 		<!-- Drop down sub menu for categories in navigation bar  -->
 		<div class="dropdown">
@@ -271,22 +271,22 @@ navigation links stack on top of each other instead of next to each other */
 				Categories <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="electronicsPage.jsp">Electronics</a> 
-				<a href="clothingPage.jsp" class = "active">Clothing</a> 
-				<a href="booksPage.jsp">Books</a>
-				<a href="autoPage.jsp">Automotive</a> 
-				<a href="homePage.jsp">Home</a> 
-				<a href="viewAllPage.jsp">View All</a>
+				<a href="./registeredCustomerViews/customElectronics.jsp">Electronics</a> 
+				<a href="./registeredCustomerViews/customClothing.jsp">Clothing</a> 
+				<a href="./registeredCustomerViews/customBooks.jsp">Books</a>
+				<a href="./registeredCustomerViews/customAuto.jsp">Automotive</a> 
+				<a href="./registeredCustomerViews/customHome.jsp">Home</a> 
+				<a href="./registeredCustomerViews/customViewAll.jsp">View All</a>
 			</div>
 		</div>
 
-		<a href="cartPage.jsp">Cart</a> <a href="inventoryPage.jsp">Inventory</a>
-		<a href="loginPage.jsp" style="float: right">Sign In</a>
+		<a href="./registeredCustomerViews/customCart.jsp">Cart</a> <a href="./registeredCustomerViews/customInventory.jsp">Inventory</a>
+		<a href="./Website.html" style="float: right">Sign Out</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">
-			<form name="searchBar" action="searchResponseServlet"
-				onsubmit="return validateForm()" method="POST">
+			<form name="searchBar" action="customSearchResponseServlet"
+				onsubmit="return validateForm()" method="post">
 				<input type="text" name="value" placeholder="Search">
 				<button type="submit">
 					<i class="fa fa-search"></i>
@@ -299,19 +299,18 @@ navigation links stack on top of each other instead of next to each other */
 	<div class="row">
 		<div class="rightcolumn">
 
-			<%
-				String dept = "clothing";
+<%-- 			<%
 				ItemHandler itemHandler = new ItemHandler();
-				ArrayList<Item> items = itemHandler.getItemsByDept(dept);
+				ArrayList<Item> items = itemHandler.getAllItems();
 				itemHandler.closeConnection();
 
-			%>
+			%> --%>
 			<div class="card">
 
-				<h2>Clothing</h2>
+				<h3>Displaying Results For: ${searchValue}</h3>
 				
 				<!-- JSP Scriplet that generates   -->
-				<%
+				<%-- <%
 				
 				for(int i = 0; i < items.size(); i++){
 					
@@ -350,7 +349,8 @@ navigation links stack on top of each other instead of next to each other */
 				}
 				
 				%>
-
+ --%>
+ 
 			</div>
 			<!-- end divider for card  -->
 
@@ -370,9 +370,10 @@ navigation links stack on top of each other instead of next to each other */
 		</div>
 	</div>
 	
+	
 		<div class="footer">
 		<h2>
-			<a href="contactUsPage.jsp"><font color="000000">Contact Us</font></a>
+			<a href="./registeredCustomerViews/customContact.jsp"><font color="000000">Contact Us</font></a>
 		</h2>
 	</div>
 </body>
