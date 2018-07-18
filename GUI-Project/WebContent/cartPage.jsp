@@ -295,6 +295,12 @@ navigation links stack on top of each other instead of next to each other */
 					<header id="title">
 					<h1>Shopping Cart</h1>
 					</header>
+					
+					<form name="removeItemForm" action="removeFromCartServlet" method="POST">
+					<input type="hidden" name="itemID" value="${itemID}">
+					</form>
+					
+					
 					<div id="page">
 						<table id="cart">
 							<thead>
@@ -343,14 +349,11 @@ navigation links stack on top of each other instead of next to each other */
 
 										// Remove option 
 										out.println("<td>");
-										out.println("<span class=\"remove\"><img src=\"Images/trash.png\" alt=\"X\"></span>");
+										out.println("<span class=\"remove\" onclick=\"document.removeItemForm.submit()\"><img src=\"Images/trash.png\" alt=\"X\"></span>");
 										out.println("</td>");
 										out.println("</tr>");
 									}
 								%>
-								
-								<form name="itemForm" action="removeFromCartServlet" method="POST">
-								</form>
 								
 
 								<!-- tax + subtotal -->

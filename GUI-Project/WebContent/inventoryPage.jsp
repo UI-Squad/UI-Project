@@ -321,9 +321,6 @@ navigation links stack on top of each other instead of next to each other */
 					String itemID = items.get(i).getItemId();
 					int itemQuantity = items.get(i).getQuantity();
 					
-					out.println(itemID);
-					out.println(itemQuantity);
-					
 
 					
 					out.println("<div class=\"grid-container\"><div class=\"item1\">");
