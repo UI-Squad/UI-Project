@@ -359,12 +359,7 @@ navigation links stack on top of each other instead of next to each other */
 									<td colspan="2">&nbsp;</td>
 									<td colspan="2"><span class="thick"> 
 									<%
- 										double sum = 0.0;
- 										for (int i = 0; i < cart.getSize(); i++) {
- 										sum += cart.getItemTotal(cart.getCartItems().get(i));
- 										}
- 										sum = Math.round(sum * 100.0) / 100.0;
- 										out.println("$" + sum);
+ 										out.println(cart.getCartTotal());
  									%>
 									</span></td>
 								</tr>

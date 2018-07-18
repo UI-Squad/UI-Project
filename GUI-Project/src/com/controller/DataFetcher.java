@@ -114,6 +114,23 @@ public class DataFetcher {
 			e.printStackTrace();
 		}
 	}	
+	/**
+	 * Changes a Subtracts item's inStock field in the Inventory table. 
+	 * Used after an item is ordered to update Inventory
+	 * @param itemId String literal specifying the itemId
+	 * @param quantity Integer value specifying the new quantity in stock
+	 */
+	public void subtractInvetoryStock(String itemId, int quantity) {
+		try {
+			preparedStatement = connect.prepareStatement("UPDATE Inventory i SET i.inStock = i.inStock - ?"
+								+ " WHERE i.itemId = ?");
+			preparedStatement.setInt(1, quantity);
+			preparedStatement.setString(2, itemId);
+			preparedStatement.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}	
 	
 	/**
 	 * 
