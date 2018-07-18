@@ -144,7 +144,7 @@
 	
 		<div class="footer">
 		<h2>
-			<a href="customContact.jsp"><font color="000000">Contact Us</font></a>
+			<a href="./registeredCustomerViews/customContact.jsp"><font color="000000">Contact Us</font></a>
 		</h2>
 	</div>
 </body>
