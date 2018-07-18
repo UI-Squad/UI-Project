@@ -1,10 +1,12 @@
 package application.model;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 /**
  * @author Jerome Daly
  * @author Erwin Herrera
  * @author Shane Bogard
+ * @author Manuel Ben Bravo
  *
  * This java file will contain information pertaining
  * to the shopping cart of the customer.
@@ -103,12 +105,15 @@ public class Cart{
 	}
 	
 	/**return the cartTotal, calls setCartTotal to make sure it
-	 * returns the most up to date cartTotal.
-	 * @return double value representing the total item value
+	 * returns the most up to date cartTotal. Returns in US
+	 * currency format
+	 * @return String value representing the total item value
 	 * */
-	public double getCartTotal(){
+	public String getCartTotal(){
 		setCartTotal();
-		return cartTotal;
+		NumberFormat formating = NumberFormat.getCurrencyInstance();
+		String Amt = formating.format(this.cartTotal);
+		return Amt;
 	}
 	
 	/**
