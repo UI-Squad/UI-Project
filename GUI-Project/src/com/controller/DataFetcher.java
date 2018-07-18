@@ -213,12 +213,12 @@ public class DataFetcher {
 		try {
 			fetchCart(cartId);
 			resultSet.next();
-			String customerId = resultSet.getString("customerId");
-			if(customerId.equals("0") || customerId.equals(null))
-				customerId = "nul000";
+//			String customerId = resultSet.getString("customerId");
+//			if(customerId.equals("0") || customerId.equals(null))
+//				customerId = "nul000";
 			preparedStatement = connect.prepareStatement("INSERT into `Carts` values(?, ?, ?, ?)");
 			preparedStatement.setString(1, cartId);
-			preparedStatement.setString(2, customerId);
+			preparedStatement.setString(2, "guest");
 			preparedStatement.setString(3,  itemId);
 			preparedStatement.setInt(4, quantity);
 			preparedStatement.executeUpdate();

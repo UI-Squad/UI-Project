@@ -40,9 +40,12 @@ public class productDetailServlet extends HttpServlet {
 		String itemName = request.getParameter("itemName");
 		String itemDescription = request.getParameter("itemDescription");
 		String itemPrice = request.getParameter("itemPrice");
+		String itemID = request.getParameter("itemID");
+		
 		request.setAttribute("itemName", itemName);
 		request.setAttribute("itemDescription", itemDescription);
 		request.setAttribute("itemPrice", itemPrice);
+		request.setAttribute("itemID", itemID);
 		request.getRequestDispatcher("productDetailsPage.jsp").forward(request, response);
 	}
 

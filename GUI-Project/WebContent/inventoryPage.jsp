@@ -317,6 +317,13 @@ navigation links stack on top of each other instead of next to each other */
 					String itemName = items.get(i).getItemName();
 					String itemDescription = items.get(i).getDescription();
 					double itemPrice = items.get(i).getPrice();
+					
+					String itemID = items.get(i).getItemId();
+					int itemQuantity = items.get(i).getQuantity();
+					
+					out.println(itemID);
+					out.println(itemQuantity);
+					
 
 					
 					out.println("<div class=\"grid-container\"><div class=\"item1\">");
@@ -326,6 +333,7 @@ navigation links stack on top of each other instead of next to each other */
 					out.println("<input type=\"hidden\" name=\"itemName\" value=\""+itemName+"\">");
 					out.println("<input type=\"hidden\" name=\"itemDescription\" value=\""+itemDescription+"\">");
 					out.println("<input type=\"hidden\" name=\"itemPrice\" value=\""+itemPrice+"\">");
+					out.println("<input type=\"hidden\" name=\"itemID\" value=\""+itemID+"\">");
 					out.println("</form>");
 					
 					//Product Listing Information

@@ -309,7 +309,9 @@ navigation links stack on top of each other instead of next to each other */
 							<tbody>
 								<%
 									CartHandler cartHandler = new CartHandler();
-									Cart cart = cartHandler.getCart("car001");
+									// This Is a User Cart:  Cart cart = cartHandler.getCart("car001");
+									Cart cart = cartHandler.getCart("car000");
+									
 								%>
 								<!-- shopping cart contents -->
 
@@ -346,6 +348,10 @@ navigation links stack on top of each other instead of next to each other */
 										out.println("</tr>");
 									}
 								%>
+								
+								<form name="itemForm" action="removeFromCartServlet" method="POST">
+								</form>
+								
 
 								<!-- tax + subtotal -->
 								<tr class="extracosts">
