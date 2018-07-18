@@ -292,14 +292,26 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="rightcolumn">
 			<div class="card">
 				<div id="w">
+				
+					<%
+							CartHandler cartHandler = new CartHandler();
+							// This Is a User Cart:  Cart cart = cartHandler.getCart("car001");
+							Cart cart = cartHandler.getCart("car000");
+									
+					%>
 					<header id="title">
 					<h1>Shopping Cart</h1>
 					</header>
+					<% 
+					for (int k = 0; k < cart.getSize(); k++) {
 					
-					<form name="removeItemForm" action="removeFromCartServlet" method="POST">
-					<input type="hidden" name="itemID" value="${itemID}">
-					</form>
 					
+					out.println("<form name=\"removeItemForm"+k+"\" action=\"removeFromCartServlet\" method=\"POST\">");
+					out.println("<input type=\"hidden\" name=\"itemID\" value=\""+cart.getCartItems().get(k).getItemId()+"\">");
+					out.println("</form>");
+					}
+					
+					%>
 					
 					<div id="page">
 						<table id="cart">
@@ -313,12 +325,6 @@ navigation links stack on top of each other instead of next to each other */
 								</tr>
 							</thead>
 							<tbody>
-								<%
-									CartHandler cartHandler = new CartHandler();
-									// This Is a User Cart:  Cart cart = cartHandler.getCart("car001");
-									Cart cart = cartHandler.getCart("car000");
-									
-								%>
 								<!-- shopping cart contents -->
 
 								<!-- JSP Scriplet that generates the contents -->
@@ -349,7 +355,7 @@ navigation links stack on top of each other instead of next to each other */
 
 										// Remove option 
 										out.println("<td>");
-										out.println("<span class=\"remove\" onclick=\"document.removeItemForm.submit()\"><img src=\"Images/trash.png\" alt=\"X\"></span>");
+										out.println("<span class=\"remove\" onclick=\"document.removeItemForm"+i+".submit()\"><img src=\"Images/trash.png\" alt=\"X\"></span>");
 										out.println("</td>");
 										out.println("</tr>");
 									}
