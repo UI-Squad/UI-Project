@@ -1,6 +1,8 @@
 package com.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class customProductDetailServlet
+ * Servlet implementation class customRemoveFromCartServlet
  */
-@WebServlet("/customProductDetailServlet")
-public class customProductDetailServlet extends HttpServlet {
+@WebServlet("/customRemoveFromCartServlet")
+public class customRemoveFromCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public customProductDetailServlet() {
+    public customRemoveFromCartServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +29,7 @@ public class customProductDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		doPost(request,response);
 	}
 
 	/**
@@ -35,15 +37,21 @@ public class customProductDetailServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String itemName = request.getParameter("itemName");
-		String itemDescription = request.getParameter("itemDescription");
-		String itemPrice = request.getParameter("itemPrice");
 		String itemID = request.getParameter("itemID");
+		String cartID = "car002"; // Hardcoded for now until clarification of signed in cart id 
+
 		
-		request.setAttribute("itemName", itemName);
-		request.setAttribute("itemDescription", itemDescription);
-		request.setAttribute("itemPrice", itemPrice);
-		request.setAttribute("itemID", itemID);
-		request.getRequestDispatcher("./registeredCustomerViews/customProductDetails.jsp").forward(request, response);	}
+		CartHandler cartHandler = new CartHandler();
+		
+		try {
+			cartHandler.removeCartItem(cartID, itemID);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		request.getRequestDispatcher("./registeredCustomerViews/customCart2.jsp").forward(request, response);	
+	}
 
 }

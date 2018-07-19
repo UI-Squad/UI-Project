@@ -51,6 +51,7 @@ public class removeFromCartServlet extends HttpServlet {
 		}
 		
 		
-		request.getRequestDispatcher("cartPage.jsp").forward(request, response);	}
+		request.getRequestDispatcher("cartPage.jsp").forward(request, response);	
+	}
 
 }

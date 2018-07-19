@@ -111,18 +111,19 @@
 				<p>$${itemPrice}</p>
 				
 					
-				<select style="width: 70px;">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-									<option>6</option>
-									<option>7</option>
-									<option>8</option>
-									<option>9</option>
-									<option>10</option>
-								</select>
+				<form name="itemForm" action="customAddToCartServlet" method="POST">
+				<select name="numberOfItem" style="width: 70px;">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+				</select>
 								
 								
 								
@@ -130,8 +131,10 @@
 				<br>
 				<br>
 					
-				<a href="./registeredCustomerViews/customCart.jsp"><button type="button" class="addToCartButton">Add To Cart</button></a>
-					
+				<input type="hidden" name="itemID" value="${itemID}">
+				</form>
+				<a href="#" onclick="document.itemForm.submit();document.body.style.cursor='wait';return true;">
+				<button type="button" class="addToCartButton">Add To Cart</button></a>							
 										
 				</div>
 				

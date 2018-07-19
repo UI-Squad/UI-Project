@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class customProductDetailServlet
+ * Servlet implementation class customAddToCartServlet
  */
-@WebServlet("/customProductDetailServlet")
-public class customProductDetailServlet extends HttpServlet {
+@WebServlet("/customAddToCartServlet")
+public class customAddToCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public customProductDetailServlet() {
+    public customAddToCartServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,15 +35,18 @@ public class customProductDetailServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String itemName = request.getParameter("itemName");
-		String itemDescription = request.getParameter("itemDescription");
-		String itemPrice = request.getParameter("itemPrice");
 		String itemID = request.getParameter("itemID");
+		String itemQuantity = request.getParameter("numberOfItem");
+		String cartID = "car002";	//Hardcoded for now but needs to change to whatever cartID is of signed in user
+		int itemQ = Integer.parseInt(itemQuantity);
 		
-		request.setAttribute("itemName", itemName);
-		request.setAttribute("itemDescription", itemDescription);
-		request.setAttribute("itemPrice", itemPrice);
+		CartHandler cartHandler = new CartHandler();
+		
+		cartHandler.addCartItem(cartID, itemID, itemQ);
+		
+		
 		request.setAttribute("itemID", itemID);
-		request.getRequestDispatcher("./registeredCustomerViews/customProductDetails.jsp").forward(request, response);	}
+		request.setAttribute("item", itemQ);
+		request.getRequestDispatcher("./registeredCustomerViews/customCart2.jsp").forward(request, response);	}
 
 }

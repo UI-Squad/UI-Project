@@ -112,7 +112,7 @@
 				
 				<form name="itemForm" action="AddtoCartServlet" method="POST">
 				<select name="numberOfItem" style="width: 70px;">
-									<option selected="selected" value="1">1</option>
+									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
 									<option value="4">4</option>
@@ -130,9 +130,10 @@
 				<br>
 				<br>
 					
-					<input type="hidden" name="itemID" value="${itemID}">
+				<input type="hidden" name="itemID" value="${itemID}">
 				</form>
-				<a href="#" onclick="document.itemForm.submit()"><button type="button" class="addToCartButton">Add To Cart</button></a>				
+				<a href="#" onclick="document.itemForm.submit();document.body.style.cursor='wait';return true;">
+				<button type="button" class="addToCartButton">Add To Cart</button></a>				
 					
 										
 				</div>

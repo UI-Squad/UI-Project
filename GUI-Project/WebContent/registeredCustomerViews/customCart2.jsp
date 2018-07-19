@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>Shopping Cart</title>
-<link rel="stylesheet" type="text/css" href="../css/styles.css">
+<link rel="stylesheet" type="text/css" href="./css/styles.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
@@ -260,12 +260,12 @@ navigation links stack on top of each other instead of next to each other */
 <body onload= "startUp()">
 
 	<div class="header">
-		<img src="../Images/siteLogo.jpeg" style="height: 300px;" alt="">
+		<img src="./Images/siteLogo.jpeg" style="height: 300px;" alt="">
 	</div>
 
 	<!-- Navigation bar on the top of the menu  -->
 	<div class="topnav">
-		<a href="signedInCusWebsite.jsp">Home</a>
+		<a href="./registeredCustomerViews/signedInCusWebsite.jsp">Home</a>
 
 		<!-- Drop down sub menu for categories in navigation bar  -->
 		<div class="dropdown">
@@ -273,21 +273,21 @@ navigation links stack on top of each other instead of next to each other */
 				Categories <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="customElectronics.jsp">Electronics</a> 
-				<a href="customClothing.jsp">Clothing</a> 
-				<a href="customBooks.jsp">Books</a>
-				<a href="customAuto.jsp">Automotive</a> 
-				<a href="customHome.jsp">Home</a> 
-				<a href="customViewAll.jsp">View All</a>
+				<a href="./registeredCustomerViews/customElectronics.jsp">Electronics</a> 
+				<a href="./registeredCustomerViews/customClothing.jsp">Clothing</a> 
+				<a href="./registeredCustomerViews/customBooks.jsp">Books</a>
+				<a href="./registeredCustomerViews/customAuto.jsp">Automotive</a> 
+				<a href="./registeredCustomerViews/customHome.jsp">Home</a> 
+				<a href="./registeredCustomerViews/customViewAll.jsp">View All</a>
 			</div>
 		</div>
 
-		<a href="customCart.jsp" class="active">Cart</a> <a href="customInventory.jsp">Inventory</a>
-		<a href="../Website.html" style="float: right" name="signOutLink">Sign Out</a>
+		<a href="./registeredCustomerViews/customCart.jsp" class="active">Cart</a> <a href="./registeredCustomerViews/customInventory.jsp">Inventory</a>
+		<a href="./Website.html" style="float: right" name="signOutLink">Sign Out</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">
-			<form name="searchBar" action="../customSearchResponseServlet"
+			<form name="searchBar" action="./registeredCustomerViews/customSearchResponseServlet"
 				onsubmit="return validateForm()" method="post">
 				<input type="text" name="value" placeholder="Search">
 				<button type="submit">
@@ -317,7 +317,7 @@ navigation links stack on top of each other instead of next to each other */
 					for (int k = 0; k < cart.getSize(); k++) {
 					
 					
-					out.println("<form name=\"removeItemForm"+k+"\" action=\"../customRemoveFromCartServlet\" method=\"POST\">");
+					out.println("<form name=\"removeItemForm"+k+"\" action=\"./customRemove2Servlet\" method=\"POST\">");
 					out.println("<input type=\"hidden\" name=\"itemID\" value=\""+cart.getCartItems().get(k).getItemId()+"\">");
 					out.println("</form>");
 					}
@@ -346,7 +346,7 @@ navigation links stack on top of each other instead of next to each other */
 										out.println("<tr class=\"productItem\">");
 
 										//Picture
-										out.println("<td><img src=\"../productImages/"
+										out.println("<td><img src=\"./productImages/"
 										+ cart.getCartItems().get(i).getItemName() + ".jpg\" class=\"thumb\" " 
 										+ "style=\"width: 140px\" alt=\"product\"></a></td>");
 
@@ -366,7 +366,7 @@ navigation links stack on top of each other instead of next to each other */
 
 										// Remove option 
 										out.println("<td>");
-										out.println("<span class=\"remove\" onclick=\"document.removeItemForm"+i+".submit()\"><img src=\"../Images/trash.png\" alt=\"X\"></span>");
+										out.println("<span class=\"remove\" onclick=\"document.removeItemForm"+i+".submit()\"><img src=\"./Images/trash.png\" alt=\"X\"></span>");
 										out.println("</td>");
 										out.println("</tr>");
 									}
@@ -390,7 +390,7 @@ navigation links stack on top of each other instead of next to each other */
 								</tr>
 								<!-- checkout btn -->
 								<tr class="checkoutrow">
-								<td colspan="5" class="checkout"><a href="customPersonalInfo.jsp">
+								<td colspan="5" class="checkout"><a href="./registeredCustomerViews/customPersonalInfo.jsp">
 								<button id="submitbtn">Checkout</button></a>
 								</td>								
 								</tr>
@@ -424,7 +424,7 @@ navigation links stack on top of each other instead of next to each other */
 
 	<div class="footer">
 		<h2>
-			<a href="customContact.jsp"><font color="000000">Contact
+			<a href="./registeredCustomerViews/customContact.jsp"><font color="000000">Contact
 					Us</font></a>
 		</h2>
 	</div>

@@ -243,8 +243,33 @@ navigation links stack on top of each other instead of next to each other */
 	}
 </script>
 
+<!-- Scripts that validate the cart and give the cart page a waiting cursor  -->
+<script type="text/javascript">
+
+	function clearWait(){
+		document.body.style.cursor='wait;'
+		
+		window.onload=function(){document.body.style.cursor='default';}
+	}
+	
+	function validateCart() {
+		var table = document.getElementById('cart').getElementsByTagName('tr');
+		var tableRows = table.length;
+			if(tableRows < 5){
+				document.getElementById('submitbtn').style.visibility = 'hidden';
+			} else {
+				document.getElementById('submitbtn').style.visibility = 'visible';
+		}
+	}
+	
+	function startUp(){
+		clearWait();
+		validateCart;
+	}
+</script>
+
 </head>
-<body onload= "validateCart()">
+<body onload= "startUp()">
 
 	<div class="header">
 		<img src="./Images/siteLogo.jpeg" style="height: 300px;" alt="">
@@ -387,19 +412,6 @@ navigation links stack on top of each other instead of next to each other */
 							</tbody>
 						</table>
 					</div>
-					
-					<!-- Script for if there are no items to hide checkout button  -->
-					<script type="text/javascript">
-							function validateCart() {
-								var table = document.getElementById('cart').getElementsByTagName('tr');
-								var tableRows = table.length;
-								if(tableRows < 5){
-									document.getElementById('submitbtn').style.visibility = 'hidden';
-								} else {
-									document.getElementById('submitbtn').style.visibility = 'visible';
-								}
-							}
-					</script>
 					
 				</div>
 				<!-- end divider for shopping cart  -->
