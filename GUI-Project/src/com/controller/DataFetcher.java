@@ -120,7 +120,7 @@ public class DataFetcher {
 	 * @param itemId String literal specifying the itemId
 	 * @param quantity Integer value specifying the new quantity in stock
 	 */
-	public void subtractInvetoryStock(String itemId, int quantity) {
+	public void subtractInventoryStock(String itemId, int quantity) {
 		try {
 			preparedStatement = connect.prepareStatement("UPDATE Inventory i SET i.inStock = i.inStock - ?"
 								+ " WHERE i.itemId = ?");
@@ -346,6 +346,24 @@ public class DataFetcher {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}	
+	}
+	
+	/**
+	 * Search Method to retrieve information from database
+	
+	 * @param search
+	 * @return
+	 */
+	public ResultSet searchQuery(String search) {
+		try {
+			preparedStatement = connect.prepareStatement("SELECT * from Inventory WHERE name LIKE '%'?'%'");
+			preparedStatement.setString(1, search);
+			resultSet = preparedStatement.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultSet;
+		
 	}
 	
 	/**
