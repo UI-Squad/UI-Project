@@ -201,6 +201,26 @@ public class DataFetcher {
 		return resultSet;
 	}
 	
+	
+	/**
+	 * Returns the CartID using the CustomerID
+	 * @param cartId A string literal representing the cart id
+	 * @return ResultSet the resulSet of the SQL query
+	 */
+	public ResultSet fetchCartID(String custID) {
+		try {
+			preparedStatement = connect.prepareStatement("SELECT curCart FROM Customers WHERE CustomerID = ?");
+			preparedStatement.setString(1, custID);
+			resultSet = preparedStatement.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultSet;
+	}
+	
+	
+	
+	
 	/**
 	 * Registered customer
 	 * @param cartId
@@ -378,6 +398,8 @@ public class DataFetcher {
 		return resultSet;
 	}
 	
+	
+	
 	/**
 	 * Adds a new order to the order table in the database.
 	 * @param orderId String literal specifying the unique order ID
@@ -466,6 +488,7 @@ public class DataFetcher {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	
 	/**

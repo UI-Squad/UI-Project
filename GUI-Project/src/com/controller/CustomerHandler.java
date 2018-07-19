@@ -63,7 +63,14 @@ public class CustomerHandler extends DataHandler {
 		return cust;
 		
 	}
-	
+
+	public String getCartID(String CustID) throws SQLException {
+		connect();
+		fetcher.fetchCartID(CustID);
+		return (results.getString("curCart"));
+		
+	}
+
 	
 	/**
 	 * Parse results from DataFetcher for getCust
