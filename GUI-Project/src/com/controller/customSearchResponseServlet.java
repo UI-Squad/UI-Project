@@ -36,8 +36,8 @@ public class customSearchResponseServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String searchValue = request.getParameter("value");
-		request.setAttribute("searchValue", searchValue);
 
+		request.getSession().setAttribute("searchValue", searchValue);
 		request.getRequestDispatcher("./registeredCustomerViews/customSearchResponse.jsp").forward(request, response);		
 	}
 

@@ -299,33 +299,40 @@ navigation links stack on top of each other instead of next to each other */
 	<div class="row">
 		<div class="rightcolumn">
 
-<%-- 			<%
-				ItemHandler itemHandler = new ItemHandler();
-				ArrayList<Item> items = itemHandler.getAllItems();
-				itemHandler.closeConnection();
-
-			%> --%>
+			<%
+ 				String searchValue = (String)request.getSession().getAttribute("searchValue");
+				
+ 				ItemHandler itemHandler = new ItemHandler();
+				ArrayList<Item> items = itemHandler.searchForItems(searchValue);
+				itemHandler.closeConnection(); 
+				
+			%> 
 			<div class="card">
 
 				<h3>Displaying Results For: ${searchValue}</h3>
 				
 				<!-- JSP Scriplet that generates   -->
-				<%-- <%
+				<%
 				
 				for(int i = 0; i < items.size(); i++){
 					
 					String itemName = items.get(i).getItemName();
 					String itemDescription = items.get(i).getDescription();
 					double itemPrice = items.get(i).getPrice();
+					
+					String itemID = items.get(i).getItemId();
+					int itemQuantity = items.get(i).getQuantity();
+					
 
 					
 					out.println("<div class=\"grid-container\"><div class=\"item1\">");
 					
 					//ItemProductForm
-					out.println("<form name=\"itemNameForm"+i+"\" action=\"productDetailServlet\" method=\"POST\">");
+					out.println("<form name=\"itemNameForm"+i+"\" action=\"./customProductDetailServlet\" method=\"POST\">");
 					out.println("<input type=\"hidden\" name=\"itemName\" value=\""+itemName+"\">");
 					out.println("<input type=\"hidden\" name=\"itemDescription\" value=\""+itemDescription+"\">");
 					out.println("<input type=\"hidden\" name=\"itemPrice\" value=\""+itemPrice+"\">");
+					out.println("<input type=\"hidden\" name=\"itemID\" value=\""+itemID+"\">");
 					out.println("</form>");
 					
 					//Product Listing Information
@@ -349,7 +356,6 @@ navigation links stack on top of each other instead of next to each other */
 				}
 				
 				%>
- --%>
  
 			</div>
 			<!-- end divider for card  -->

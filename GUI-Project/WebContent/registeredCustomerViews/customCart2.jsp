@@ -287,7 +287,7 @@ navigation links stack on top of each other instead of next to each other */
 
 		<!-- Search Bar -->
 		<div class="search-container">
-			<form name="searchBar" action="./registeredCustomerViews/customSearchResponseServlet"
+			<form name="searchBar" action="./customSearchResponseServlet"
 				onsubmit="return validateForm()" method="post">
 				<input type="text" name="value" placeholder="Search">
 				<button type="submit">
