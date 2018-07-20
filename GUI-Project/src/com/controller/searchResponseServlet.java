@@ -41,15 +41,15 @@ public class searchResponseServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String searchValue = request.getParameter("value");
-		ItemHandler itemHandler = new ItemHandler();
-		ArrayList<Item> items = null;
+		//ItemHandler itemHandler = new ItemHandler();
+		//ArrayList<Item> items = null;
 		
-		try {
-			items = itemHandler.searchForItems(searchValue);
-		} catch (SQLException e) {
+		//try {
+		//	items = itemHandler.searchForItems(searchValue);
+		//} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//	e.printStackTrace();
+		//}
 		request.setAttribute("searchValue", searchValue);
 		request.getRequestDispatcher("search-response.jsp").forward(request, response);	
 	}

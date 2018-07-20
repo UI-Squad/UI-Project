@@ -299,18 +299,20 @@ navigation links stack on top of each other instead of next to each other */
 	<div class="row">
 		<div class="rightcolumn">
 
-<%-- 			<%
+			<%
+				String search = request.getParameter("searchValue");
+				
 				ItemHandler itemHandler = new ItemHandler();
-				ArrayList<Item> items = itemHandler.getAllItems();
+				ArrayList<Item> items = itemHandler.searchForItems(search);
 				itemHandler.closeConnection();
 
-			%> --%>
+			%> 
 			<div class="card">
 
 				<h3>Displaying Results For: ${searchValue}</h3>
 				
 				<!-- JSP Scriplet that generates   -->
-				<%-- <%
+				<%
 				
 				for(int i = 0; i < items.size(); i++){
 					
@@ -349,7 +351,6 @@ navigation links stack on top of each other instead of next to each other */
 				}
 				
 				%>
- --%>
  
 			</div>
 			<!-- end divider for card  -->
