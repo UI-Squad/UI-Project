@@ -41,6 +41,13 @@ public class ItemHandler extends DataHandler {
 		return itemList;
 	}
 	
+	public ArrayList<Item> searchForItems(String search) throws SQLException{
+		connect();
+		results = fetcher.searchQuery(search);
+		parseResults();
+		return itemList;
+	}
+	
 	/**
 	 * Returns an ArrayList of item objects specified by their department.
 	 * @param dept String literal specifying the items department
