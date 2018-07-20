@@ -356,8 +356,10 @@ public class DataFetcher {
 	 */
 	public ResultSet searchQuery(String search) {
 		try {
-			preparedStatement = connect.prepareStatement("SELECT * from Inventory WHERE name LIKE '%'?'%'");
-			preparedStatement.setString(1, search);
+			preparedStatement = connect.prepareStatement("SELECT * from Inventory WHERE name LIKE ? ? ?");
+			preparedStatement.setString(1, "%");
+			preparedStatement.setString(2, search);
+			preparedStatement.setString(3, "%");
 			resultSet = preparedStatement.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
