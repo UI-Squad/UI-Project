@@ -50,7 +50,9 @@ public class searchResponseServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 		//	e.printStackTrace();
 		//}
-		request.setAttribute("searchValue", searchValue);
+		//request.setAttribute("searchValue", searchValue);
+		
+		request.getSession().setAttribute("searchValue", searchValue);
 		request.getRequestDispatcher("search-response.jsp").forward(request, response);	
 	}
 

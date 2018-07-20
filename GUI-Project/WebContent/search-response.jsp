@@ -300,11 +300,13 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="rightcolumn">
 
 			<%
-				String search = request.getParameter("searchValue");
+ 				String searchValue = (String)request.getSession().getAttribute("searchValue");
 				
-				ItemHandler itemHandler = new ItemHandler();
-				ArrayList<Item> items = itemHandler.searchForItems(search);
-				itemHandler.closeConnection();
+ 				ItemHandler itemHandler = new ItemHandler();
+				ArrayList<Item> items = itemHandler.searchForItems(searchValue);
+				itemHandler.closeConnection(); 
+				
+				out.println(searchValue);
 
 			%> 
 			<div class="card">
