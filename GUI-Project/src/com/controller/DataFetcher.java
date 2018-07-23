@@ -207,11 +207,13 @@ public class DataFetcher {
 	 * @param cartId A string literal representing the cart id
 	 * @return ResultSet the resulSet of the SQL query
 	 */
-	public ResultSet fetchCartID(String custID) {
+	public ResultSet fetchCartbyCustomerId(String custID) {
 		try {
-			preparedStatement = connect.prepareStatement("SELECT curCart FROM Customers WHERE CustomerID = ?");
+			preparedStatement = connect.prepareStatement("SELECT c.curCart FROM Customers c WHERE c.CustomerID = ?");
 			preparedStatement.setString(1, custID);
 			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			resultSet = fetchCart(resultSet.getString("curCart"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -278,6 +280,8 @@ public class DataFetcher {
 			e.printStackTrace();
 		}
 	}
+	
+	
 			
 	/**
 	 * Returns a ResultSet of items from the Inventory table and their matching quantities 

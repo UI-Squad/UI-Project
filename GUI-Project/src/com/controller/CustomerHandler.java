@@ -39,6 +39,18 @@ public class CustomerHandler extends DataHandler {
 	}
 	
 	/**
+	 * Returns the cart for the specified Customer
+	 * @param customer Customer object specifying the customer's cart to update
+	 * @return Cart cart object representing the updated cart
+	 * @throws SQLException 
+	 */
+	public Cart getCustomerCart(Customer customer) throws SQLException {
+		results = fetcher.fetchCartbyCustomerId(customer.getId());
+		results.next();
+		return new CartHandler(getFetcher()).getCart(results.getString("cartId"));
+	}
+	
+	/**
 	 * 
 	 * @param email
 	 * @param password
@@ -59,17 +71,17 @@ public class CustomerHandler extends DataHandler {
 	
 	public Customer addCust(String FirstName, String LastName, String Email, String Password) throws SQLException{
 		connect();
-		fetcher.addCustomer(FirstName, LastName, Email,Password);
+		fetcher.addCustomer(FirstName, LastName, Email, Password);
 		return cust;
 		
 	}
-
-	public String getCartID(String CustID) throws SQLException {
+	
+		
+	/*public String getCartID(String CustID) throws SQLException {
 		connect();
 		fetcher.fetchCartID(CustID);
 		return (results.getString("curCart"));
-		
-	}
+	}*/
 
 	
 	/**
