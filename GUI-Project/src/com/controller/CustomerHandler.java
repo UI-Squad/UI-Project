@@ -45,7 +45,17 @@ public class CustomerHandler extends DataHandler {
 	 * @throws SQLException 
 	 */
 	public Cart getCustomerCart(Customer customer) throws SQLException {
-		results = fetcher.fetchCartbyCustomerId(customer.getId());
+		return getCustomerCart(customer.getId());
+	}
+	
+	/**
+	 * 
+	 * @param custId
+	 * @return
+	 * @throws SQLException 
+	 */
+	public Cart getCustomerCart(String custId) throws SQLException {
+		results = fetcher.fetchCartbyCustomerId(custId);
 		results.next();
 		return new CartHandler(getFetcher()).getCart(results.getString("cartId"));
 	}
