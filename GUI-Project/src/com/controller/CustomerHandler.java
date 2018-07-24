@@ -61,6 +61,16 @@ public class CustomerHandler extends DataHandler {
 	}
 	
 	/**
+	 * @throws SQLException 
+	 * 
+	 */
+	public void returnCartToInventory(String custId, Cart cart) throws SQLException {
+		results = fetcher.fetchCartbyCustomerId(custId);
+		new CartHandler(getFetcher()).returnToInventory(results.getString("cartId"), cart);
+		results.next();
+	}
+	
+	/**
 	 * 
 	 * @param email
 	 * @param password

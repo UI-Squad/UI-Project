@@ -114,6 +114,18 @@ public class CartHandler extends DataHandler {
 		fetcher.removeCartItem(cartId, itemId);
 		fetcher.updateInventoryStock(itemId, newStock);	
 	}
+	
+	/**
+	 * 
+	 * @param cartId
+	 * @param cart
+	 * @throws SQLException 
+	 */
+	public void returnToInventory(String cartId, Cart cart) throws SQLException {
+		for(Item item: cart.getCartItems()) {
+			removeCartItem(cartId, item.getItemId());
+		}
+	}
 		
 	/**
 	 * Parses the ResultSet into a Cart object.
