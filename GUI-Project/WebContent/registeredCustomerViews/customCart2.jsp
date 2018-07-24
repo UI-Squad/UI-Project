@@ -252,7 +252,7 @@ navigation links stack on top of each other instead of next to each other */
 	
 	function startUp(){
 		clearWait();
-		validateCart;
+		validateCart();
 	}
 </script>
 

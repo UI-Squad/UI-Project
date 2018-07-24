@@ -180,7 +180,7 @@ stack on top of each other instead of next to each other (also change the direct
 			<div class="container">
 					<%
 							CartHandler cartHandler = new CartHandler();
-							Cart cart = cartHandler.getCart("car001");
+							Cart cart = cartHandler.getCart("guest");
 					%>
 								<!-- shopping cart contents -->
 			

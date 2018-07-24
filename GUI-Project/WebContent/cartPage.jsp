@@ -264,7 +264,7 @@ navigation links stack on top of each other instead of next to each other */
 	
 	function startUp(){
 		clearWait();
-		validateCart;
+		validateCart();
 	}
 </script>
 
@@ -321,7 +321,7 @@ navigation links stack on top of each other instead of next to each other */
 					<%
 							CartHandler cartHandler = new CartHandler();
 							// This Is a User Cart:  Cart cart = cartHandler.getCart("car001");
-							Cart cart = cartHandler.getCart("car000");
+							Cart cart = cartHandler.getCart("guest");
 									
 					%>
 					<header id="title">
