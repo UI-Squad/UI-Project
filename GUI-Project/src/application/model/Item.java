@@ -1,5 +1,6 @@
 package application.model;
 
+
 /**
  * @author Jerome Daly
  * @author Erwin Herrera
@@ -9,7 +10,7 @@ package application.model;
  * to basics of an item within the shopping web site.
  * (quantity, price, etc)
  */
-public class Item {
+public class Item implements Comparable<Object>{
 
 	/** The item's ID */
 	private String itemId;
@@ -209,6 +210,8 @@ public class Item {
 		return this.itemId.equalsIgnoreCase(other.itemId);
 	}
 	
+	
+	
 	/**
 	 * Returns a string literal representation of this item object
 	 * containing each attribute separated by colons.
@@ -217,5 +220,19 @@ public class Item {
 		return itemId + ":" + itemName + ":" + description + ":" + dept + ":"
 				+ price + ":" + quantity;
 	}
+
+	/**
+	 * 
+	 * @param arg0
+	 * @return
+	 */
+	public int compareTo(Object obj) {
+		if(!(obj instanceof Item)) return 0;
+		Item other = (Item)obj;
+		if(price > other.getPrice()) return 1;
+		if(price < other.getPrice()) return -1;
+		return 0;
+	}
+
 
 }

@@ -101,10 +101,10 @@ public class CustomerHandler extends DataHandler {
 	protected void parseResults() throws SQLException {
 		cust = null;
 		while(results.next()) {
-			cust = new Customer(results.getString("Email"), results.getString("CustomerID"), 
-					new Name(results.getString("FirstName"), results.getString("middleNm"), 
-							results.getString("LastName")), new Address(results.getString("address")),
-							results.getLong("phoneNm"), new CartHandler(getFetcher()).getCart(results.getString("curCart")));
+			cust = new Customer(results.getString("Email"), results.getString("customerId"), 
+					new Name(results.getString("firstNm"), results.getString("middleNm"), 
+							results.getString("lastNm")), new Address(results.getString("address")),
+							results.getLong("phoneNum"), new CartHandler(getFetcher()).getCart(results.getString("curCart")));
 		}
 	}	
 }
