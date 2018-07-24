@@ -38,7 +38,7 @@ public class customRemoveFromCartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String itemID = request.getParameter("itemID");
-		String cartID = "car002"; // Hardcoded for now until clarification of signed in cart id 
+		String cartID = (String)request.getSession().getAttribute("cusID");
 
 		
 		CartHandler cartHandler = new CartHandler();

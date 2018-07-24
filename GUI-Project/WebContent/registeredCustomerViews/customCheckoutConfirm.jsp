@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.controller.CartHandler"
+	import="application.model.Cart" import="com.controller.CustomerHandler" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -122,12 +123,32 @@ stack on top of each other instead of next to each other (also change the direct
 			<div class="container">
 					<div class="row">
 						<div class="col-50">
-							<h3>Order</h3>
-							<label for="item">Item Name <span class="price">$15</span></label> 
-							<hr>
+						
+					<%
+							CustomerHandler handler = new CustomerHandler();
+
+							CartHandler cartHandler = new CartHandler();
+	 						String cusID = (String)request.getSession().getAttribute("cusID");
+							
+							Cart cart = handler.getCustomerCart(cusID);
+									
+					%>
+								<!-- shopping cart contents -->
+			
+				<h3>Order</h3>
+
+				<% 
+					for (int i = 0; i < cart.getSize(); i++){
+						out.println("<label for=\"item\">"+cart.getCartItems().get(i).getItemName());
+						out.println("<span class=\"price\">"+"$"+cart.getCartItems().get(i).getPrice());
+						out.println("</span></label>");
+						out.println("<hr>");
+					}
+				
+				%>
 							<label for="item">Shipping: <span class="price">FREE</span></label> 
 							<hr>
-							<label for="item">Total:<span class="price">$</span></label> 
+							<label for="item">Total:<span class="price"><% out.println(cart.getCartTotal()); %></span></label> 
 						</div>
 					</div>
 					<a href="customOrderConfirm.jsp"><input type="submit" value="Place Order" class="btn"></a>
