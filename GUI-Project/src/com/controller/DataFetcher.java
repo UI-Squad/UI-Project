@@ -133,7 +133,7 @@ public class DataFetcher {
 	public void addItemToInventory(String itemId, String name, String description, String dept,
 							double price, int inStock) {
 		try {
-			preparedStatement = connect.prepareStatement("INSERT INTO Inventory (name, description, dept, price, inStock, itemId) VALUES (?,?,?,?,?)");
+			preparedStatement = connect.prepareStatement("INSERT INTO Inventory (name, description, dept, price, inStock, itemId) VALUES (?,?,?,?,?,?)");
 			preparedStatement.setString(1, name);
 			preparedStatement.setString(2, description);
 			preparedStatement.setString(3, dept);
