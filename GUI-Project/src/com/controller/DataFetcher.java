@@ -99,6 +99,28 @@ public class DataFetcher {
 	}
 	
 	
+	
+	/**
+	 * Changes the description for an item given the name 
+	 * @param itemId String literal specifying the item to update
+	 * @param name String literal specifying the new name of the item
+	 * @param description String literal specifying the new item's description
+	 * @param dept String literal specifying the item's new department
+	 * @param price String literal specifying the item's new price
+	 * @param inStock String literal specifying the new in stock quantity of the item
+	 */
+	public void updateInventoryItemDescription(String name, String description) {
+		try {
+			preparedStatement = connect.prepareStatement("UPDATE Inventory i SET i.description = ? WHERE i.name = ?");
+			preparedStatement.setString(1, description);
+			preparedStatement.setString(2, name);
+			preparedStatement.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	/**
 	 * Adds an item to inventory 
 	 * @param itemId String literal specifying the item to update
