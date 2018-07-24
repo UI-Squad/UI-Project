@@ -60,6 +60,7 @@ public class CustomerHandler extends DataHandler {
 		return new CartHandler(getFetcher()).getCart(results.getString("cartId"));
 	}
 	
+	
 	/**
 	 * @throws SQLException 
 	 * 
