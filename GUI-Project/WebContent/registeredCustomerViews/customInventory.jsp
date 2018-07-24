@@ -345,7 +345,7 @@ navigation links stack on top of each other instead of next to each other */
  					out.println(itemDescription);
  					out.println("</div>");
 					out.println("<div class=\"item5\">");
- 					out.println(itemPrice);
+ 					out.println("$"+itemPrice);
  					out.println("</div><div class=\"item6\"></div>");		
 					out.println("<div class=\"item7\"></div></div>");	
 					out.println("<hr>");

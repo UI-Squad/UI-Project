@@ -304,10 +304,12 @@ navigation links stack on top of each other instead of next to each other */
 				ArrayList<Item> items = itemHandler.getAllItems();
 				itemHandler.closeConnection();
 				
+				Collections.sort(items);	// sort by price
+
 			%>
 			<div class="card">
 
-				<h2>Inventory</h2>
+				<h2>Inventory - Sorted by Price: Low to High</h2>
 				
 				<!-- JSP Scriplet that generates   -->
 				<%
@@ -365,7 +367,7 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="leftcolumn">
 			<div class="card">
 				<h3>Filter/Sort</h3>
-				<a href="byPriceInventory.jsp"><font color="000000">Price: Low to High</font></a>
+				<a href="inventoryPage.jsp"><font color="000000">Sort by: Department</font></a>
 				<p></p>
 				<p>Option</p>
 				<p></p>
