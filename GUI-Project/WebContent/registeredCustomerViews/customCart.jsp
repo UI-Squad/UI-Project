@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="com.controller.CartHandler"
-	import="application.model.Cart" %>
+	import="application.model.Cart" import="com.controller.CustomerHandler" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -305,8 +305,12 @@ navigation links stack on top of each other instead of next to each other */
 				<div id="w">
 				
 					<%
+							CustomerHandler handler = new CustomerHandler();
+
 							CartHandler cartHandler = new CartHandler();
-							Cart cart = cartHandler.getCart("car002");
+	 						String cusID = (String)request.getSession().getAttribute("cusID");
+							
+							Cart cart = handler.getCustomerCart(cusID);
 									
 					%>
 					<header id="title">

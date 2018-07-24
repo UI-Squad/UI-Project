@@ -48,7 +48,9 @@ public class SignInServlet extends HttpServlet {
 				
 		CustomerHandler Cushandle = new CustomerHandler();
 		Customer Cust = null;
+		String cusID = null;
 		PrintWriter out = response.getWriter();
+		
 
 	
 		try {
@@ -56,7 +58,8 @@ public class SignInServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		// No info found redirect to loginPage
+		// No info found redirect to loginPage		
+		
 		if(Cust == null) {
 			out.println("<script type=\"text/javascript\">");  
 			out.println("alert('Invalid email/password. Please try again.');");  
@@ -65,11 +68,17 @@ public class SignInServlet extends HttpServlet {
 //			response.sendRedirect("loginPage.jsp");
 		}else {
 			//print out user creds
-			out.println("<html><body>");
-			out.println("</br></br>");
-			out.println("Cust to string = " + Cust.getEmail() + " " + Cust.getName().toString() + " " + Cust.getId() + "<br>");
-			out.println("<a href=\"./registeredCustomerViews/signedInCusWebsite.jsp\">Continue to homepage.</a>");
-			out.println("</body></html>");
+//			out.println("<html><body>");
+//			out.println("</br></br>");
+//			out.println("Cust to string = " + Cust.getEmail() + " " + Cust.getName().toString() + " " + Cust.getId() + "<br>");
+			
+			cusID = Cust.getId();
+			request.getSession().setAttribute("cusID", cusID);
+			
+			response.sendRedirect("./registeredCustomerViews/signedInCusWebsite.jsp");
+			
+//			out.println("<a href=\"./registeredCustomerViews/signedInCusWebsite.jsp\">Continue to homepage.</a>");
+//			out.println("</body></html>");
 			out.close();
 		}
 		
