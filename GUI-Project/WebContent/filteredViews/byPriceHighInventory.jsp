@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="com.controller.ItemHandler" import="application.model.Item"%>
-<%@ page import="java.util.ArrayList" import="java.util.Collections"%>
+<%@ page import="java.util.ArrayList" import="java.util.Collections" 
+import="java.util.Comparator"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -258,12 +259,12 @@ navigation links stack on top of each other instead of next to each other */
 <body>
 
 	<div class="header">
-		<img src="./Images/siteLogo.jpeg" style="height: 300px;" alt="">
+		<img src="../Images/siteLogo.jpeg" style="height: 300px;" alt="">
 	</div>
 
 	<!-- Navigation bar on the top of the menu  -->
 	<div class="topnav">
-		<a href="Website.html">Home</a>
+		<a href="../Website.html">Home</a>
 
 		<!-- Drop down sub menu for categories in navigation bar  -->
 		<div class="dropdown">
@@ -271,21 +272,21 @@ navigation links stack on top of each other instead of next to each other */
 				Categories <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="electronicsPage.jsp">Electronics</a> 
-				<a href="clothingPage.jsp">Clothing</a> 
-				<a href="booksPage.jsp">Books</a>
-				<a href="autoPage.jsp">Automotive</a> 
-				<a href="homePage.jsp">Home</a> 
-				<a href="viewAllPage.jsp">View All</a>
+				<a href="../electronicsPage.jsp">Electronics</a> 
+				<a href="../clothingPage.jsp">Clothing</a> 
+				<a href="../booksPage.jsp">Books</a>
+				<a href="../autoPage.jsp">Automotive</a> 
+				<a href="../homePage.jsp">Home</a> 
+				<a href="../viewAllPage.jsp">View All</a>
 			</div>
 		</div>
 
-		<a href="cartPage.jsp">Cart</a> <a href="inventoryPage.jsp" class="active">Inventory</a>
-		<a href="loginPage.jsp" style="float: right">Sign In</a>
+		<a href="../cartPage.jsp">Cart</a> <a href="../inventoryPage.jsp" class="active">Inventory</a>
+		<a href="../loginPage.jsp" style="float: right">Sign In</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">
-			<form name="searchBar" action="searchResponseServlet"
+			<form name="searchBar" action="../searchResponseServlet"
 				onsubmit="return validateForm()" method="POST">
 				<input type="text" name="value" placeholder="Search">
 				<button type="submit">
@@ -304,10 +305,17 @@ navigation links stack on top of each other instead of next to each other */
 				ArrayList<Item> items = itemHandler.getAllItems();
 				itemHandler.closeConnection();
 				
+/* 				Collections.sort(items);	// sort by price
+ */				Collections.sort(items, Comparator.comparing(Item::getPrice));
+				Collections.reverse(items);
+				
+
+
+
 			%>
 			<div class="card">
 
-				<h2>Inventory</h2>
+				<h2>Inventory - Sorted by Price: High to Low</h2>
 				
 				<!-- JSP Scriplet that generates   -->
 				<%
@@ -328,12 +336,12 @@ navigation links stack on top of each other instead of next to each other */
 						itemSummary=itemDescription;
 					}
 					
-				
+
 					
 					out.println("<div class=\"grid-container\"><div class=\"item1\">");
 					
 					//ItemProductForm
-					out.println("<form name=\"itemNameForm"+i+"\" action=\"productDetailServlet\" method=\"POST\">");
+					out.println("<form name=\"itemNameForm"+i+"\" action=\"../productDetailServlet\" method=\"POST\">");
 					out.println("<input type=\"hidden\" name=\"itemName\" value=\""+itemName+"\">");
 					out.println("<input type=\"hidden\" name=\"itemDescription\" value=\""+itemDescription+"\">");
 					out.println("<input type=\"hidden\" name=\"itemPrice\" value=\""+itemPrice+"\">");
@@ -342,7 +350,7 @@ navigation links stack on top of each other instead of next to each other */
 					
 					//Product Listing Information
 					out.println("<a href=\"#\" onclick=\"document.itemNameForm"+i+".submit()\">");
-					out.println("<img src=\"./productImages/"
+					out.println("<img src=\"../productImages/"
 					+ itemName + ".jpg\" align=\"middle\" style=\"width: 170px\" alt=\"product\"></a>");
 					out.println("</div>");
 					out.println("<div class=\"item2\">");
@@ -372,9 +380,10 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="leftcolumn">
 			<div class="card">
 				<h3>Filter/Sort</h3>
-				<a href="./filteredViews/byPriceLowInventory.jsp"><font color="000000">Price: Low to High</font></a>
+				<a href="../inventoryPage.jsp"><font color="000000">Sort by: Department</font></a>
 				<p></p>
-				<a href="./filteredViews/byPriceHighInventory.jsp"><font color="000000">Price: High to Low</font></a>
+				<a href="./byPriceLowInventory.jsp"><font color="000000">Price: Low to High</font></a>
+				<p></p>
 			</div>
 		</div>
 	</div>
@@ -382,7 +391,7 @@ navigation links stack on top of each other instead of next to each other */
 	
 		<div class="footer">
 		<h2>
-			<a href="contactUsPage.jsp"><font color="000000">Contact Us</font></a>
+			<a href="../contactUsPage.jsp"><font color="000000">Contact Us</font></a>
 		</h2>
 	</div>
 </body>

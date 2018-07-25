@@ -10,7 +10,7 @@ package application.model;
  * to basics of an item within the shopping web site.
  * (quantity, price, etc)
  */
-public class Item implements Comparable<Object>{
+public class Item{
 
 	/** The item's ID */
 	private String itemId;
@@ -220,19 +220,5 @@ public class Item implements Comparable<Object>{
 		return itemId + ":" + itemName + ":" + description + ":" + dept + ":"
 				+ price + ":" + quantity;
 	}
-
-	/**
-	 * 
-	 * @param arg0
-	 * @return
-	 */
-	public int compareTo(Object obj) {
-		if(!(obj instanceof Item)) return 0;
-		Item other = (Item)obj;
-		if(price > other.getPrice()) return 1;
-		if(price < other.getPrice()) return -1;
-		return 0;
-	}
-
 
 }
