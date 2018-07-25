@@ -55,6 +55,7 @@ public class CustomerHandler extends DataHandler {
 	 * @throws SQLException 
 	 */
 	public Cart getCustomerCart(String custId) throws SQLException {
+		System.out.println(custId);
 		results = fetcher.fetchCartbyCustomerId(custId);
 		results.next();
 		return new CartHandler(getFetcher()).getCart(results.getString("cartId"));
@@ -90,23 +91,23 @@ public class CustomerHandler extends DataHandler {
 			
 	}
 	
-	
-	
+	/**
+	 * 
+	 * @param email
+	 * @param password
+	 * @param firstNm
+	 * @param lastNm
+	 * @return
+	 * @throws SQLException
+	 */
 	public Customer addCust(String email, String password, String firstNm, String lastNm) throws SQLException{
 		connect();
 		fetcher.addCustomer(email, password, firstNm, lastNm);
+		results = fetcher.fetchCustomer(email, password);
+		results.next();
+		fetcher.addCartItem(results.getString("curCart"), results.getString("customerId"), "", 0);
 		return cust;
-		
 	}
-	
-	
-		
-	/*public String getCartID(String CustID) throws SQLException {
-		connect();
-		fetcher.fetchCartID(CustID);
-		return (results.getString("curCart"));
-	}*/
-
 	
 	/**
 	 * Parse results from DataFetcher for getCust
@@ -115,7 +116,6 @@ public class CustomerHandler extends DataHandler {
 	protected void parseResults() throws SQLException {
 		cust = null;
 		while(results.next()) {
-			System.out.println(results.getString("email"));
 			cust = new Customer(results.getString("email"), results.getString("customerId"), 
 					new Name(results.getString("firstNm"), results.getString("middleNm"), 
 							results.getString("lastNm")), new Address(results.getString("address")),

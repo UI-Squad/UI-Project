@@ -19,9 +19,9 @@ public class Name {
 	 * @param last String literal specifying the last part of the name
 	 */
 	public Name(String first, String middle, String last) {
-		this.first = first;
-		this.middle = middle;
-		this.last = last;
+		this.first = (first != null) ? first : "";
+		this.middle = (middle != null) ? middle : "";
+		this.last = (last != null) ? last : "";
 	}
 	
 	/**

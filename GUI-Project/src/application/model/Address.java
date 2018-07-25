@@ -35,7 +35,7 @@ public class Address {
 	 * @param address
 	 */
 	public Address(String address) {
-		this.address = address;
+		this.address = (address != null) ? address : "";
 		//no functionality, empty string values for other attributes
 		parseAddress();
 	}

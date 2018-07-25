@@ -45,10 +45,10 @@ public class Item{
 	 * @param quantity Integer value specifying the quantity of the item
 	 */
 	public Item(String itemId, String itemName, String description, String dept, double price, int quantity) {
-	  this.itemId = itemId;
-	  this.itemName = itemName;
-	  this.description = description;
-	  this.dept = dept;
+	  this.itemId = (itemId != null) ? itemId : "";
+	  this.itemName = (itemName != null) ? itemName : "";
+	  this.description = (description != null) ? description : "";
+	  this.dept = (dept != null) ? dept : "";
 	  this.price = (price < 0) ? 0 : price; //negative bounds check 
 	  this.quantity = (quantity < 0) ? 0 : quantity; //negative bounds check
 	}
