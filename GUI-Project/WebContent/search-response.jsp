@@ -12,6 +12,27 @@
 	box-sizing: border-box;
 }
 
+a{
+	color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color:blue;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
 body {
 	font-family: Arial;
 	padding: 10px;
@@ -319,11 +340,18 @@ navigation links stack on top of each other instead of next to each other */
 					String itemName = items.get(i).getItemName();
 					String itemDescription = items.get(i).getDescription();
 					double itemPrice = items.get(i).getPrice();
+					String itemSummary = "";
 					
 					String itemID = items.get(i).getItemId();
 					int itemQuantity = items.get(i).getQuantity();
 					
-
+					if(itemDescription.length() > 30){
+						itemSummary = (itemDescription.substring(0, 24) + "...");
+					}else{
+						itemSummary=itemDescription;
+					}
+					
+				
 					
 					out.println("<div class=\"grid-container\"><div class=\"item1\">");
 					
@@ -341,13 +369,13 @@ navigation links stack on top of each other instead of next to each other */
 					+ itemName + ".jpg\" align=\"middle\" style=\"width: 170px\" alt=\"product\"></a>");
 					out.println("</div>");
 					out.println("<div class=\"item2\">");
-					out.println(itemName);
+					out.println("<a href=\"#\" onclick=\"document.itemNameForm"+i+".submit()\">"+itemName+"</a>");
   					out.println("</div><div class=\"item3\"></div>");
 					out.println("<div class=\"item4\">");
- 					out.println(itemDescription);
+ 					out.println(itemSummary);
  					out.println("</div>");
 					out.println("<div class=\"item5\">");
- 					out.println(itemPrice);
+ 					out.println("$"+itemPrice);
  					out.println("</div><div class=\"item6\"></div>");		
 					out.println("<div class=\"item7\"></div></div>");	
 					out.println("<hr>");
@@ -367,11 +395,9 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="leftcolumn">
 			<div class="card">
 				<h3>Filter/Sort</h3>
-				<p>Option</p>
+				<a href="./filteredViews/byPriceLowSearch.jsp">Price: Low to High</a>
 				<p></p>
-				<p>Option</p>
-				<p></p>
-				<p>Option</p>
+				<a href="./filteredViews/byPriceHighSearch.jsp">Price: High to Low</a>
 			</div>
 		</div>
 	</div>
