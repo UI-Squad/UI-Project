@@ -387,15 +387,16 @@ public class DataFetcher {
 	}
 	
 	
-	public void addCustomer(String FirstName, String LastName, String Email, String Password) {
-		String myHash = hashPassword(Password); // Hash Password
+	public void addCustomer(String email, String password, String firstNm, String lastNm) {
+		String myHash = hashPassword(password); // Hash Password
 		
 		try {
-			preparedStatement = connect.prepareStatement("INSERT INTO `Customers` VALUES(?, ?, ?, ?)");
-			preparedStatement.setString(1, Email);
+			preparedStatement = connect.prepareStatement("INSERT INTO `Customers` (email, password, firstNm, lastNm)"
+													+ " VALUES(?, ?, ?, ?)");
+			preparedStatement.setString(1, email);
 			preparedStatement.setString(2, myHash);
-			preparedStatement.setString(3, FirstName);
-			preparedStatement.setString(4, LastName);
+			preparedStatement.setString(3, firstNm);
+			preparedStatement.setString(4, lastNm);
 			preparedStatement.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();

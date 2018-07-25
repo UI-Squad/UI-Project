@@ -31,9 +31,9 @@ public class CustomerHandler extends DataHandler {
 	 * @return
 	 * @throws SQLException
 	 */
-	public Customer getCust(String Email, String Password) throws SQLException {
+	public Customer getCust(String email, String password) throws SQLException {
 		connect();
-		results = fetcher.fetchCustomer(Email,Password);
+		results = fetcher.fetchCustomer(email, password);
 		parseResults();
 		return cust; 
 	}
@@ -90,9 +90,11 @@ public class CustomerHandler extends DataHandler {
 			
 	}
 	
-	public Customer addCust(String FirstName, String LastName, String Email, String Password) throws SQLException{
+	
+	
+	public Customer addCust(String email, String password, String firstNm, String lastNm) throws SQLException{
 		connect();
-		fetcher.addCustomer(FirstName, LastName, Email, Password);
+		fetcher.addCustomer(email, password, firstNm, lastNm);
 		return cust;
 		
 	}
@@ -112,7 +114,8 @@ public class CustomerHandler extends DataHandler {
 	protected void parseResults() throws SQLException {
 		cust = null;
 		while(results.next()) {
-			cust = new Customer(results.getString("Email"), results.getString("customerId"), 
+			System.out.println(results.getString("email"));
+			cust = new Customer(results.getString("email"), results.getString("customerId"), 
 					new Name(results.getString("firstNm"), results.getString("middleNm"), 
 							results.getString("lastNm")), new Address(results.getString("address")),
 							results.getLong("phoneNum"), new CartHandler(getFetcher()).getCart(results.getString("curCart")));
