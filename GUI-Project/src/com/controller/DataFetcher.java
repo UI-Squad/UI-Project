@@ -550,6 +550,27 @@ public class DataFetcher {
 	 * @param cartId String literal specifying the cart ID
 	 * @param orderDt Date object specifying the date the order was placed
 	 */
+	public void addOrder(String cartId) {
+		try {
+			
+			preparedStatement = connect.prepareStatement("INSERT into `Orders` (cartId, orderDt, shipDt, trackNm) VALUES ( ?, ?, ?, ?)");
+			preparedStatement.setString(1, cartId);
+			preparedStatement.setDate(2, new Date(Calendar.getInstance().getTimeInMillis()));
+			preparedStatement.setNull(3, Types.NULL);
+			preparedStatement.setNull(4, Types.NULL);
+			preparedStatement.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Adds a new order to the order table in the database that uses the current date as an order date
+	 * with a null ship date and tracking number
+	 * @param orderId String literal specifying the unique order ID
+	 * @param cartId String literal specifying the cart ID
+	 * @param orderDt Date object specifying the date the order was placed
+	 */
 	public void addOrder(String orderId, String cartId) {
 		try {
 			

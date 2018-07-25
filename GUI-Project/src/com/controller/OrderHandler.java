@@ -104,6 +104,14 @@ public class OrderHandler extends DataHandler{
 	}
 	
 	/**
+	 * Add a new order to DB using just a cartID
+	 * @param cartId
+	 */
+	public void addOrder(String cartId) {
+		connect();
+		fetcher.addOrder(cartId);
+	}
+	/**
 	 * Parses the results of a given SQL query on the order table.
 	 */
 	protected void parseResults() throws SQLException {

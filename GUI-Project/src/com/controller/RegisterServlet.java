@@ -42,42 +42,45 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//doGet(request, response);
-		String password1 = request.getParameter("psw");
-		String repassword = request.getParameter("psw-repeat");
-		if(!password1.equals(repassword)) {//passwords do not match 
-			//return to registerpage.jsp 
-		}
-		// Step 1: set content type
-		response.setContentType("text/html");
 		
-		// Step 2: get the printwriter
+		
 		PrintWriter out = response.getWriter();
 		
 		// Step 3: generate the HTML content
 		out.println("<html><body>");
 		
+		String password1 = request.getParameter("psw");
+		String repassword = request.getParameter("psw-repeat");
+		if(!password1.equals(repassword)) {//passwords do not match 
+			out.println("<script type=\"text/javascript\">");  
+			out.println("alert('Passwords do not match. Please try again.');");  
+			out.println("window.location.replace(\"registerPage.jsp\");");
+			out.println("</script>"); 
+		}
+		// Step 1: set content type
+		response.setContentType("text/html");
 		
+		// Step 2: get the printwriter
 		
+		// Step 3: generate the HTML content
+		
+		String fname, lname, email;
+		fname =request.getParameter("FirstName");
+		lname = request.getParameter("LastName");
+		email = request.getParameter("email");
 		CustomerHandler Cushandle = new CustomerHandler();
 		Customer Cust = null;
 		
 		try {
-			Cust = Cushandle.addCust(request.getParameter("FirstName"), request.getParameter("LastName"),request.getParameter("email"),request.getParameter("psw"));
-			out.println("</br></br>");
-			
-			//sign in user to browser, Create cookiee? Return to jsp file or create cookie here
-			
+			Cust = Cushandle.addCust(email, password1, fname, lname);			
 
 		} catch (SQLException e) {
 			out.println("The customer could not be created");
 			e.printStackTrace();
 		}
-		
 				
-		//out.println("The customer is confirmed: "
-			//		+ request.getParameter("email"));		
 		out.println("</br></br>");
-		out.println("<a href=\"Website.html\">Return to homepage.</a>");
+		out.println("<a href=\"./registeredCustomerViews/signedInCusWebsite.jsp\"> Welcome! Enter the website.</a>");
 		out.println("</body></html>");
 	}
 
