@@ -318,9 +318,16 @@ navigation links stack on top of each other instead of next to each other */
 					String itemName = items.get(i).getItemName();
 					String itemDescription = items.get(i).getDescription();
 					double itemPrice = items.get(i).getPrice();
+					String itemSummary = "";
 					
 					String itemID = items.get(i).getItemId();
 					int itemQuantity = items.get(i).getQuantity();
+					
+					if(itemDescription.length() > 30){
+						itemSummary = (itemDescription.substring(0, 24) + "...");
+					}else{
+						itemSummary=itemDescription;
+					}
 					
 
 					
@@ -343,10 +350,10 @@ navigation links stack on top of each other instead of next to each other */
 					out.println(itemName);
   					out.println("</div><div class=\"item3\"></div>");
 					out.println("<div class=\"item4\">");
- 					out.println(itemDescription);
+ 					out.println(itemSummary);
  					out.println("</div>");
 					out.println("<div class=\"item5\">");
- 					out.println(itemPrice);
+ 					out.println("$"+itemPrice);
  					out.println("</div><div class=\"item6\"></div>");		
 					out.println("<div class=\"item7\"></div></div>");	
 					out.println("<hr>");
@@ -366,11 +373,9 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="leftcolumn">
 			<div class="card">
 				<h3>Filter/Sort</h3>
-				<p>Option</p>
+				<a href="./filteredViews/priceLowSort.jsp"><font color="000000">Price: Low to High</font></a>
 				<p></p>
-				<p>Option</p>
-				<p></p>
-				<p>Option</p>
+				<a href="./filteredViews/priceHighSort.jsp"><font color="000000">Price: High to Low</font></a>
 			</div>
 		</div>
 	</div>
