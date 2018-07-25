@@ -13,6 +13,27 @@ import="java.util.Comparator"%>
 	box-sizing: border-box;
 }
 
+a{
+	color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color:blue;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
 body {
 	font-family: Arial;
 	padding: 10px;
@@ -354,7 +375,7 @@ navigation links stack on top of each other instead of next to each other */
 					+ itemName + ".jpg\" align=\"middle\" style=\"width: 170px\" alt=\"product\"></a>");
 					out.println("</div>");
 					out.println("<div class=\"item2\">");
-					out.println(itemName);
+					out.println("<a href=\"#\" onclick=\"document.itemNameForm"+i+".submit()\">"+itemName+"</a>");
   					out.println("</div><div class=\"item3\"></div>");
 					out.println("<div class=\"item4\">");
  					out.println(itemSummary);
@@ -380,9 +401,9 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="leftcolumn">
 			<div class="card">
 				<h3>Filter/Sort</h3>
-				<a href="../inventoryPage.jsp"><font color="000000">Sort by: Department</font></a>
+				<a href="../inventoryPage.jsp">Sort by: Department</a>
 				<p></p>
-				<a href="./byPriceLowInventory.jsp"><font color="000000">Price: Low to High</font></a>
+				<a href="./byPriceLowInventory.jsp">Price: Low to High</a>
 				<p></p>
 			</div>
 		</div>

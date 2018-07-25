@@ -25,7 +25,9 @@ public class ItemHandlerTest {
 	public static void main(String[] args) throws SQLException {
 		ItemHandler itemHandler = new ItemHandler();
 		ArrayList<Item> items = new ArrayList<Item>();
-		items = itemHandler.searchForItems("program");
+//		items = itemHandler.searchForItems("program");
+		
+		items = itemHandler.getAllItems();
 		
 		printItemList(items);
 		
