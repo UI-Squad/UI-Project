@@ -22,7 +22,6 @@ public class Cart{
 	private double cartTotal = 0;
 	
 	/**
-	 * 
 	 * @param cart
 	 * @param cartId
 	 */

@@ -11,6 +11,7 @@ import application.model.Item;
 public class CartHandlerTest {
 	
 	public static void main(String[] args) throws SQLException {
+		
 		//Item item = new Item("aut001", "Car Tire", 98.99);
 		CartHandler cartHandler = new CartHandler();
 		Cart cart = cartHandler.getCart("car001");

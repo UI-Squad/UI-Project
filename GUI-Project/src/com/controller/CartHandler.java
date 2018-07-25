@@ -130,7 +130,6 @@ public class CartHandler extends DataHandler {
 		fetcher.updateInventoryStock(itemId, newStock);	
 	}
 	
-	
 	/**
 	 * 
 	 * @param cartId
