@@ -61,8 +61,10 @@ public class Cart{
 	/**
 	 * removes all items from the shopping cart
 	 */
-	public void clearCart(){
+	public ArrayList<Item> clearCart(){
+		ArrayList<Item> temp = new ArrayList<Item>(cart);
 		this.cart.clear();
+		return temp;
 	}
 
 	/**

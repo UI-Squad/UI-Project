@@ -99,6 +99,7 @@ public class CustomerHandler extends DataHandler {
 		
 	}
 	
+	
 		
 	/*public String getCartID(String CustID) throws SQLException {
 		connect();

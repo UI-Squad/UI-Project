@@ -333,6 +333,7 @@ public class DataFetcher {
 	
 	
 			
+	
 	/**
 	 * Returns a ResultSet of items from the Inventory table and their matching quantities 
 	 * in the Carts table by a specified cartId and joining the tables by itemId.
