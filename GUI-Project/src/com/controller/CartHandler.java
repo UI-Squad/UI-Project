@@ -18,6 +18,8 @@ public class CartHandler extends DataHandler {
 	/** An ArrayList of items */
 	private ArrayList<Item> itemList;
 	
+	private String cartId;
+		
 	public CartHandler(DataFetcher fetcher) {
 		super(fetcher);
 		cart = new Cart();
@@ -38,6 +40,7 @@ public class CartHandler extends DataHandler {
 	 * @throws SQLException 
 	 */
 	public Cart getCart(String cartId) throws SQLException{
+		this.cartId = cartId;
 		connect();
 		results = fetcher.fetchCartItems(cartId);
 		parseResults();
@@ -66,12 +69,18 @@ public class CartHandler extends DataHandler {
 	 */
 	public void addCartItem(String cartId, String customerId, String itemId, int quantity) {
 		connect();
-		//retrieve item stock from Inventory
-		int stock = fetcher.fetchInventoryItemStock(itemId);
-		//add item to cart if there is enough available in inventory
-		if(stock >= quantity) {
+		if(!itemId.equals("") || quantity > 0) {
+			//retrieve item stock from Inventory
+			int stock = fetcher.fetchInventoryItemStock(itemId);
+			//add item to cart if there is enough available in inventory
+			if(stock >= quantity) {
+				fetcher.addCartItem(cartId, customerId, itemId, quantity);
+				fetcher.updateInventoryStock(itemId, stock - quantity);
+			}
+			//delete any non-existent items
+			fetcher.removeCartItem(cartId, "");
+		}else {
 			fetcher.addCartItem(cartId, customerId, itemId, quantity);
-			fetcher.updateInventoryStock(itemId, stock - quantity);
 		}
 	}
 	
@@ -83,12 +92,18 @@ public class CartHandler extends DataHandler {
 	 */
 	public void addCartItem(String cartId, String itemId, int quantity) {
 		connect();
-		//retrieve item stock from Inventory
-		int stock = fetcher.fetchInventoryItemStock(itemId);
-		//add item to cart if there is enough available in inventory
-		if(stock >= quantity) {
+		if(!itemId.equals("") || quantity > 0) {
+			//retrieve item stock from Inventory
+			int stock = fetcher.fetchInventoryItemStock(itemId);
+			//add item to cart if there is enough available in inventory
+			if(stock >= quantity) {
+				fetcher.addCartItem(cartId, itemId, quantity);
+				fetcher.updateInventoryStock(itemId, stock - quantity);
+			}
+			//delete any non-existent items
+			fetcher.removeCartItem(cartId, "");
+		}else {
 			fetcher.addCartItem(cartId, itemId, quantity);
-			fetcher.updateInventoryStock(itemId, stock - quantity);
 		}
 	}
 	
@@ -134,10 +149,13 @@ public class CartHandler extends DataHandler {
 	 */
 	protected void parseResults() throws SQLException {
 		itemList.clear();
-		cart = new Cart();
+		cart = new Cart(cartId);
 		while(results.next()) {
-			itemList.add(new Item(results.getString("itemId"), results.getString("name"), 
-						results.getString("description"), results.getString("dept"), results.getDouble("price"),
+			itemList.add(new Item((results.getString("itemId") != null ? results.getString("itemId") : ""), 
+						(results.getString("name") != null) ? results.getString("name") : "", 
+						(results.getString("description") != null) ? results.getString("description") : "", 
+						(results.getString("dept") != null) ? results.getString("dept") : "",
+						results.getDouble("price"),
 						results.getInt("quantity")));
 		}
 		cart.setCartItems(itemList);

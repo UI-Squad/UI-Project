@@ -16,7 +16,20 @@ public class Cart{
 	/** An ArrayList of item objects */
 	private ArrayList<Item> cart;
 	
+	/** this cart's ID */
+	private String cartId;
+	
 	private double cartTotal = 0;
+	
+	/**
+	 * 
+	 * @param cart
+	 * @param cartId
+	 */
+	public Cart(String cartId, ArrayList<Item> cart) {
+		this.cartId = cartId;
+		this.cart = cart;		
+	}
 	
 	/** 
 	 * Constructs a new cart object consisting of a specified
@@ -24,7 +37,11 @@ public class Cart{
 	 * @param cart ArrayList of item objects
 	 */
 	public Cart(ArrayList<Item> cart) {
-		this.cart = cart;
+		this("guest", cart);
+	}
+	
+	public Cart(String cartId) {
+		this(cartId, new ArrayList<Item>());
 	}
 	
 	/**
@@ -32,6 +49,18 @@ public class Cart{
 	 */
 	public Cart() {
 		this(new ArrayList<Item>());
+	}
+	
+	/**
+	 * 
+	 * @param cartId
+	 */
+	public void setCartId(String cartId) {
+		this.cartId = cartId;
+	}
+	
+	public String getCartId() {
+		return cartId;
 	}
 		
 	/**
@@ -131,7 +160,7 @@ public class Cart{
 	 * Returns a String literal representation of this cart object.
 	 */
 	public String toString() {
-		String result = "";
+		String result = cartId + "\n";
 		for(Item item : cart)
 			result += item.toString() + "\n";
 		return result;

@@ -231,7 +231,7 @@ public class DataFetcher {
 		
 		return resultSet;
 	}
-	
+		
 	/**
 	 * Returns all data fields from the Carts table and the price
 	 * of each matching item from the Inventory table in the GUI Database
@@ -302,12 +302,11 @@ public class DataFetcher {
 		try {
 			fetchCart(cartId);
 			resultSet.next();
-			//String customerId = resultSet.getString("customerId");
-			//if(customerId.equals("0") || customerId.equals(null))
-				//customerId = "nul000";
+			String customerId = (resultSet.getString("customerId") != null) 
+								? resultSet.getString("customerId"): "guest";
 			preparedStatement = connect.prepareStatement("INSERT into `Carts` values(?, ?, ?, ?)");
 			preparedStatement.setString(1, cartId);
-			preparedStatement.setString(2, "guest");
+			preparedStatement.setString(2, customerId);
 			preparedStatement.setString(3,  itemId);
 			preparedStatement.setInt(4, quantity);
 			preparedStatement.executeUpdate();
