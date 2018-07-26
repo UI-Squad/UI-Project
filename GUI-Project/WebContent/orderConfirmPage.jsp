@@ -289,27 +289,39 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="rightcolumn">
 			<div class="card">
 
-				<h2>Thank you for your order!</h2>
+				<h1>Thank you for your order!</h1>
+
 				<%
 					CartHandler cartHandler = new CartHandler();
 					Cart cart = cartHandler.getCart("car000");
 						
-					OrderHandler handle = new OrderHandler();
+ 					OrderHandler handle = new OrderHandler();
 						
 					Order order = null;
-					handle.addOrder("car000");	// adds order
-					order = handle.getOrderbyCartID("car000");
+					//handle.addOrder("car000");	// adds order
+					//order = handle.getOrderbyCartID("car000");
 				
+					//out.println(order.toString());
 					
-					out.println(order.toString());
+					out.println("<h2>Order Confirmation Number:"+"(Needs real number here)"+"</h2>");
+					out.println("<br>");
 					
-					cartHandler.returnToInventory("car000", cart);
+					for (int i = 0; i < cart.getSize(); i++) {
+						out.println("<h3>"+cart.getCartItems().get(i).getItemName() +"</h3>");	// name
+						out.println("<h3>"+"Quantity: "+cart.getCartItems().get(i).getQuantity()+"&nbsp;&nbsp;&nbsp;&nbsp;");	// quantity
+						out.println("Price: "+"$"+cart.getCartItems().get(i).getPrice()+"</h3>");	// total of cart
+
+						out.println("<hr>");
+
+					}
+					out.println("<h3> Total Price: "+cart.getCartTotal()+"</h3>");	// total of cart
 
 				%>
+				
 
 			</div>
 			<!-- end divider for card  -->
-
+			<%	cartHandler.returnToInventory("car000", cart);	// clear cart %>
 		</div>
 		<!-- End row divider  -->
 	</div>

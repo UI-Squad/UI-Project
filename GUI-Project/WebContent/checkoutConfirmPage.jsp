@@ -147,6 +147,7 @@ stack on top of each other instead of next to each other (also change the direct
 					}
 				
 				%>
+							<br>
 							<label for="item">Shipping: <span class="price">FREE</span></label> 
 							<hr>
 							<label for="item">Total:<span class="price"><% out.println(cart.getCartTotal()); %></span></label> 

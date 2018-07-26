@@ -35,34 +35,34 @@ public class DataFetcherTest {
 		System.out.println("ENTER ITEM INFORMATION");
 		System.out.println();
 
-		System.out.print("Enter itemID (abc123 format) ");  
-		String itemId = sc.nextLine();  
-		System.out.print("Enter itemName ");  
-		String name = sc.nextLine();  
-		System.out.print("Enter itemDescription ");  
-		String description = sc.nextLine();
-		System.out.println();
-		System.out.print("Enter department ");
-		String dept = sc.nextLine();
-		System.out.println();
-		System.out.print("Enter item price ");
-		double price = sc.nextDouble();
-		System.out.println();
-		System.out.print("Enter inStock number of items ");
-		int inStock = sc.nextInt();
-		
-//		System.out.print("Enter Item Name");
-//		String name = sc.nextLine();
-//		System.out.print("Enter New Description");
+//		System.out.print("Enter itemID (abc123 format) ");  
+//		String itemId = sc.nextLine();  
+//		System.out.print("Enter itemName ");  
+//		String name = sc.nextLine();  
+//		System.out.print("Enter itemDescription ");  
 //		String description = sc.nextLine();
+//		System.out.println();
+//		System.out.print("Enter department ");
+//		String dept = sc.nextLine();
+//		System.out.println();
+//		System.out.print("Enter item price ");
+//		double price = sc.nextDouble();
+//		System.out.println();
+//		System.out.print("Enter inStock number of items ");
+//		int inStock = sc.nextInt();
+		
+		System.out.print("Enter Item Name: ");
+		String name = sc.nextLine();
+		System.out.print("Enter New Description: ");
+		String description = sc.nextLine();
 
 		System.out.println("All information entered.");
 		sc.close();  
 
 		//fetchTest.addItemToInventory(itemId, name, description, dept, price, inStock);
-		//fetchTest.updateInventoryItemDescription(name, description);
+		fetchTest.updateInventoryItemDescription(name, description);
 		
-		fetchTest.updateInventoryItem(itemId, name, description, dept, price, inStock);
+		//fetchTest.updateInventoryItem(itemId, name, description, dept, price, inStock);
 		
 		fetchTest.close();
 		
