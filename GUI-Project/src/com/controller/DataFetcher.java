@@ -488,7 +488,21 @@ public class DataFetcher {
 		return resultSet;
 	}
 	
-	
+	/**
+	 * Returns the results of performing a mySQL query on the order table by a specified orderId.
+	 * @param orderId String literal specifying the order id
+	 * @return ResultSet results of a mySQL query
+	 */
+	public ResultSet fetchOrderbyCartID(String cartID){
+		try {
+			preparedStatement = connect.prepareStatement("select o.* from Orders o where o.cartId = ?");
+			preparedStatement.setString(1, cartID);
+			resultSet = preparedStatement.executeQuery();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return resultSet;
+	}
 	
 	/**
 	 * Adds a new order to the order table in the database.

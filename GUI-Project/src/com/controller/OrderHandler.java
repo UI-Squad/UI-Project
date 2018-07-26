@@ -44,6 +44,20 @@ public class OrderHandler extends DataHandler{
 	}
 	
 	/**
+	 * Returns an order object that is created based upon a specified cartID
+	 * @param orderId String literal specifying the id of the order.
+	 * @return Order object
+	 * @throws SQLException
+	 */
+	public Order getOrderbyCartID(String cartID) throws SQLException {
+		connect();
+		results = fetcher.fetchOrderbyCartID(cartID);
+		parseResults();
+		return order;
+	}
+	
+	
+	/**
 	 * Adds a new order to the order table in the database.
 	 * @param orderId String literal specifying the unique order ID
 	 * @param cartId String literal specifying the cart ID
