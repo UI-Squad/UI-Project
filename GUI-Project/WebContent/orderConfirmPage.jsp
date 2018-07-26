@@ -298,12 +298,10 @@ navigation links stack on top of each other instead of next to each other */
  					OrderHandler handle = new OrderHandler();
 						
 					Order order = null;
-					//handle.addOrder("car000");	// adds order
-					//order = handle.getOrderbyCartID("car000");
-				
-					//out.println(order.toString());
-					
-					out.println("<h2>Order Confirmation Number:"+"(Needs real number here)"+"</h2>");
+					handle.addOrder("car000");	// adds order
+					order = handle.getOrderbyCartID("car000");
+									
+					out.println("<h2>Order Confirmation Number:"+order.getOrderId()+"</h2>");	// order confirmation number
 					out.println("<br>");
 					
 					for (int i = 0; i < cart.getSize(); i++) {
