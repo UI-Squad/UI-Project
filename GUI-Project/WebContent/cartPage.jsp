@@ -321,8 +321,7 @@ navigation links stack on top of each other instead of next to each other */
 					<%
 							CartHandler cartHandler = new CartHandler();
 							// This Is a User Cart:  Cart cart = cartHandler.getCart("car001");
-							Cart cart = cartHandler.getCart("guest");
-									
+							Cart cart = cartHandler.getCart("car000");									
 					%>
 					<header id="title">
 					<h1>Shopping Cart</h1>

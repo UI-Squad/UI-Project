@@ -127,7 +127,12 @@ stack on top of each other instead of next to each other (also change the direct
 						
 					<%
 							CartHandler cartHandler = new CartHandler();
-							Cart cart = cartHandler.getCart("guest");
+							Cart cart = cartHandler.getCart("car000");
+							
+/* 							String guestCartID = "car000";
+							
+							request.getSession().setAttribute("guestCartID", guestCartID); */
+							
 					%>
 								<!-- shopping cart contents -->
 			
@@ -147,7 +152,7 @@ stack on top of each other instead of next to each other (also change the direct
 							<label for="item">Total:<span class="price"><% out.println(cart.getCartTotal()); %></span></label> 
 						</div>
 					</div>
-					<a href="orderConfirmPage.jsp"><input type="submit" value="Place Order" class="btn"></a>
+				<a href="orderConfirmPage.jsp"><input type="submit" value="Place Order" class="btn"></a>
 			</div>
 		</div>
 	</div>

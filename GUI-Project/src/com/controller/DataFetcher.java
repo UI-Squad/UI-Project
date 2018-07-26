@@ -268,22 +268,41 @@ public class DataFetcher {
 	}
 	
 	/**
-	 * Returns the CartID using the CustomerID
+	 * Returns all data fields from the Carts table and the price
+	 * of each matching item from the Inventory table in the GUI Database
+	 * that matches the specified cartId.
 	 * @param cartId A string literal representing the cart id
 	 * @return ResultSet the resulSet of the SQL query
 	 */
 	public ResultSet fetchCartbyCustomerId(String custID) {
 		try {
-			preparedStatement = connect.prepareStatement("SELECT c.curCart FROM Customers c WHERE c.customerId = ?");
+			preparedStatement = connect.prepareStatement("SELECT * FROM Carts WHERE customerId = ?");
 			preparedStatement.setString(1, custID);
 			resultSet = preparedStatement.executeQuery();
-			resultSet.next();
-			resultSet = fetchCart(resultSet.getString("curCart"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return resultSet;
 	}
+	
+//	/**
+//	 * Returns the CartID using the CustomerID
+//	 * @param cartId A string literal representing the cart id
+//	 * @return ResultSet the resulSet of the SQL query
+//	 */
+//	public ResultSet fetchCartbyCustomerId(String custID) {
+//		try {
+//			preparedStatement = connect.prepareStatement("SELECT c.curCart FROM Customers c WHERE c.customerId = ?");
+//			preparedStatement.setString(1, custID);
+//			resultSet = preparedStatement.executeQuery();
+//			resultSet.next();
+//			resultSet = fetchCart(resultSet.getString("curCart"));
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return resultSet;
+//	}
+	
 	
 	
 	

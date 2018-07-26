@@ -39,15 +39,30 @@ public class CartHandler extends DataHandler {
 	 * @return
 	 * @throws SQLException 
 	 */
-	public Cart getCartByCustomerId(String customerId) throws SQLException {
+//	public Cart getCartByCustomerId(String customerId) throws SQLException {
+//		connect();
+//		results = fetcher.fetchCart(customerId);
+//		results.next();
+//		cartId = (results.getString("curCart") != null) ? results.getString("curCart") : "guest";
+//		results = fetcher.fetchCartItems(cartId);
+//		parseResults();
+//		return cart;
+//	}
+//	
+	/**
+	 * Returns a Cart object specified by a cart ID.
+	 * @param cartId String literal specifying the cart ID
+	 * @return Cart A cart object
+	 * @throws SQLException 
+	 */
+	public Cart getCartbyCustomerId(String custID) throws SQLException{
+		this.cartId = "car000";	// hardcoded for now
 		connect();
-		results = fetcher.fetchCartId(customerId);
-		results.next();
-		cartId = (results.getString("curCart") != null) ? results.getString("curCart") : "guest";
-		results = fetcher.fetchCartItems(cartId);
+		results = fetcher.fetchCartbyCustomerId(custID);
 		parseResults();
 		return cart;
 	}
+	
 	
 	/**
 	 * Returns a Cart object specified by a cart ID.

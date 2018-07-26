@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="com.controller.ItemHandler" import="application.model.Item" import="com.controller.OrderHandler"%>
-<%@ page  import="application.model.Order" import="java.util.ArrayList"%>
+<%@ page  import="application.model.Order" import="java.util.ArrayList" import="com.controller.CartHandler"
+	import="application.model.Cart"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -290,11 +291,20 @@ navigation links stack on top of each other instead of next to each other */
 
 				<h2>Thank you for your order!</h2>
 				<%
-					
+					CartHandler cartHandler = new CartHandler();
+					Cart cart = cartHandler.getCart("car000");
+						
 					OrderHandler handle = new OrderHandler();
-					Order order = handle.getOrder("");
+						
+					Order order = null;
+					handle.addOrder("car000");	// adds order
+					order = handle.getOrderbyCartID("car000");
 				
-				
+					
+					out.println(order.toString());
+					
+					cartHandler.returnToInventory("car000", cart);
+
 				%>
 
 			</div>

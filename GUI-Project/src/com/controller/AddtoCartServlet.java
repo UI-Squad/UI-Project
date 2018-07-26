@@ -43,13 +43,13 @@ public class AddtoCartServlet extends HttpServlet {
 		
 		String itemID = request.getParameter("itemID");
 		String itemQuantity = request.getParameter("numberOfItem");
-		String cartID = "guest";
+		String cartID = "car000";
 		int itemQ = Integer.parseInt(itemQuantity);
 
 		
 		CartHandler cartHandler = new CartHandler();
 		
-		cartHandler.addCartItem(cartID, itemID, itemQ);
+		cartHandler.addCartItem(cartID, "guest", itemID, itemQ);
 		
 		
 		request.setAttribute("itemID", itemID);
