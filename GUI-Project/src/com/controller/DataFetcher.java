@@ -251,6 +251,21 @@ public class DataFetcher {
 		return resultSet;
 	}
 	
+	/**
+	 * 
+	 * @param customerId
+	 * @return
+	 */
+	public ResultSet fetchCartId(String customerId) {
+		try {
+			preparedStatement = connect.prepareStatement("SELECT c.curCart FROM Customers c WHERE c.customerId = ?");
+			preparedStatement.setString(1, customerId);
+			resultSet = preparedStatement.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultSet;
+	}
 	
 	/**
 	 * Returns the CartID using the CustomerID
@@ -259,7 +274,7 @@ public class DataFetcher {
 	 */
 	public ResultSet fetchCartbyCustomerId(String custID) {
 		try {
-			preparedStatement = connect.prepareStatement("SELECT c.curCart FROM Customers c WHERE c.CustomerID = ?");
+			preparedStatement = connect.prepareStatement("SELECT c.curCart FROM Customers c WHERE c.customerId = ?");
 			preparedStatement.setString(1, custID);
 			resultSet = preparedStatement.executeQuery();
 			resultSet.next();

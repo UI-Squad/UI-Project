@@ -24,6 +24,8 @@ public class CartHandlerTest {
 		//cartHandler.addCartItem("car008", "bk002", 1);
 		//Cart cart = cartHandler.getCart("car006");
 		System.out.println(cart.toString());
+		cart = cartHandler.getCartByCustomerId("cdf002");
+		System.out.println(cart.toString());
 		//cart = cartHandler.getCart("car008");
 		//System.out.println(cart.toString());
 		cartHandler.closeConnection();
