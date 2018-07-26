@@ -93,7 +93,7 @@
 				<br>
 				<br>			
 				<div><img src="./productImages/
-					${itemName}.jpg" align="right" style="width: 300px" alt="product"></div> 
+					${itemName}.jpg" align="right" style="width: 240px" alt="product"></div> 
 				</div>
 
 				<div class="second-column">
