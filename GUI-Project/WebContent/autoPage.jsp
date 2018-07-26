@@ -323,6 +323,8 @@ navigation links stack on top of each other instead of next to each other */
 
 			<%
 				String dept = "auto";
+				request.getSession().setAttribute("dept", dept);
+				
 				ItemHandler itemHandler = new ItemHandler();
 				ArrayList<Item> items = itemHandler.getItemsByDept(dept);
 				itemHandler.closeConnection();
