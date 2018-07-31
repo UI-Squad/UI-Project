@@ -68,7 +68,7 @@
 		</div>
 
 		<a href="./registeredCustomerViews/customCart.jsp">Cart</a> <a href="./registeredCustomerViews/customInventory.jsp">Inventory</a>
-		<a href="./Website.html" style="float: right" name="signOutLink">Sign Out</a>
+		<a href="./LogOutServlet" style="float: right" name="signOutLink">Sign Out</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">
@@ -93,7 +93,7 @@
 				<br>
 				<br>			
 				<div><img src="./productImages/
-					${itemName}.jpg" align="right" style="width: 300px" alt="product"></div> 
+					${itemName}.jpg" align="right" style="width: 240px" alt="product"></div> 
 				</div>
 
 				<div class="second-column">

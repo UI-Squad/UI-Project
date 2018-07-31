@@ -120,7 +120,7 @@ body {
 	margin-top: 8px;
 	margin-right: 16px;
 	background: #ddd;
-	font-size: 17px;
+	font-size: 20px;
 	border: none;
 	cursor: pointer;
 }
@@ -368,7 +368,7 @@ to {
 		</div>
 
 		<a href="customCart.jsp">Cart</a> <a href="customInventory.jsp">Inventory</a>
-		<a href="../Website.html" style="float: right" name="signOutLink">Sign Out</a>
+		<a href="../LogOutServlet" style="float: right" name="signOutLink">Sign Out</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">
@@ -462,14 +462,14 @@ to {
 		<div class="rightcolumn">
 			<div class="card">
 				<h3>Recommended Items</h3>
-				<div class="fakeimg">
-					<p>Image</p>
+				<div class="container">
+					<p><img src="../productImages/White Tube Socks.jpg" style="width: 175px"></p>
 				</div>
-				<div class="fakeimg">
-					<p>Image</p>
+				<div class="container">
+					<p><img src="../productImages/1984.jpg" style="width: 150px"></p>
 				</div>
-				<div class="fakeimg">
-					<p>Image</p>
+				<div class="img">
+					<p><img src="../productImages/Bose QuietComfort 25.jpg" style="width: 185px"></p>
 				</div>
 			</div>
 		</div>

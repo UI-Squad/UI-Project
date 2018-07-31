@@ -1,8 +1,6 @@
 package com.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class customRemoveFromCartServlet
+ * Servlet implementation class LogOutServlet
  */
-@WebServlet("/customRemoveFromCartServlet")
-public class customRemoveFromCartServlet extends HttpServlet {
+@WebServlet("/LogOutServlet")
+public class LogOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public customRemoveFromCartServlet() {
+    public LogOutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,7 +27,7 @@ public class customRemoveFromCartServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request,response);
+		doPost(request, response);
 	}
 
 	/**
@@ -37,21 +35,9 @@ public class customRemoveFromCartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String itemID = request.getParameter("itemID");
-		String cartID = (String)request.getSession().getAttribute("cartID");
-
-		
-		CartHandler cartHandler = new CartHandler();
-		
-		try {
-			cartHandler.removeCartItem(cartID, itemID);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		request.getRequestDispatcher("./registeredCustomerViews/customCart2.jsp").forward(request, response);	
+		request.getSession().invalidate();
+		System.out.println("User has been logged out");
+		response.sendRedirect("Website.html");
 	}
 
 }

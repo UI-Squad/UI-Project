@@ -1,21 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="com.controller.ItemHandler" import="application.model.Item"%>
-<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.ArrayList" import="java.util.Collections" 
+import="java.util.Comparator"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Nile Shopping Service: Clothing</title>
+<title>Nile Shopping Service: Inventory</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
 * {
 	box-sizing: border-box;
-}
-
-body {
-	font-family: Arial;
-	padding: 10px;
-	background: #f1f1f1;
 }
 
 a{
@@ -37,6 +32,12 @@ a:hover {
 
 a:active {
     text-decoration: underline;
+}
+
+body {
+	font-family: Arial;
+	padding: 10px;
+	background: #f1f1f1;
 }
 
 /* Create three equal columns that floats next to each other */
@@ -284,7 +285,7 @@ navigation links stack on top of each other instead of next to each other */
 
 	<!-- Navigation bar on the top of the menu  -->
 	<div class="topnav">
-		<a href="signedInCusWebsite.jsp">Home</a>
+		<a href="../registeredCustomerViews/signedInCusWebsite.jsp">Home</a>
 
 		<!-- Drop down sub menu for categories in navigation bar  -->
 		<div class="dropdown">
@@ -292,18 +293,19 @@ navigation links stack on top of each other instead of next to each other */
 				Categories <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="customElectronics.jsp">Electronics</a> 
-				<a href="customClothing.jsp" class="active">Clothing</a> 
-				<a href="customBooks.jsp">Books</a>
-				<a href="customAuto.jsp">Automotive</a> 
-				<a href="customHome.jsp">Home</a> 
-				<a href="customViewAll.jsp">View All</a>
+				<a href="../registeredCustomerViews/customElectronics.jsp">Electronics</a> 
+				<a href="../registeredCustomerViews/customClothing.jsp">Clothing</a> 
+				<a href="../registeredCustomerViews/customBooks.jsp">Books</a>
+				<a href="../registeredCustomerViews/customAuto.jsp">Automotive</a> 
+				<a href="../registeredCustomerViews/customHome.jsp">Home</a> 
+				<a href="../registeredCustomerViews/customViewAll.jsp">View All</a>
 			</div>
 		</div>
 
-		<a href="customCart.jsp">Cart</a> <a href="customInventory.jsp">Inventory</a>
+		<a href="../registeredCustomerViews/customCart.jsp">Cart</a> <a href="../registeredCustomerViews/customInventory.jsp">Inventory</a>
 		<a href="../LogOutServlet" style="float: right" name="signOutLink">Sign Out</a>
-
+		
+		<!-- Search Bar -->
 		<!-- Search Bar -->
 		<div class="search-container">
 			<form name="searchBar" action="../customSearchResponseServlet"
@@ -321,17 +323,17 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="rightcolumn">
 
 			<%
-				String dept = "clothing";
-				request.getSession().setAttribute("dept", dept);
-		
 				ItemHandler itemHandler = new ItemHandler();
-				ArrayList<Item> items = itemHandler.getItemsByDept(dept);
+				ArrayList<Item> items = itemHandler.getAllItems();
 				itemHandler.closeConnection();
+				
+				Collections.sort(items, Comparator.comparing(Item::getPrice));
+				Collections.reverse(items);
 
 			%>
 			<div class="card">
 
-				<h2>Clothing</h2>
+				<h2>Inventory - Sorted by Price: High to Low</h2>
 				
 				<!-- JSP Scriplet that generates   -->
 				<%
@@ -396,16 +398,18 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="leftcolumn">
 			<div class="card">
 				<h3>Filter/Sort</h3>
-				<a href="../customerFilterViews/priceLowSort.jsp">Price: Low to High</a>
+				<a href="../inventoryPage.jsp">Sort by: Department</a>
 				<p></p>
-				<a href="../customerFilterViews/priceHighSort.jsp">Price: High to Low</a>
+				<a href="./byPriceLowInventory.jsp">Price: Low to High</a>
+				<p></p>
 			</div>
 		</div>
 	</div>
 	
+	
 		<div class="footer">
 		<h2>
-			<a href="customContact.jsp"><font color="000000">Contact Us</font></a>
+			<a href="../registeredCustomerViews/customContact.jsp"><font color="000000">Contact Us</font></a>
 		</h2>
 	</div>
 </body>

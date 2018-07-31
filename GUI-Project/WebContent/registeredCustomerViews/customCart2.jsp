@@ -283,7 +283,7 @@ navigation links stack on top of each other instead of next to each other */
 		</div>
 
 		<a href="./registeredCustomerViews/customCart.jsp" class="active">Cart</a> <a href="./registeredCustomerViews/customInventory.jsp">Inventory</a>
-		<a href="./Website.html" style="float: right" name="signOutLink">Sign Out</a>
+		<a href="../LogOutServlet" style="float: right" name="signOutLink">Sign Out</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">
@@ -311,6 +311,11 @@ navigation links stack on top of each other instead of next to each other */
 						String cusID = (String)request.getSession().getAttribute("cusID");
 					
 						Cart cart = handler.getCustomerCart(cusID);
+						
+						String cartID = cart.getCartId();
+						
+						request.getSession().setAttribute("cartID", cartID);
+
 									
 					%>
 					<header id="title">

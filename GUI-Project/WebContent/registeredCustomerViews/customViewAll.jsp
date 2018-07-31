@@ -220,7 +220,7 @@ navigation links stack on top of each other instead of next to each other */
 		</div>
 
 		<a href="customCart.jsp">Cart</a> <a href="customInventory.jsp">Inventory</a>
-		<a href="../Website.html" style="float: right" name="signOutLink">Sign Out</a>
+		<a href="../LogOutServlet" style="float: right" name="signOutLink">Sign Out</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">

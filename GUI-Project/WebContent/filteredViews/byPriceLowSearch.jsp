@@ -328,9 +328,7 @@ navigation links stack on top of each other instead of next to each other */
 				ArrayList<Item> items = itemHandler.searchForItems(searchValue);
 				itemHandler.closeConnection(); 
 				
-				Collections.sort(items, Comparator.comparing(Item::getPrice));
-				Collections.reverse(items);
-								
+				Collections.sort(items, Comparator.comparing(Item::getPrice));								
 			%> 
 			<div class="card">
 

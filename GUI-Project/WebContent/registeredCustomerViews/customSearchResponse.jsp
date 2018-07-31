@@ -18,6 +18,27 @@ body {
 	background: #f1f1f1;
 }
 
+a{
+	color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color:blue;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
 /* Create three equal columns that floats next to each other */
 .column {
 	float: left;
@@ -281,7 +302,7 @@ navigation links stack on top of each other instead of next to each other */
 		</div>
 
 		<a href="./registeredCustomerViews/customCart.jsp">Cart</a> <a href="./registeredCustomerViews/customInventory.jsp">Inventory</a>
-		<a href="./Website.html" style="float: right">Sign Out</a>
+		<a href="./LogOutServlet" style="float: right" name="signOutLink">Sign Out</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">
@@ -319,9 +340,16 @@ navigation links stack on top of each other instead of next to each other */
 					String itemName = items.get(i).getItemName();
 					String itemDescription = items.get(i).getDescription();
 					double itemPrice = items.get(i).getPrice();
+					String itemSummary = "";
 					
 					String itemID = items.get(i).getItemId();
 					int itemQuantity = items.get(i).getQuantity();
+					
+					if(itemDescription.length() > 30){
+						itemSummary = (itemDescription.substring(0, 24) + "...");
+					}else{
+						itemSummary=itemDescription;
+					}
 					
 
 					
@@ -344,7 +372,7 @@ navigation links stack on top of each other instead of next to each other */
 					out.println(itemName);
   					out.println("</div><div class=\"item3\"></div>");
 					out.println("<div class=\"item4\">");
- 					out.println(itemDescription);
+ 					out.println(itemSummary);
  					out.println("</div>");
 					out.println("<div class=\"item5\">");
  					out.println(itemPrice);
@@ -367,11 +395,9 @@ navigation links stack on top of each other instead of next to each other */
 		<div class="leftcolumn">
 			<div class="card">
 				<h3>Filter/Sort</h3>
-				<p>Option</p>
+				<a href="./customerFilterViews/byPriceLowSearch.jsp">Price: Low to High</a>
 				<p></p>
-				<p>Option</p>
-				<p></p>
-				<p>Option</p>
+				<a href="./customerFilterViews/byPriceHighSearch.jsp">Price: High to Low</a>
 			</div>
 		</div>
 	</div>

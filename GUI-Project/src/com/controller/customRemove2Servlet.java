@@ -38,7 +38,7 @@ public class customRemove2Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String itemID = request.getParameter("itemID");
-		String cartID = (String)request.getSession().getAttribute("cusID");
+		String cartID = (String)request.getSession().getAttribute("cartID");
 		
 		CartHandler cartHandler = new CartHandler();
 		
