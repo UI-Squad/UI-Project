@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.controller.ItemHandler" import="application.model.Item"%>
-<%@ page import="java.util.ArrayList"%>
+	pageEncoding="UTF-8" import="com.controller.ItemHandler" import="application.model.Item" import="com.controller.OrderHandler"%>
+<%@ page  import="application.model.Order" import="java.util.ArrayList" import="com.controller.CartHandler"
+	import="application.model.Cart"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -283,17 +284,44 @@ navigation links stack on top of each other instead of next to each other */
 		</div>
 	</div>
 
-	<!-- Inventory page below nav bar -->
 	<div class="row">
 		<div class="rightcolumn">
 			<div class="card">
 
-				<h2>Thank you for your order!</h2>
+				<h1>Thank you for your order!</h1>
+
+				<%
+					CartHandler cartHandler = new CartHandler();
+					String cusID = (String)request.getSession().getAttribute("cusID");
+					Cart cart = cartHandler.getCartbyCustomerId(cusID);
+					
+					String cartID = cart.getCartId();
+						
+ 					OrderHandler handle = new OrderHandler();
+						
+					Order order = null;
+					handle.addOrder(cartID);	// adds order
+					order = handle.getOrderbyCartID(cartID);
+									
+					out.println("<h2>Order Confirmation Number:"+order.getOrderId()+"</h2>");	// order confirmation number
+					out.println("<br>");
+					
+					for (int i = 0; i < cart.getSize(); i++) {
+						out.println("<h3>"+cart.getCartItems().get(i).getItemName() +"</h3>");	// name
+						out.println("<h3>"+"Quantity: "+cart.getCartItems().get(i).getQuantity()+"&nbsp;&nbsp;&nbsp;&nbsp;");	// quantity
+						out.println("Price: "+"$"+cart.getCartItems().get(i).getPrice()+"</h3>");	// total of cart
+
+						out.println("<hr>");
+
+					}
+					out.println("<h3> Total Price: "+cart.getCartTotal()+"</h3>");	// total of cart
+
+				%>
 				
 
 			</div>
 			<!-- end divider for card  -->
-
+			<%	cartHandler.returnToInventory("car000", cart);	// clear cart %>
 		</div>
 		<!-- End row divider  -->
 	</div>
