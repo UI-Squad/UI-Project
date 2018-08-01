@@ -445,10 +445,18 @@ public class DataFetcher {
 	 */
 	public ResultSet searchQuery(String search) {
 		try {
-			preparedStatement = connect.prepareStatement("SELECT * from Inventory WHERE name LIKE ? ? ?");
+			preparedStatement = connect.prepareStatement("SELECT i.* from "
+					+ "Inventory i WHERE i.name LIKE ? ? ? OR i.description LIKE ? ? ? "
+					+  "OR i.dept LIKE ? ? ?");
 			preparedStatement.setString(1, "%");
 			preparedStatement.setString(2, search);
 			preparedStatement.setString(3, "%");
+			preparedStatement.setString(4, "%");
+			preparedStatement.setString(5, search);
+			preparedStatement.setString(6, "%");
+			preparedStatement.setString(7, "%");
+			preparedStatement.setString(8, search);
+			preparedStatement.setString(9, "%");
 			resultSet = preparedStatement.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
