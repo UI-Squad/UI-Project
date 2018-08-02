@@ -312,6 +312,8 @@ navigation links stack on top of each other instead of next to each other */
 					
 						Cart cart = handler.getCustomerCart(cusID);
 						
+						String cusName = (String)request.getSession().getAttribute("cusName");
+												
 						String cartID = cart.getCartId();
 						
 						request.getSession().setAttribute("cartID", cartID);
@@ -319,7 +321,7 @@ navigation links stack on top of each other instead of next to each other */
 									
 					%>
 					<header id="title">
-					<h1>Shopping Cart</h1>
+					<h1><%out.println(cusName+"'s ");%>Shopping Cart</h1>
 					</header>
 					
 					<% 

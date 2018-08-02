@@ -49,6 +49,7 @@ public class SignInServlet extends HttpServlet {
 		CustomerHandler Cushandle = new CustomerHandler();
 		Customer Cust = null;
 		String cusID = null;
+		String cusName = null;
 		PrintWriter out = response.getWriter();
 		
 
@@ -73,6 +74,8 @@ public class SignInServlet extends HttpServlet {
 //			out.println("Cust to string = " + Cust.getEmail() + " " + Cust.getName().toString() + " " + Cust.getId() + "<br>");
 			
 			cusID = Cust.getId();
+			cusName = Cust.getName().getFirst();
+			request.getSession().setAttribute("cusName", cusName);
 			request.getSession().setAttribute("cusID", cusID);
 			
 			response.sendRedirect("./registeredCustomerViews/signedInCusWebsite.jsp");

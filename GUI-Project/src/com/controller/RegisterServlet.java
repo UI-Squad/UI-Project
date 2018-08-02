@@ -70,17 +70,27 @@ public class RegisterServlet extends HttpServlet {
 		email = request.getParameter("email");
 		CustomerHandler Cushandle = new CustomerHandler();
 		Customer Cust = null;
+		String cusID = null;
+		String cusName = null;
+
 		
 		try {
-			Cust = Cushandle.addCust(email, password1, fname, lname);			
+			Cust = Cushandle.addCust(email, password1, fname, lname);	
+			Cust = Cushandle.getCust(email, password1);
 
 		} catch (SQLException e) {
 			out.println("The customer could not be created");
 			e.printStackTrace();
 		}
+		
+		cusID = Cust.getId();
+		cusName = Cust.getName().getFirst();
+		request.getSession().setAttribute("cusName", cusName);
+		request.getSession().setAttribute("cusID", cusID);
+
 				
 		out.println("</br></br>");
-		out.println("<a href=\"./registeredCustomerViews/signedInCusWebsite.jsp\"> Welcome! Enter the website.</a>");
+		out.println("<a href=\"./registeredCustomerViews/signedInCusWebsite.jsp\"> Welcome! Click here to Enter the website.</a>");
 		out.println("</body></html>");
 	}
 
