@@ -1,11 +1,15 @@
 package com.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import application.model.Cart;
 
 /**
  * Servlet implementation class customAddToCartServlet
@@ -35,12 +39,29 @@ public class customAddToCartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		CustomerHandler cusHandle = new CustomerHandler();
+		Cart cart = new Cart();
 		String itemID = request.getParameter("itemID");
 		String itemQuantity = request.getParameter("numberOfItem");
-		String cartID = "car002";	//Hardcoded for now but needs to change to whatever cartID is of signed in user
+		String cusID = (String)request.getSession().getAttribute("cusID");
+		String cartID = null;
+		
+		System.out.println("CUSTOMER ID FROM CUSTOM ADD SERVLET " + cusID);
+		
+		try {
+			cart = cusHandle.getCustomerCart(cusID);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		cartID = cart.getCartId();
+		
 		int itemQ = Integer.parseInt(itemQuantity);
 		
 		CartHandler cartHandler = new CartHandler();
+		System.out.println("CART ID FROM CUSTOM ADD SERVLET " + cartID);
+
 		
 		cartHandler.addCartItem(cartID, itemID, itemQ);
 		

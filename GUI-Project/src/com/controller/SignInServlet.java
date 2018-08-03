@@ -75,6 +75,9 @@ public class SignInServlet extends HttpServlet {
 			
 			cusID = Cust.getId();
 			cusName = Cust.getName().getFirst();
+			
+			System.out.println("CUSTOMER ID FROM SERVLET " + cusID);
+			
 			request.getSession().setAttribute("cusName", cusName);
 			request.getSession().setAttribute("cusID", cusID);
 			

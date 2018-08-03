@@ -89,7 +89,7 @@ public class RegisterServlet extends HttpServlet {
 		cusID = Cust.getId();
 		cusName = Cust.getName().getFirst();
 		request.getSession().setAttribute("cusName", cusName);
-		//request.getSession().setAttribute("cusID", cusID);
+		request.getSession().setAttribute("cusID", cusID);
 
 				
 		out.println("</br></br>");
