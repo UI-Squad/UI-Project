@@ -69,6 +69,8 @@ public class RegisterServlet extends HttpServlet {
 		lname = request.getParameter("LastName");
 		email = request.getParameter("email");
 		CustomerHandler Cushandle = new CustomerHandler();
+		CartHandler cartHandle = new CartHandler(Cushandle.getFetcher());
+		
 		Customer Cust = null;
 		String cusID = null;
 		String cusName = null;
@@ -77,6 +79,7 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			Cust = Cushandle.addCust(email, password1, fname, lname);	
 			Cust = Cushandle.getCust(email, password1);
+			cartHandle.addCartItem(Cust.getEmail(), Cust.getCart().getCartId(), "", 0);
 
 		} catch (SQLException e) {
 			out.println("The customer could not be created");
@@ -86,7 +89,7 @@ public class RegisterServlet extends HttpServlet {
 		cusID = Cust.getId();
 		cusName = Cust.getName().getFirst();
 		request.getSession().setAttribute("cusName", cusName);
-		request.getSession().setAttribute("cusID", cusID);
+		//request.getSession().setAttribute("cusID", cusID);
 
 				
 		out.println("</br></br>");
