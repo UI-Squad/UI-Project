@@ -63,7 +63,8 @@ public class customAddToCartServlet extends HttpServlet {
 		System.out.println("CART ID FROM CUSTOM ADD SERVLET " + cartID);
 
 		
-		cartHandler.addCartItem(cartID, itemID, itemQ);
+		//cartHandler.addCartItem(cartID, itemID, itemQ);
+		cartHandler.addCartItem(cartID, cusID, itemID, itemQ);
 		
 		
 		request.setAttribute("itemID", itemID);
