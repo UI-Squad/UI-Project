@@ -483,7 +483,7 @@ public class DataFetcher {
 	 * @return
 	 */
 	public void addCustomer(String email, String password, String custId, String firstNm, 
-						String middleNm, String lastNm, String address, long phoneNm, String cartId) {
+						String middleNm, String lastNm, String address, String phoneNm, String cartId) {
 			String myHash = hashPassword(password); // Hash Password
 			try {
 				preparedStatement = connect.prepareStatement("INSERT INTO `Customers` " 
@@ -495,7 +495,7 @@ public class DataFetcher {
 				preparedStatement.setString(5, middleNm);
 				preparedStatement.setString(6, lastNm);
 				preparedStatement.setString(7, address);
-				preparedStatement.setLong(8, phoneNm);
+				preparedStatement.setString(8, phoneNm);
 				preparedStatement.setString(9, cartId);
 				preparedStatement.executeUpdate();
 			}catch (SQLException e) {

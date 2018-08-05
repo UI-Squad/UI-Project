@@ -23,7 +23,7 @@ public class Customer {
 	/** physical address */
 	private Address address;
 	/** phone number */
-	private long phoneNum;
+	private String phoneNum;
 	/** Shopping Cart */
 	private Cart cart;
 
@@ -37,7 +37,7 @@ public class Customer {
 	 * @param cart Cart object specifying the items in this customer's cart
 	 * @param email String literal specifying this customer's email address
 	 */
-	public Customer(String email, String cusId, Name name, Address address, long phoneNum, Cart cart){
+	public Customer(String email, String cusId, Name name, Address address, String phoneNum, Cart cart){
 		this.email = email;
 		this.cusId = cusId;
 		this.name = name;
@@ -54,7 +54,7 @@ public class Customer {
 	 * @param address
 	 * @param phoneNum
 	 */
-	public Customer(String email, String cusId, Name name, Address address, long phoneNum) {
+	public Customer(String email, String cusId, Name name, Address address, String phoneNum) {
 		this(email, cusId, name, address, phoneNum, new Cart());
 	}
 	
@@ -66,7 +66,7 @@ public class Customer {
 	 * @param phoneNum
 	 * @param cart
 	 */
-	public Customer(String email, String cusId, Name name, long phoneNum, Cart cart) {
+	public Customer(String email, String cusId, Name name, String phoneNum, Cart cart) {
 		this(email, cusId, name, new Address(), phoneNum, cart);
 	}
 	
@@ -78,7 +78,7 @@ public class Customer {
 	 * @param phoneNum
 	 * @param cart
 	 */
-	public Customer(String email, String cusId, Address address, long phoneNum, Cart cart) {
+	public Customer(String email, String cusId, Address address, String phoneNum, Cart cart) {
 		this(email, cusId, new Name(), address, phoneNum, cart);
 	}
 	
@@ -91,7 +91,7 @@ public class Customer {
 	 * @param cart
 	 */
 	public Customer(String email, String cusId, Name name, Address address, Cart cart) {
-		this(email, cusId, name, address, 0, cart);
+		this(email, cusId, name, address, null, cart);
 	}
 	
 	/**
@@ -102,7 +102,7 @@ public class Customer {
 	 * @param address
 	 */
 	public Customer(String email, String cusId, Name name, Address address) {
-		this(email, cusId, name, address, 0, new Cart());
+		this(email, cusId, name, address, null, new Cart());
 	}
 	
 	/**
@@ -112,7 +112,7 @@ public class Customer {
 	 * @param name
 	 */
 	public Customer(String email, String cusId, Name name) {
-		this(email, cusId, name, new Address(), 0, new Cart());
+		this(email, cusId, name, new Address(), null, new Cart());
 	}
 	
 	/**
@@ -122,7 +122,7 @@ public class Customer {
 	 * @param address
 	 */
 	public Customer(String email, String cusId, Address address) {
-		this(email, cusId, new Name(), address, 0, new Cart());
+		this(email, cusId, new Name(), address, null, new Cart());
 	}
 	
 	/**
@@ -131,7 +131,7 @@ public class Customer {
 	 * @param cusId
 	 */
 	public Customer(String email, String cusId) {
-		this(email, cusId, new Name(), new Address(), 0, new Cart());
+		this(email, cusId, new Name(), new Address(), null, new Cart());
 	}
 	
 
@@ -205,7 +205,7 @@ public class Customer {
 	 * 
 	 * @param phoneNum
 	 */
-	public void setPhoneNum(long phoneNum) {
+	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 	
@@ -213,7 +213,7 @@ public class Customer {
 	 * 
 	 * @return
 	 */
-	public long getPhoneNum() {
+	public String getPhoneNum() {
 		return phoneNum;
 	}
 	

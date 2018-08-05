@@ -85,7 +85,7 @@ public class CustomerHandler extends DataHandler {
 	 * @param cartId
 	 */
 	public void addCust(String email, String password, String custId, String firstNm, String middleNm, String lastNm,
-					String address, int phoneNum, String cartId) {
+					String address, String phoneNum, String cartId) {
 		connect();
 		fetcher.addCustomer(email, password, custId, firstNm, middleNm, lastNm, address, phoneNum, cartId);
 			
@@ -123,7 +123,7 @@ public class CustomerHandler extends DataHandler {
 							(results.getString("middleNm") != null) ? results.getString("middleNm") : "", 
 							results.getString("lastNm")), 
 					new Address((results.getString("address") != null) ? results.getString("address") : ""),
-					results.getLong("phoneNum"), 
+					results.getString("phoneNum"), 
 					new CartHandler(getFetcher()).getCart(results.getString("curCart")));
 			}
 		} catch(SQLException e){
