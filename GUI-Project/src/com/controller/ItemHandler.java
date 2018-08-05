@@ -102,10 +102,15 @@ public class ItemHandler extends DataHandler {
 	 */
 	protected void parseResults() throws SQLException {
 		itemList.clear();
-		while(results.next()) {
-			itemList.add(new Item(results.getString("itemId"), results.getString("name"), 
-						results.getString("description"), results.getString("dept"), results.getDouble("price"),
-						results.getInt("inStock")));
+		try {
+			while(results.next()) {
+				itemList.add(new Item(results.getString("itemId"), results.getString("name"), 
+							results.getString("description"), results.getString("dept"), results.getDouble("price"),
+							results.getInt("inStock")));
+			}	
+		}catch(SQLException e) {
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
+		
 	}
 }

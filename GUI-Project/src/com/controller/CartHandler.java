@@ -145,20 +145,8 @@ public class CartHandler extends DataHandler {
 	 * @throws SQLException 
 	 */
 	public void removeCartItem(String cartId, String itemId) throws SQLException {
-		int quantity = 0;
-		int newStock = 0;
 		connect();
-		// fetch item from Cart
-		results = fetcher.fetchCartItem(cartId, itemId);
-		results.next();
-		quantity = results.getInt("quantity");
-		//fetch item from Inventory
-		results = fetcher.fetchItem(itemId);
-		results.next();
-		newStock = quantity + results.getInt("inStock");
-		//update Inventory to reflect new inStock quantity
 		fetcher.removeCartItem(cartId, itemId);
-		fetcher.updateInventoryStock(itemId, newStock);	
 	}
 	
 	/**
@@ -177,17 +165,21 @@ public class CartHandler extends DataHandler {
 	 * Parses the ResultSet into a Cart object.
 	 * @throws SQLException 
 	 */
-	protected void parseResults() throws SQLException {
+	protected void parseResults(){
 		itemList.clear();
 		cart = new Cart(cartId);
-		while(results.next()) {
-			itemList.add(new Item((results.getString("itemId") != null ? results.getString("itemId") : ""), 
+		try {
+			while(results.next()) {
+				itemList.add(new Item((results.getString("itemId") != null ? results.getString("itemId") : ""), 
 						(results.getString("name") != null) ? results.getString("name") : "", 
 						(results.getString("description") != null) ? results.getString("description") : "", 
 						(results.getString("dept") != null) ? results.getString("dept") : "",
 						results.getDouble("price"),
 						results.getInt("quantity")));
+			}
+			cart.setCartItems(itemList);
+		}catch(SQLException e) {
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
-		cart.setCartItems(itemList);
 	}
 }

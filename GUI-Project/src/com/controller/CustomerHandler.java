@@ -113,10 +113,11 @@ public class CustomerHandler extends DataHandler {
 	 * Parse results from DataFetcher for getCust
 	 */
 	@Override
-	protected void parseResults() throws SQLException {
+	protected void parseResults(){
 		cust = null;
-		while(results.next()) {
-			cust = new Customer(results.getString("email"), 
+		try {
+			while(results.next()) {
+				cust = new Customer(results.getString("email"), 
 					results.getString("customerId"), 
 					new Name(results.getString("firstNm"), 
 							(results.getString("middleNm") != null) ? results.getString("middleNm") : "", 
@@ -124,6 +125,9 @@ public class CustomerHandler extends DataHandler {
 					new Address((results.getString("address") != null) ? results.getString("address") : ""),
 					results.getLong("phoneNum"), 
 					new CartHandler(getFetcher()).getCart(results.getString("curCart")));
+			}
+		} catch(SQLException e){
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 	}	
 }

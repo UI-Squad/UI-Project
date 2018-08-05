@@ -131,19 +131,24 @@ public class OrderHandler extends DataHandler{
 	protected void parseResults() throws SQLException {
 		order = null;
 		cart = new Cart();
-		while(results.next()) {
-			String orderId = results.getString("orderId");
-			cart = new CartHandler(getFetcher()).getCart(results.getString("cartId"));
-			Calendar orderDt = Calendar.getInstance();
-			orderDt.setTime(results.getDate("orderDt"));
-			Calendar shipDt = Calendar.getInstance();
-			if(results.getDate("shipDt") != null) {
-				shipDt.setTime(results.getDate("shipDt"));
-			}else {
-				shipDt.set(1900, 0, 0, 0, 0);
+		try {
+			while(results.next()) {
+				String orderId = results.getString("orderId");
+				cart = new CartHandler(getFetcher()).getCart(results.getString("cartId"));
+				Calendar orderDt = Calendar.getInstance();
+				orderDt.setTime(results.getDate("orderDt"));
+				Calendar shipDt = Calendar.getInstance();
+				if(results.getDate("shipDt") != null) {
+					shipDt.setTime(results.getDate("shipDt"));
+				}else {
+					shipDt.set(1900, 0, 0, 0, 0);
+				}
+				int trackNm = results.getInt("trackNm");
+				order = new Order(orderId, cart, orderDt, shipDt, trackNm);
 			}
-			int trackNm = results.getInt("trackNm");
-			order = new Order(orderId, cart, orderDt, shipDt, trackNm);
+		}catch(SQLException e) {
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
+	
 	}
 }
