@@ -55,7 +55,7 @@ public class DataFetcher {
 					.getConnection("jdbc:mysql://uidbinstance.cut52ysezncx.us-west-2.rds.amazonaws.com/storedb", 
 									USER, PASS);*/
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 	}
 	
@@ -71,7 +71,7 @@ public class DataFetcher {
 			preparedStatement.setString(1, itemId);
 			resultSet = preparedStatement.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 		return resultSet;
 	}
@@ -98,7 +98,7 @@ public class DataFetcher {
 			preparedStatement.setString(6, itemId);
 			preparedStatement.executeUpdate();
 		} catch(SQLException e) {
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 	}
 	
@@ -120,7 +120,7 @@ public class DataFetcher {
 			preparedStatement.setString(2, name);
 			preparedStatement.executeUpdate();
 		} catch(SQLException e) {
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 	}
 	
@@ -146,7 +146,7 @@ public class DataFetcher {
 			preparedStatement.setString(6, itemId);
 			preparedStatement.executeUpdate();
 		} catch(SQLException e) {
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 	}
 	
@@ -165,7 +165,7 @@ public class DataFetcher {
 			preparedStatement.setString(2, itemId);
 			preparedStatement.executeUpdate();
 		} catch(SQLException e) {
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 	}	
 	/**
@@ -182,7 +182,7 @@ public class DataFetcher {
 			preparedStatement.setString(2, itemId);
 			preparedStatement.executeUpdate();
 		} catch(SQLException e) {
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 	}	
 	
@@ -200,7 +200,7 @@ public class DataFetcher {
 			resultSet.next();
 			stock = resultSet.getInt("inStock");
 		} catch(SQLException e) {
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 		return stock;
 	}
@@ -214,7 +214,7 @@ public class DataFetcher {
 			preparedStatement = connect.prepareStatement("select * from Inventory");
 			resultSet = preparedStatement.executeQuery();
 		}catch (SQLException e) {
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 		return resultSet;
 	}
@@ -230,7 +230,7 @@ public class DataFetcher {
 			preparedStatement.setString(1, dept);
 			resultSet = preparedStatement.executeQuery();
 		}catch (SQLException e){
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 		
 		return resultSet;
@@ -250,7 +250,7 @@ public class DataFetcher {
 			preparedStatement.setString(1, cartId);
 			resultSet = preparedStatement.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 		return resultSet;
 	}
@@ -266,7 +266,7 @@ public class DataFetcher {
 			preparedStatement.setString(1, customerId);
 			resultSet = preparedStatement.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 		return resultSet;
 	}
@@ -284,7 +284,7 @@ public class DataFetcher {
 			preparedStatement.setString(1, custID);
 			resultSet = preparedStatement.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
 		}
 		return resultSet;
 	}
