@@ -3,6 +3,7 @@ package com.controller;
  * @author Shane Bogard
  */
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -26,7 +27,7 @@ public abstract class DataHandler {
 		this(new DataFetcher());
 	}
 	
-	protected DataFetcher getFetcher() {
+	public DataFetcher getFetcher() {
 		return fetcher;
 	}
 	
@@ -38,6 +39,7 @@ public abstract class DataHandler {
 		if(!fetcher.isConnected()) 
 			fetcher.connect();
 	}
+	
 	
 	/** Closes all DataFetcher connections to the database */
 	public void closeConnection() {

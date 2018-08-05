@@ -31,6 +31,10 @@ public class DataFetcher {
 		this.connect = connect;
 	}
 	
+	public DataFetcher(Connection connect) {
+		this(null, null, connect);
+	}
+	
 	/**
 	 * Constructs a new DataFetcher object.
 	 */
@@ -670,6 +674,11 @@ public class DataFetcher {
 	public boolean isConnected() {
 		return (connect != null);
 	}
+	
+	public Connection getConnection() {
+		return connect;
+	}
+	
 	
 	/**
 	 * Closes the preparedStatment, resultSet and connect.

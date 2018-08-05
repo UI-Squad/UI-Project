@@ -307,7 +307,7 @@ navigation links stack on top of each other instead of next to each other */
 					<%
 							CustomerHandler handler = new CustomerHandler();
 
-							CartHandler cartHandler = new CartHandler();
+							CartHandler cartHandler = new CartHandler(handler.getFetcher());
 	 						String cusID = (String)request.getSession().getAttribute("cusID");
 							
 							Cart cart = handler.getCustomerCart(cusID);
