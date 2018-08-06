@@ -293,7 +293,7 @@ navigation links stack on top of each other instead of next to each other */
 				<%
 					CartHandler cartHandler = new CartHandler();
 					String cusID = (String)request.getSession().getAttribute("cusID");
-					Cart cart = cartHandler.getCartbyCustomerId(cusID);
+					Cart cart = cartHandler.getCartbyCustomerIdtwo(cusID);
 					
 					String cartID = cart.getCartId();
 						
@@ -321,7 +321,7 @@ navigation links stack on top of each other instead of next to each other */
 
 			</div>
 			<!-- end divider for card  -->
-			<%	cartHandler.returnToInventory("car000", cart);	// clear cart %>
+			<%	cartHandler.returnToInventory(cartID, cart);	// clear cart %>
 		</div>
 		<!-- End row divider  -->
 	</div>

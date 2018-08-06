@@ -179,12 +179,10 @@ stack on top of each other instead of next to each other (also change the direct
 		<div class="col-25">
 			<div class="container">
 					<%
-							CustomerHandler handler = new CustomerHandler();
-
 							CartHandler cartHandler = new CartHandler();
 	 						String cusID = (String)request.getSession().getAttribute("cusID");
 							
-							Cart cart = handler.getCustomerCart(cusID);
+							Cart cart = cartHandler.getCartbyCustomerIdtwo(cusID);
 									
 					%>
 								<!-- shopping cart contents -->
