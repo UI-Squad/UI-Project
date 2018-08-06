@@ -62,6 +62,17 @@ public class CartHandler extends DataHandler {
 		return cart;
 	}
 	
+	public String getCartID(String custID) throws SQLException{
+		connect();
+		results = fetcher.fetchCartId(custID);
+		//results = fetcher.fetchCartbyCustomerId(custID);
+		String temp;
+		results.next();
+		temp = results.getString("curCart");
+		System.out.println("temp in getCartID = "+temp);
+		return temp;
+	}
+	
 	/**
 	 * Returns a Cart object specified by a cart ID.
 	 * @param cartId String literal specifying the cart ID
@@ -69,8 +80,10 @@ public class CartHandler extends DataHandler {
 	 * @throws SQLException 
 	 */
 	public Cart getCartbyCustomerIdtwo(String custID) throws SQLException{
+		this.cartId = getCartID(custID);
+		System.out.println("this.cartId = "+this.cartId);
 		connect();
-		results = fetcher.fetchCartreg(custID);
+		results = fetcher.fetchCartItems(this.cartId);
 		parseResults();
 		return cart;
 	}

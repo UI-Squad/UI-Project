@@ -51,12 +51,12 @@ public class customAddToCartServlet extends HttpServlet {
 		
 		try {
 			cart = cartHandler.getCartbyCustomerIdtwo(cusID);
+			cartID = cartHandler.getCartID(cusID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		
-		cartID = cart.getCartId();
 		
 		int itemQ = Integer.parseInt(itemQuantity);
 		
