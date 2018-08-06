@@ -256,6 +256,25 @@ public class DataFetcher {
 	}
 	
 	/**
+	 * Returns all data fields from the Carts table and the price
+	 * of each matching item from the Inventory table in the GUI Database
+	 * that matches the specified cartId.
+	 * @param cartId A string literal representing the cart id
+	 * @return ResultSet the resulSet of the SQL query
+	 */
+	public ResultSet fetchCartreg(String cusId) {
+		try {
+			preparedStatement = connect.prepareStatement("select c.*, i.price from Carts c, Inventory i"
+									+ " where c.customerId= ? and c.itemId = i.itemId");
+			preparedStatement.setString(1, cusId);
+			resultSet = preparedStatement.executeQuery();
+		} catch (SQLException e) {
+			System.err.println(this.getClass().getName() + ":" + e.getMessage());
+		}
+		return resultSet;
+	}
+	
+	/**
 	 * 
 	 * @param customerId
 	 * @return

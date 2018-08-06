@@ -283,7 +283,7 @@ navigation links stack on top of each other instead of next to each other */
 		</div>
 
 		<a href="./registeredCustomerViews/customCart.jsp" class="active">Cart</a> <a href="./registeredCustomerViews/customInventory.jsp">Inventory</a>
-		<a href="../LogOutServlet" style="float: right" name="signOutLink">Sign Out</a>
+		<a href="./LogOutServlet" style="float: right" name="signOutLink">Sign Out</a>
 
 		<!-- Search Bar -->
 		<div class="search-container">
@@ -305,12 +305,12 @@ navigation links stack on top of each other instead of next to each other */
 				<div id="w">
 				
 					<%
-						CustomerHandler handler = new CustomerHandler();
+						//CustomerHandler handler = new CustomerHandler();
 
-						CartHandler cartHandler = new CartHandler(handler.getFetcher());
+						CartHandler cartHandler = new CartHandler();
 						String cusID = (String)request.getSession().getAttribute("cusID");
 					
-						Cart cart = handler.getCustomerCart(cusID);
+						Cart cart = cartHandler.getCartbyCustomerIdtwo(cusID);
 						
 						String cusName = (String)request.getSession().getAttribute("cusName");
 												
@@ -331,6 +331,7 @@ navigation links stack on top of each other instead of next to each other */
 					out.println("<form name=\"removeItemForm"+k+"\" action=\"./customRemove2Servlet\" method=\"POST\">");
 					out.println("<input type=\"hidden\" name=\"itemID\" value=\""+cart.getCartItems().get(k).getItemId()+"\">");
 					out.println("</form>");
+					
 					}
 					
 					%>

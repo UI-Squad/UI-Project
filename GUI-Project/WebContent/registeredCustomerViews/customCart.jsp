@@ -305,15 +305,13 @@ navigation links stack on top of each other instead of next to each other */
 				<div id="w">
 				
 					<%
-							CustomerHandler handler = new CustomerHandler();
-
-							CartHandler cartHandler = new CartHandler(handler.getFetcher());
-	 						String cusID = (String)request.getSession().getAttribute("cusID");
-							
-							Cart cart = handler.getCustomerCart(cusID);
+							CartHandler cartHandler = new CartHandler();
+							String cusID = (String)request.getSession().getAttribute("cusID");
+						
+							Cart cart = cartHandler.getCartbyCustomerIdtwo(cusID);
 							
 							String cusName = (String)request.getSession().getAttribute("cusName");
-							
+													
 							String cartID = cart.getCartId();
 							
 							request.getSession().setAttribute("cartID", cartID);

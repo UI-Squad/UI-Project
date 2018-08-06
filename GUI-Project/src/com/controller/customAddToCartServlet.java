@@ -39,7 +39,8 @@ public class customAddToCartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		CustomerHandler cusHandle = new CustomerHandler();
+//		CustomerHandler cusHandle = new CustomerHandler();
+		CartHandler cartHandler = new CartHandler();
 		Cart cart = new Cart();
 		String itemID = request.getParameter("itemID");
 		String itemQuantity = request.getParameter("numberOfItem");
@@ -49,7 +50,7 @@ public class customAddToCartServlet extends HttpServlet {
 		System.out.println("CUSTOMER ID FROM CUSTOM ADD SERVLET " + cusID);
 		
 		try {
-			cart = cusHandle.getCustomerCart(cusID);
+			cart = cartHandler.getCartbyCustomerIdtwo(cusID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,7 +60,6 @@ public class customAddToCartServlet extends HttpServlet {
 		
 		int itemQ = Integer.parseInt(itemQuantity);
 		
-		CartHandler cartHandler = new CartHandler();
 		System.out.println("CART ID FROM CUSTOM ADD SERVLET " + cartID);
 
 		

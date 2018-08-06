@@ -57,7 +57,7 @@ public class CustomerHandler extends DataHandler {
 	public Cart getCustomerCart(String custId) throws SQLException {
 		System.out.println("CustomerID " + custId);
 		results = fetcher.fetchCartbyCustomerId(custId);
-		results.next();
+		//results.next();
 		return new CartHandler(getFetcher()).getCart(results.getString("cartId"));
 	}
 	
@@ -102,10 +102,15 @@ public class CustomerHandler extends DataHandler {
 	 */
 	public Customer addCust(String email, String password, String firstNm, String lastNm) throws SQLException{
 		connect();
+		System.out.println(email);
+		System.out.println(password);
+		System.out.println(firstNm);
+		System.out.println(lastNm);
+		
 		fetcher.addCustomer(email, password, firstNm, lastNm);
 		results = fetcher.fetchCustomer(email, password);
 		results.next();
-		fetcher.addCartItem(results.getString("curCart"), results.getString("customerId"), "", 0);
+		//fetcher.addCartItem(results.getString("curCart"), results.getString("customerId"), "", 0);
 		return cust;
 	}
 	
